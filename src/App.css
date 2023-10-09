@@ -1,0 +1,32 @@
+.app {
+  /* text-align: center; */
+  background-color: #191919;
+  height: 100vh;
+  width: 100%;
+}
+
+/* .MuiAutocomplete-hasPopupIcon.css-10toc6b-MuiAutocomplete-root
+  .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.css-10toc6b-MuiAutocomplete-root
+  .MuiOutlinedInput-root {
+  border-radius: 2rem !important;
+} */
+/* .MuiAutocomplete-hasPopupIcon.css-1pzvkph-MuiAutocomplete-root
+  .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.css-1pzvkph-MuiAutocomplete-root
+  .MuiOutlinedInput-root {
+  border-radius: 2rem !important;
+}
+
+.css-14k9abt-MuiAutocomplete-root,
+.css-wb57ya-MuiFormControl-root-MuiTextField-root {
+  border-radius: 2rem !important;
+} */
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 2rem !important;
+  background-color: red;
+}
+
+.css-1akejw3-MuiStack-root {
+  flex-direction: row !important;
+}
