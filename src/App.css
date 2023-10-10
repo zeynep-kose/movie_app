@@ -1,7 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .app {
   /* text-align: center; */
   background-color: #191919;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -24,7 +30,8 @@
 } */
 .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 2rem !important;
-  background-color: red;
+  /* background-color: #212121; */
+  background-color: aliceblue;
 }
 
 .css-1akejw3-MuiStack-root {

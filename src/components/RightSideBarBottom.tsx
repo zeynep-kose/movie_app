@@ -19,7 +19,7 @@ import {
   CardMedia,
   Button,
 } from "@mui/material";
-function LeftSideBar() {
+function RightSideBarBottom() {
   return (
     <Stack
       sx={{
@@ -168,4 +168,4 @@ function LeftSideBar() {
   );
 }
 
-export default LeftSideBar;
+export default RightSideBarBottom;

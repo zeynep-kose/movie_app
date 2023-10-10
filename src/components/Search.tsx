@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import {
   TextField,
   Autocomplete,
@@ -20,10 +21,13 @@ function Search({ movieList }: Props) {
         justifyContent: "space-between",
         alignItems: "center",
         width: "70%",
-        paddingTop: "40px",
-        paddingRight: "20px",
+        paddingRight: "1.5rem",
+        paddingTop: "20px",
       }}
     >
+      <Helmet>
+        <title>Search Bar</title>
+      </Helmet>
       <Autocomplete
         disablePortal
         id="combo-box-demo"
@@ -31,7 +35,6 @@ function Search({ movieList }: Props) {
           // margin: "0 auto",
           borderRadius: "30px",
           width: "50rem",
-          backgroundColor: "#212121",
         }}
         options={movieList}
         renderInput={(params) => (
@@ -67,11 +70,11 @@ function Search({ movieList }: Props) {
           sx={{
             padding: "12px",
             borderRadius: "50%",
-            background: "red",
-            fontSize: "2rem",
+            background: "aliceblue",
+            fontSize: "4.2rem",
           }}
         />
-        <img src="profile.svg" alt="profile"></img>
+        <img src="images/profile.svg" alt="profile"></img>
       </Box>
     </Stack>
   );
