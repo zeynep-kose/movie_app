@@ -21,24 +21,43 @@ import Divider from "@mui/material/Divider";
 
 function RightSideBar() {
   return (
-    <Stack sx={{ width: "17rem" }}>
-      <Box>
+    <Stack sx={{ display: "flex", alignSelf: "end" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignSelf: "end",
+          width: "19rem",
+          rowGap: "1rem",
+        }}
+      >
         <Typography
           component={Link}
           sx={{
             textDecoration: "none",
             display: "flex",
             justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <Link sx={{ color: "red" }} underline="none">
+          <Link sx={{ color: "red", fontSize: "1.5rem" }} underline="none">
             Categories
           </Link>
-          <Link sx={{ color: "red" }} underline="none">
+          <Link
+            sx={{ fontSize: ".9rem", color: "#666666", fontWeight: "bold" }}
+            underline="none"
+          >
             Uncheck all{" "}
           </Link>
         </Typography>
-        <Card sx={{ borderRadius: "1.5rem" }}>
+        <Card
+          sx={{
+            borderRadius: "1.5rem",
+            // backgroundColor: "#191919",
+            width: "100%",
+            background: "red",
+          }}
+        >
           <CardContent>
             <List>
               <ListItem>
