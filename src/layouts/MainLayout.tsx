@@ -21,7 +21,7 @@ const MainLayout = ({ children, movieList }: HomeLayoutProps) => {
     >
       <LeftSideBar />
 
-      <Stack sx={{ paddingRight: "1.5rem" }}>
+      <Stack>
         <Search movieList={movieList} movieSearch={moviSearch} />
         <main>{children}</main>
       </Stack>

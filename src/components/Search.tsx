@@ -40,7 +40,7 @@ function Search({ movieList, movieSearch }: SearchProps) {
         alignItems: "flex-start",
         width: "80vw",
         paddingTop: "20px",
-        height: "auto",
+        height: "100%",
       }}
     >
       <Helmet>

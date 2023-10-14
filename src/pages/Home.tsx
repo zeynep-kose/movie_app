@@ -103,6 +103,7 @@ function Home() {
             display: "flex",
             flexDirection: "column",
             alignItems: "baseline",
+            paddingRight: "1rem",
           }}
         >
           <RightSideBar />
