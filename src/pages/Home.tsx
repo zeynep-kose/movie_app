@@ -50,7 +50,11 @@ function Home() {
         }
       )
   );
-  console.log(allData);
+  console.log("allData:", allData);
+  const genreIds: number[] =
+    allData?.data?.results?.map((movie: any) => movie.genre_ids) || [];
+  console.log("Genre IDs:", genreIds);
+
   // const { isLoading: isLoadingTrends, data: trendsData } = useQuery(
   //   ["trendMovies"],
   //   () =>
@@ -68,24 +72,28 @@ function Home() {
   //         return console.log("trends:", res.data);
   //       })
   // );
+
+  const { isLoading: isLoadingTrends, data: genresData } = useQuery(
+    ["GenresMovies"],
+    () =>
+      axios.get("https://api.themoviedb.org/3/genre/movie/list?language=en", {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
+        },
+      })
+  );
   if (isLoadingAllMovies) {
     return <div>Loading...</div>;
   }
-  // const getTrends = () => {
 
-  //   // axios
-  //   //   .get("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", {
-  //   //     headers: {
-  //   //       Authorization:
-  //   //         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //   //     },
-  //   //   })
+  const genreNames = genresData?.data?.genres.map((item: any) => item);
+  console.log("2.apidengelen:", genreNames);
 
-  //   //   .then((response) => {
-  //   //     console.log("trends:", response.data);
-  //   //     setPhoto(response.data.results);
-  //   //   });
-  // };
+  // const type = genreIds.map((item: any) => {
+  //   const names = item.map((typeId: any) => {});
+  // });
+  // console.log("Genre Names Array:", type);
 
   return (
     <MainLayout movieList={allData?.data?.results}>
