@@ -54,7 +54,7 @@ function LoginForm() {
   return (
     <Container
       sx={{
-        height: "100vh",
+        // height: "100vh",
         width: "50vw",
         margin: "0",
         justifyContent: "center",
@@ -65,6 +65,7 @@ function LoginForm() {
     >
       <Box
         sx={{
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           rowGap: "2rem",
@@ -124,23 +125,28 @@ function LoginForm() {
         }}
       >
         <TextField
-          sx={{
-            backgroundColor: "white",
-            outline: "none",
-            "&.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root": {
-              backgroundColor: "transparent",
-            },
-          }}
-          {...register("Email")}
+          InputProps={{ style: { color: "white" } }}
+          color="primary"
+          id="standard-email"
           placeholder="E-mail"
           type="email"
+          autoComplete="current-password"
+          variant="standard"
         />
         {errors.Email && <p>{errors.Email.message}</p>}
         <TextField
-          sx={{ backgroundColor: "white" }}
-          type="password"
-          {...register("password")}
+          InputProps={{ style: { color: "white" } }}
+          id="standard-password-input"
           placeholder="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="standard"
+          sx={{
+            color: "white",
+            // "&.css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
+            //   borderBottom: "1px solid white",
+            // },
+          }}
         />
 
         <Box

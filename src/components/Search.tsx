@@ -36,11 +36,12 @@ function Search({ movieList, movieSearch }: SearchProps) {
       sx={{
         flexDirection: "row",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignItems: "flex-start",
-        width: "80vw",
+        // width: "80vw",
         paddingTop: "20px",
         height: "100%",
+        marginLeft: "16rem",
       }}
     >
       <Helmet>

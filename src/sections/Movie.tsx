@@ -28,23 +28,25 @@ import "swiper/css/scrollbar";
 
 type movieProps = {
   movieList: any[];
+  tvList: any[];
+  upcoming: any[];
   // setPhoto: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-function Movie({ movieList }: movieProps) {
+function Movie({ movieList, tvList, upcoming }: movieProps) {
   return (
-    <Stack sx={{ height: "100%" }}>
-      <Box>
+    <Stack sx={{ height: "100%", marginLeft: "15rem", alignItems: "center" }}>
+      <Box sx={{ width: "94%" }}>
         <img
           src="images/bigPic.png"
           alt="bigPic"
-          style={{ width: "95%" }}
+          style={{ width: "100%" }}
         ></img>
       </Box>
       <Container
         sx={{
-          rowGap: "15rem",
+          rowGap: "3rem",
           display: "flex",
           flexDirection: "column",
           height: "100%",
@@ -54,6 +56,7 @@ function Movie({ movieList }: movieProps) {
           sx={{
             display: "flex",
             flexDirection: "column",
+            paddingTop: "2rem",
             alignItems: "baseline",
           }}
         >
@@ -82,7 +85,7 @@ function Movie({ movieList }: movieProps) {
               <Box
                 sx={{
                   width: "100%", // buna fix bişi vermen gerekiyor bilgin olsun
-                  height: "120px",
+                  // height: "120px",
                 }}
               >
                 <Swiper
@@ -168,6 +171,77 @@ function Movie({ movieList }: movieProps) {
                   {movieList.map((item, index) => {
                     return (
                       <SwiperSlide
+                        style={{
+                          width: "100px",
+                          height: "285px",
+                        }}
+                      >
+                        <img
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "1.5rem",
+                          }}
+                          alt="img-1"
+                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        ></img>
+                      </SwiperSlide>
+                    );
+                  })}
+                </Swiper>
+              </Box>
+            </Grid>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "baseline",
+          }}
+        >
+          <Typography variant="h4" sx={{ color: "white" }}>
+            TV Series
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              maxWidth: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Grid
+              item
+              xs={2}
+              sm={4}
+              md={4}
+              lg={1}
+              sx={{
+                display: "flex",
+                // flexWrap: "wrap",
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "100%", // buna fix bişi vermen gerekiyor bilgin olsun
+                }}
+              >
+                <Swiper
+                  // install Swiper modules
+                  spaceBetween={40}
+                  slidesPerView={4}
+                  style={{
+                    width: "900px",
+                    paddingTop: "1.5rem",
+                    paddingRight: "2rem",
+                  }} // yada buna he tamm
+                >
+                  {tvList.map((item, index) => {
+                    return (
+                      <SwiperSlide
+                        key={index}
                         style={{
                           width: "100px",
                           height: "285px",

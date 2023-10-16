@@ -18,8 +18,43 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-function RightSideBar() {
+type RightSideBarProp = {
+  filterIds: any[];
+  setFiltered: (value: number[]) => void;
+};
+
+function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
+  const { isLoading: isLoadingTrends, data: genresData } = useQuery(
+    ["GenresMovies"],
+    async () => {
+      const res = await axios.get(
+        "https://api.themoviedb.org/3/genre/movie/list?language=en",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
+          },
+        }
+      );
+
+      console.log("response", res);
+
+      return res || [];
+    }
+  );
+
+  console.log(isLoadingTrends);
+  // console.log(genresData?.data?.genres);
+  // console.log("dataaaaaaaaaaaaaağ", filterIds);
+
+  const handleCheck = (id: number) => {
+    // const filterItems = filterIds.filter((item: number) => {});
+    setFiltered([...filterIds, id]);
+  };
+
   return (
     <Stack sx={{ display: "flex", alignSelf: "end" }}>
       <Box
@@ -60,65 +95,29 @@ function RightSideBar() {
         >
           <CardContent>
             <List>
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Action
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Adventure
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Animated
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Comedy
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Crime
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
-              <ListItem>
-                <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
-                  Fantasy
-                </ListItemText>
-                <ListItemIcon>
-                  <Checkbox></Checkbox>
-                </ListItemIcon>
-              </ListItem>
-              <Divider />
+              {genresData?.data?.genres?.slice(0, 6)?.map((genre: any) => (
+                <ListItem key={genre.id}>
+                  <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
+                    {genre.name}
+                    <Divider />
+                  </ListItemText>
+                  <ListItemIcon>
+                    <Checkbox onClick={() => handleCheck(genre.id)}></Checkbox>
+                  </ListItemIcon>
+                </ListItem>
+              ))}
             </List>
           </CardContent>
         </Card>
       </Box>
     </Stack>
+    // <>
+    //   {!isLoadingTrends ? (
+
+    //   ) : (
+    //     <div>Loading...</div>
+    //   )}
+    // </>
   );
 }
 

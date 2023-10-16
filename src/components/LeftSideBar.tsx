@@ -29,6 +29,9 @@ function LeftSideBar() {
         paddingTop: "1.5rem",
         borderRadius: "2rem",
         display: "flex",
+        position: "fixed",
+        zIndex: 1000,
+        height: "100%",
       }}
     >
       <Helmet>

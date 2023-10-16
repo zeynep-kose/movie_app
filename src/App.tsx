@@ -20,8 +20,6 @@ function App() {
               <Route path="/" element={<Home />} /> {/* Ana sayfa */}
             </Routes>
           </Router>
-
-          <RouterProvider router={routes} />
         </div>
       </QueryClientProvider>
     </HelmetProvider>
