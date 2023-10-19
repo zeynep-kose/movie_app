@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import { Checkbox } from "@mui/material";
 import {
   Card,
@@ -12,6 +13,7 @@ import {
   Box,
   Link,
 } from "@mui/material";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -20,13 +22,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import MyContext from "../context/Context";
 
-type RightSideBarProp = {
-  filterIds: any[];
-  setFiltered: (value: number[]) => void;
-};
+function RightSideBar() {
+  const context = useContext(MyContext);
 
-function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
     ["GenresMovies"],
     async () => {
@@ -47,13 +47,21 @@ function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
   );
 
   console.log(isLoadingTrends);
-  // console.log(genresData?.data?.genres);
-  // console.log("dataaaaaaaaaaaaaağ", filterIds);
 
   const handleCheck = (id: number) => {
-    // const filterItems = filterIds.filter((item: number) => {});
-    setFiltered([...filterIds, id]);
+    context?.setFilterIds([...context?.filterIds, id]);
   };
+  const handleUncheckAll = () => {
+    context?.setFilterIds([]); // Tüm seçilen ID'leri boş bir dizi ile değiştirin.
+  };
+  console.log(context);
+
+  // const handleDoubleClick = () => {
+  //   const updatedFilterIds = context?.filterIds.filter(
+  //     (filterId) => filterId !== id
+  //   );
+  //   context?.setFilterIds(updatedFilterIds);
+  // };
 
   return (
     <Stack sx={{ display: "flex", alignSelf: "end" }}>
@@ -81,6 +89,7 @@ function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
           <Link
             sx={{ fontSize: ".9rem", color: "#666666", fontWeight: "bold" }}
             underline="none"
+            onClick={handleUncheckAll}
           >
             Uncheck all{" "}
           </Link>
@@ -88,7 +97,7 @@ function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
         <Card
           sx={{
             borderRadius: "1.5rem",
-            // backgroundColor: "#191919",
+            backgroundColor: "#191919",
             width: "100%",
             background: "red",
           }}
@@ -96,15 +105,25 @@ function RightSideBar({ filterIds, setFiltered }: RightSideBarProp) {
           <CardContent>
             <List>
               {genresData?.data?.genres?.slice(0, 6)?.map((genre: any) => (
-                <ListItem key={genre.id}>
-                  <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
+                <Box>
+                  <ListItem
+                    key={genre.id}
+                    sx={{
+                      color: "White",
+                      fontWeight: "bold",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     {genre.name}
-                    <Divider />
-                  </ListItemText>
-                  <ListItemIcon>
-                    <Checkbox onClick={() => handleCheck(genre.id)}></Checkbox>
-                  </ListItemIcon>
-                </ListItem>
+                    <Checkbox
+                      checked={context?.filterIds.includes(genre.id)}
+                      onClick={() => handleCheck(genre.id)}
+                      // onDoubleClick={handleDoubleClick}
+                    ></Checkbox>
+                  </ListItem>
+                  <Divider sx={{ backgroundColor: "white" }} />
+                </Box>
               ))}
             </List>
           </CardContent>

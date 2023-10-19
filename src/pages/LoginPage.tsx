@@ -24,14 +24,22 @@ function LoginPage() {
     () =>
       axios.get(
         "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-          },
-        }
+
+        { headers }
       )
   );
+
+  // RECORD TOKEN TO LOCAL STORAGE
+  const token =
+    "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4";
+  localStorage.setItem("accessToken", token);
+
+  const accessToken = localStorage.getItem("accessToken");
+
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
   console.log("allData:", allData);
   const title = allData?.data?.results?.original_title;
   console.log("title", title);

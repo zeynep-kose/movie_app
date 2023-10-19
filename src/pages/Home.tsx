@@ -10,7 +10,7 @@ import RightSideBarBottom from "../components/RightSideBarBottom";
 import Movie from "../sections/Movie";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
-
+import MoviesPage from "./MoviesPage";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 function Home() {
@@ -74,14 +74,14 @@ function Home() {
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
     ["GenresMovies"],
     () =>
-      axios.get("https://api.themoviedb.org/3/genre/movie/list?language=en", {
+      axios.get("https://api.themoviedb.org/3/genre/movie/list?language=tr", {
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
         },
       })
   );
-  // console.log("genresData", genresData);
+  // console.log("genresData", genresData);é
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
     ["tvSeriesData"],
@@ -140,17 +140,6 @@ function Home() {
           tvList={tvSeriesData?.data?.results}
           upcoming={Upcoming?.data?.results}
         />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "baseline",
-            paddingRight: "1rem",
-          }}
-        >
-          <RightSideBar filterIds={filterIds} setFiltered={setFilterIds} />
-          <RightSideBarBottom />
-        </Box>
       </Box>
     </MainLayout>
   );

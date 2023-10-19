@@ -8,7 +8,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import HomeIcon from "@mui/icons-material/Home";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UpcomingIcon from "@mui/icons-material/Upcoming";
+import MoviesPage from "../pages/MoviesPage";
+
 import { Helmet } from "react-helmet-async";
 import {
   Card,
@@ -48,7 +51,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton>
+            <ListItemButton component={Link} to="/">
               <ListItemIcon>
                 <HomeIcon></HomeIcon>
               </ListItemIcon>
@@ -64,7 +67,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton>
+            <ListItemButton component={Link} to="/movies">
               <ListItemIcon>
                 <VideocamIcon />
               </ListItemIcon>
@@ -80,7 +83,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton>
+            <ListItemButton component={Link} to="/movies">
               <ListItemIcon>
                 <OndemandVideoIcon />
               </ListItemIcon>
@@ -96,7 +99,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton>
+            <ListItemButton component={Link} to="/movies">
               <ListItemIcon>
                 <UpcomingIcon />
               </ListItemIcon>
@@ -109,6 +112,7 @@ function LeftSideBar() {
             </ListItemButton>
           </ListItem>
         </List>
+        {/* <Route path="/movies" element={MoviesPage} /> */}
       </Box>
       <Box sx={{ width: "12rem", margin: ".45rem auto" }}>
         <Card

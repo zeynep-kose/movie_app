@@ -14,23 +14,23 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 type SearchProps = {
   movieList: any[];
-  movieSearch(movieName: string): void;
+  // movieSearch(movieName: string): void;
 };
 
-function Search({ movieList, movieSearch }: SearchProps) {
-  const handleMovieSearch = (
-    e: React.SyntheticEvent,
-    value: string | null,
-    reason: AutocompleteChangeReason,
-    details?: AutocompleteChangeDetails<string>
-  ) => {
-    if (value && reason === "selectOption") {
-      const isMatch = Object.keys(movieList).filter((movie) => {
-        return movie.toLowerCase().includes(value.toLowerCase());
-      });
-      console.log("match movies:", isMatch);
-    }
-  };
+function Search({ movieList }: SearchProps) {
+  // const handleMovieSearch = (
+  //   e: React.SyntheticEvent,
+  //   value: string | null,
+  //   reason: AutocompleteChangeReason,
+  //   details?: AutocompleteChangeDetails<string>
+  // ) => {
+  //   if (value && reason === "selectOption") {
+  //     const isMatch = Object.keys(movieList).filter((movie) => {
+  //       return movie.toLowerCase().includes(value.toLowerCase());
+  //     });
+  //     console.log("match movies:", isMatch);
+  //   }
+  // };
   return (
     <Stack
       sx={{
@@ -38,10 +38,10 @@ function Search({ movieList, movieSearch }: SearchProps) {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "flex-start",
-        // width: "80vw",
+        width: "80vw",
         paddingTop: "20px",
         height: "100%",
-        marginLeft: "16rem",
+        marginLeft: "17rem",
       }}
     >
       <Helmet>
@@ -61,10 +61,10 @@ function Search({ movieList, movieSearch }: SearchProps) {
           sx={{
             // margin: "0 auto",
             borderRadius: "30px",
-            width: "55rem",
+            width: "54rem",
           }}
           options={
-            movieList.map((e) => {
+            movieList?.map((e) => {
               return {
                 id: e.id,
                 label: e.title,

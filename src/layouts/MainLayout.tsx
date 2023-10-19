@@ -8,8 +8,8 @@ type HomeLayoutProps = {
   movieList: string[];
 };
 const MainLayout = ({ children, movieList }: HomeLayoutProps) => {
-  const moviSearch = (movieName: string) =>
-    console.log("searched film:", movieName);
+  // const moviSearch = (movieName: string) =>
+  //   console.log("searched film:", movieName);
   return (
     <Stack
       sx={{
@@ -22,7 +22,7 @@ const MainLayout = ({ children, movieList }: HomeLayoutProps) => {
       <LeftSideBar />
 
       <Stack>
-        <Search movieList={movieList} movieSearch={moviSearch} />
+        <Search movieList={movieList} />
         <main>{children}</main>
       </Stack>
     </Stack>

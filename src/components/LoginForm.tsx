@@ -1,60 +1,50 @@
 import React from "react";
 import * as yup from "yup";
+import { useForm, SubmitHandler, SubmitErrorHandler } from "react-hook-form";
 import {
   TextField,
-  Autocomplete,
-  Stack,
   Box,
   Button,
   Container,
   Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
-import { padding } from "@mui/system";
-import { CheckBox } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-type FormData = {
-  Email: string;
-  password: any;
+type FormValues = {
+  email: string;
+  password: string;
 };
 
 const schema = yup.object().shape({
-  firstName: yup
-    .string()
-    .required("Email is required")
-    .matches(/^[A-Za-z]+$/, "Only letters are allowed"),
-  password: yup.string().required("Password is required"),
+  email: yup.string().required("E-mail is required !").email("Invalid email"),
+  password: yup.string().required("Password is required !"),
 });
+
 function LoginForm() {
   const {
-    register,
-    setValue,
     handleSubmit,
+    register,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = handleSubmit((data) =>
-    schema
-      .validate(data, { abortEarly: false })
-      .then((validData) => {
-        console.log("Form data is valid:", validData);
-      })
-      .catch((validationErrors) => {
-        console.error("Form validation errors:", validationErrors);
-      })
-  );
+  const navigate = useNavigate();
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log("Form data:", data);
+    navigate("/");
+  };
+
+  const onError: SubmitErrorHandler<FormValues> = (errors) => {
+    console.error("Form errors:", errors);
+  };
 
   return (
     <Container
       sx={{
-        // height: "100vh",
         width: "50vw",
         margin: "0",
         justifyContent: "center",
@@ -103,7 +93,7 @@ function LoginForm() {
             border: "1px solid grey",
             borderRadius: "1rem",
             width: "100%",
-            padding: " 10px",
+            padding: "10px",
             columnGap: ".5rem",
             textTransform: "capitalize",
             fontSize: "1rem",
@@ -115,7 +105,7 @@ function LoginForm() {
         </Button>
       </Box>
       <form
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit(onSubmit, onError)}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -125,47 +115,65 @@ function LoginForm() {
         }}
       >
         <TextField
+          {...register("email")}
           InputProps={{ style: { color: "white" } }}
           color="primary"
-          id="standard-email"
+          id="email"
           placeholder="E-mail"
-          type="email"
           autoComplete="current-password"
           variant="standard"
         />
-        {errors.Email && <p>{errors.Email.message}</p>}
+        {errors.email && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "1.5rem",
+              textTransform: "capitalize",
+            }}
+          >
+            {errors.email.message}
+          </p>
+        )}
         <TextField
+          {...register("password")}
           InputProps={{ style: { color: "white" } }}
-          id="standard-password-input"
+          id="password"
           placeholder="Password"
           type="password"
           autoComplete="current-password"
           variant="standard"
           sx={{
             color: "white",
-            // "&.css-v4u5dn-MuiInputBase-root-MuiInput-root:after": {
-            //   borderBottom: "1px solid white",
-            // },
           }}
         />
-
+        {errors.password && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "1.5rem",
+              textTransform: "capitalize",
+            }}
+          >
+            {errors.password.message}
+          </p>
+        )}
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
           }}
         >
-          <Box sx={{ display: "flex", columnGap: "1rem" }}>
-            <CheckBox />
-            <Typography sx={{ color: "grey" }}>
-              Remember me for 30 days
-            </Typography>
-          </Box>
-          <Box>
-            <Typography component={Link} to="" sx={{ color: "white" }}>
-              Forgot password
-            </Typography>
-          </Box>
+          <FormControlLabel
+            control={<Checkbox />}
+            label={
+              <Typography sx={{ color: "grey" }}>
+                Remember me for 30 days
+              </Typography>
+            }
+          />
+          <Typography component={Link} to="" sx={{ color: "white" }}>
+            Forgot password
+          </Typography>
         </Box>
         <Button
           sx={{
@@ -178,11 +186,11 @@ function LoginForm() {
             fontSize: "1.5rem",
             borderRadius: "1rem",
           }}
-          type="button"
-          onClick={() => {}}
+          type="submit"
         >
           Log in
         </Button>
+
         <Box>
           <Typography
             component={Link}
@@ -195,7 +203,7 @@ function LoginForm() {
             }}
           >
             Don’t have an account?{" "}
-            <span style={{ color: "white" }}>Sign up for free </span>
+            <span style={{ color: "white" }}>Sign up for free</span>
           </Typography>
         </Box>
       </form>

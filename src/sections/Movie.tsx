@@ -1,5 +1,6 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
+import { useContext } from "react";
 import {
   TextField,
   Autocomplete,
@@ -14,6 +15,7 @@ import {
   CardContent,
   CardMedia,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/bundle";
 import SwiperCore from "swiper";
@@ -34,10 +36,17 @@ type movieProps = {
 };
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 function Movie({ movieList, tvList, upcoming }: movieProps) {
   return (
-    <Stack sx={{ height: "100%", marginLeft: "15rem", alignItems: "center" }}>
-      <Box sx={{ width: "94%" }}>
+    <Stack
+      sx={{
+        height: "100%",
+        marginLeft: "19rem",
+        alignItems: "center",
+      }}
+    >
+      <Box sx={{ width: "100%" }}>
         <img
           src="images/bigPic.png"
           alt="bigPic"
@@ -93,12 +102,12 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   spaceBetween={40}
                   slidesPerView={4}
                   style={{
-                    width: "900px",
+                    width: "1000px",
                     paddingTop: "1.5rem",
-                    paddingRight: "2rem",
+                    // paddingRight: "2rem",
                   }} // yada buna he tamm
                 >
-                  {movieList.map((item, index) => {
+                  {movieList?.map((item, index) => {
                     return (
                       <SwiperSlide
                         style={{
@@ -106,15 +115,17 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "285px",
                         }}
                       >
-                        <img
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "1.5rem",
-                          }}
-                          alt="img-1"
-                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        ></img>
+                        <Link to={`/details`}>
+                          <img
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              borderRadius: "1.5rem",
+                            }}
+                            alt="img-1"
+                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                          ></img>
+                        </Link>
                       </SwiperSlide>
                     );
                   })}
@@ -163,12 +174,12 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   spaceBetween={40}
                   slidesPerView={4}
                   style={{
-                    width: "900px",
+                    width: "1000px",
                     paddingTop: "1.5rem",
-                    paddingRight: "2rem",
+                    // paddingRight: "2rem",
                   }} // yada buna he tamm
                 >
-                  {movieList.map((item, index) => {
+                  {upcoming?.map((item, index) => {
                     return (
                       <SwiperSlide
                         style={{
@@ -176,15 +187,17 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "285px",
                         }}
                       >
-                        <img
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "1.5rem",
-                          }}
-                          alt="img-1"
-                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        ></img>
+                        <Link to={`details`}>
+                          <img
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              borderRadius: "1.5rem",
+                            }}
+                            alt="img-1"
+                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                          ></img>
+                        </Link>
                       </SwiperSlide>
                     );
                   })}
@@ -233,12 +246,12 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   spaceBetween={40}
                   slidesPerView={4}
                   style={{
-                    width: "900px",
+                    width: "1000px",
                     paddingTop: "1.5rem",
-                    paddingRight: "2rem",
+                    // paddingRight: "2rem",
                   }} // yada buna he tamm
                 >
-                  {tvList.map((item, index) => {
+                  {tvList?.map((item, index) => {
                     return (
                       <SwiperSlide
                         key={index}
@@ -247,15 +260,17 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "285px",
                         }}
                       >
-                        <img
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            borderRadius: "1.5rem",
-                          }}
-                          alt="img-1"
-                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        ></img>
+                        <Link to={`details`}>
+                          <img
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              borderRadius: "1.5rem",
+                            }}
+                            alt="img-1"
+                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                          ></img>
+                        </Link>
                       </SwiperSlide>
                     );
                   })}
