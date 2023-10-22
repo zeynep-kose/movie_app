@@ -35,27 +35,30 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-type movieProps = {
+type UpcomingProps = {
   movieList: any[];
   curentPage: number;
   setpage: Dispatch<SetStateAction<number>>;
   total: number;
 };
 
-function Movie({ movieList, curentPage, setpage, total }: movieProps) {
-  const context = useContext(MyContext);
-  const movieId = movieList.map((movieType, i) => {
-    return movieType.genre_ids;
-  });
-  console.log("movieeeeee", movieId);
-
-  // setMovie([...movie, movie]);
+function UpcomingList({
+  movieList,
+  curentPage,
+  setpage,
+  total,
+}: UpcomingProps) {
+  const theme = useTheme();
   return (
     <Stack
       sx={{
         height: "100%",
         alignItems: "center",
         width: "85%",
+        justifyContent: "space-between",
+        [theme.breakpoints.up("xl")]: {
+          alignItems: "baseline",
+        },
       }}
     >
       <Container
@@ -64,6 +67,10 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          [theme.breakpoints.up("xl")]: {
+            margin: 0,
+            width: "100%",
+          },
         }}
       >
         <Box
@@ -72,13 +79,13 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
             flexDirection: "column",
             paddingTop: "2rem",
             alignItems: "baseline",
+            [theme.breakpoints.up("xl")]: {},
           }}
         >
           <Box
             sx={{
               display: "flex",
               maxWidth: "100%",
-              justifyContent: "space-between",
             }}
           >
             <Grid
@@ -92,6 +99,9 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                 // flexWrap: "wrap",
                 width: "100%",
                 height: "100%",
+                [theme.breakpoints.up("xl")]: {
+                  width: "1400px",
+                },
               }}
             >
               <Stack spacing={2}>
@@ -101,6 +111,11 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                     flexWrap: "wrap",
                     justifyContent: "space-between",
                     margin: "2rem 0",
+
+                    [theme.breakpoints.up("xl")]: {
+                      rowGap: "3rem",
+                      width: "100%",
+                    },
                   }}
                 >
                   {movieList?.map((item, index) => {
@@ -150,25 +165,6 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                   )}
                 />
               </Stack>
-
-              {/* <SnackbarProvider />
-                <button
-                  style={{
-                    backgroundColor: " white",
-                    width: "100%",
-                    padding: ".5rem",
-                    textTransform: "capitalize",
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                    borderRadius: "1rem",
-                    marginTop: "2rem",
-                    height: "40px",
-                  }}
-                  onClick={handleMore}
-                >
-                  LOAD MORE
-                </button> */}
             </Grid>
           </Box>
         </Box>
@@ -177,4 +173,4 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   );
 }
 
-export default Movie;
+export default UpcomingList;

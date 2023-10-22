@@ -52,19 +52,12 @@ function RightSideBar() {
     context?.setFilterIds([...context?.filterIds, id]);
   };
   const handleUncheckAll = () => {
-    context?.setFilterIds([]); // Tüm seçilen ID'leri boş bir dizi ile değiştirin.
+    context?.setFilterIds([]);
   };
   console.log(context);
 
-  // const handleDoubleClick = () => {
-  //   const updatedFilterIds = context?.filterIds.filter(
-  //     (filterId) => filterId !== id
-  //   );
-  //   context?.setFilterIds(updatedFilterIds);
-  // };
-
   return (
-    <Stack sx={{ display: "flex", alignSelf: "end" }}>
+    <Stack sx={{ display: "flex", alignSelf: "end", marginLeft: "3rem" }}>
       <Box
         sx={{
           display: "flex",
@@ -83,7 +76,7 @@ function RightSideBar() {
             alignItems: "center",
           }}
         >
-          <Link sx={{ color: "red", fontSize: "1.5rem" }} underline="none">
+          <Link sx={{ color: "#E8E8E8", fontSize: "1.5rem" }} underline="none">
             Categories
           </Link>
           <Link
@@ -97,9 +90,9 @@ function RightSideBar() {
         <Card
           sx={{
             borderRadius: "1.5rem",
-            backgroundColor: "#191919",
+            // backgroundColor: "#191919",
             width: "100%",
-            background: "red",
+            backgroundColor: "#212121",
           }}
         >
           <CardContent>
@@ -109,7 +102,7 @@ function RightSideBar() {
                   <ListItem
                     key={genre.id}
                     sx={{
-                      color: "White",
+                      color: "#E8E8E8",
                       fontWeight: "bold",
                       display: "flex",
                       justifyContent: "space-between",
@@ -122,7 +115,7 @@ function RightSideBar() {
                       // onDoubleClick={handleDoubleClick}
                     ></Checkbox>
                   </ListItem>
-                  <Divider sx={{ backgroundColor: "white" }} />
+                  <Divider sx={{ backgroundColor: "#666666" }} />
                 </Box>
               ))}
             </List>

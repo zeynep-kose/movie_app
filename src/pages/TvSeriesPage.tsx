@@ -15,21 +15,22 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
 import { number } from "yup";
+import TvList from "../sections/TvList";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
-function Movies() {
+function Home() {
   const context = useContext(MyContext);
 
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
   const [filterIds, setFilterIds] = useState<number[]>([]);
 
-  //ALL FILMS
-  const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-    ["allMovies", page, context?.filterIds, context?.setFilterIds],
+  //TV SERIES
+  const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
+    ["tvSeriesData", page, context?.filterIds, context?.setFilterIds],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${context?.filterIds}`,
+        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&page=${page}`,
         {
           headers: {
             Authorization:
@@ -43,7 +44,7 @@ function Movies() {
       },
     }
   );
-
+  console.log("tvSeriesData", tvSeriesData);
   //TYPES
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
     ["GenresMovies"],
@@ -58,7 +59,7 @@ function Movies() {
 
   //TV SERIES
 
-  if (isLoadingAllMovies) {
+  if (isLoadingTv) {
     return <div>Loading...</div>;
   }
 
@@ -73,7 +74,7 @@ function Movies() {
   return (
     <Stack>
       <Box>
-        <Search movieList={allData?.data?.results ?? []} />
+        <Search movieList={tvSeriesData?.data?.results ?? []} />
       </Box>
       <Box
         sx={{
@@ -96,8 +97,8 @@ function Movies() {
           <RightSideBar />
           <RightSideBarBottom />
         </Box>
-        <MovieList
-          movieList={allData?.data?.results ?? []}
+        <TvList
+          movieList={tvSeriesData?.data?.results ?? []}
           curentPage={page}
           setpage={setPage}
           total={totalPages}
@@ -107,4 +108,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Home;

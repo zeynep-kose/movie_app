@@ -75,7 +75,7 @@ function RightSideBar() {
   // };
 
   return (
-    <Stack sx={{ display: "flex", alignSelf: "end" }}>
+    <Stack sx={{ display: "flex", alignSelf: "end", height: "100%" }}>
       <Box
         sx={{
           display: "flex",
@@ -83,6 +83,7 @@ function RightSideBar() {
           alignSelf: "end",
           width: "19rem",
           rowGap: "1rem",
+          height: "100%",
         }}
       >
         <Typography
@@ -94,7 +95,7 @@ function RightSideBar() {
             alignItems: "center",
           }}
         >
-          <Link sx={{ color: "red", fontSize: "1.5rem" }} underline="none">
+          <Link sx={{ color: "#E8E8E8", fontSize: "1.5rem" }} underline="none">
             Services
           </Link>
           <Link
@@ -109,14 +110,14 @@ function RightSideBar() {
             borderRadius: "1.5rem",
             // backgroundColor: "#191919",
             width: "100%",
-            background: "red",
+            backgroundColor: "#212121",
           }}
         >
           <CardContent>
             <List>
               {genresData?.data?.genres?.slice(0, 6)?.map((genre: any) => (
                 <ListItem key={genre.id}>
-                  <ListItemText sx={{ color: "White", fontWeight: "bold" }}>
+                  <ListItemText sx={{ color: "#E8E8E8", fontWeight: "bold" }}>
                     {genre.name}
                     <Divider />
                   </ListItemText>
@@ -132,23 +133,6 @@ function RightSideBar() {
           </CardContent>
         </Card>
       </Box>
-      <SnackbarProvider />
-      <button
-        style={{
-          backgroundColor: " white",
-          width: "95%",
-          padding: ".5rem",
-          textTransform: "capitalize",
-          color: "black",
-          fontWeight: "bold",
-          fontSize: "1.5rem",
-          borderRadius: "1rem",
-          marginTop: "2rem",
-        }}
-        onClick={() => enqueueSnackbar("Go Girl!")}
-      >
-        Search
-      </button>
     </Stack>
     // <>
     //   {!isLoadingTrends ? (

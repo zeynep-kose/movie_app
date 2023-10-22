@@ -38,9 +38,14 @@ type movieProps = {
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Movie({ movieList, tvList, upcoming }: movieProps) {
+  const theme = useTheme();
   return (
     <Stack
       sx={{
+        [theme.breakpoints.up("xl")]: {
+          width: "100%",
+          marginLeft: "10rem",
+        },
         height: "100%",
         marginLeft: "19rem",
         alignItems: "center",
@@ -86,6 +91,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               md={4}
               lg={1}
               sx={{
+                [theme.breakpoints.up("xl")]: {},
                 display: "flex",
                 // flexWrap: "wrap",
                 width: "100%",
@@ -99,10 +105,14 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               >
                 <Swiper
                   // install Swiper modules
-                  spaceBetween={40}
+                  spaceBetween={50}
                   slidesPerView={4}
                   style={{
-                    width: "1000px",
+                    [theme.breakpoints.up("xl")]: {
+                      width: "1600px",
+                    },
+                    flexWrap: "nowrap",
+                    width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
                   }} // yada buna he tamm
@@ -112,7 +122,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                       <SwiperSlide
                         style={{
                           width: "100px",
-                          height: "285px",
+                          height: "305px",
                         }}
                       >
                         <Link to={`/details`}>
@@ -160,7 +170,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               lg={1}
               sx={{
                 display: "flex",
-                // flexWrap: "wrap",
+                flexWrap: "nowrap",
                 width: "100%",
               }}
             >
@@ -170,21 +180,29 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                 }}
               >
                 <Swiper
+                  className="homePage--slider"
                   // install Swiper modules
-                  spaceBetween={40}
+                  spaceBetween={50}
                   slidesPerView={4}
                   style={{
-                    width: "1000px",
+                    flexWrap: "nowrap",
+                    width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
-                  }} // yada buna he tamm
+                    [theme.breakpoints.down("xl")]: {
+                      width: "2000px",
+                    },
+                  }}
                 >
                   {upcoming?.map((item, index) => {
                     return (
                       <SwiperSlide
                         style={{
                           width: "100px",
-                          height: "285px",
+                          height: "300px",
+                          [theme.breakpoints.down("xl")]: {
+                            width: "400px",
+                          },
                         }}
                       >
                         <Link to={`details`}>
@@ -230,6 +248,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               sm={4}
               md={4}
               lg={1}
+              xl={1}
               sx={{
                 display: "flex",
                 // flexWrap: "wrap",
@@ -243,10 +262,10 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               >
                 <Swiper
                   // install Swiper modules
-                  spaceBetween={40}
+                  spaceBetween={50}
                   slidesPerView={4}
                   style={{
-                    width: "1000px",
+                    width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
                   }} // yada buna he tamm
@@ -257,7 +276,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                         key={index}
                         style={{
                           width: "100px",
-                          height: "285px",
+                          height: "300px",
                         }}
                       >
                         <Link to={`details`}>

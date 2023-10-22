@@ -50,3 +50,21 @@
   padding: 30px;
   top: 0;
 } */
+.swiper-android .swiper-slide,
+.swiper-ios .swiper-slide,
+.swiper-wrapper {
+  flex-wrap: wrap;
+}
+.homePage--slider.swiper-android .swiper-slide,
+.swiper-ios .swiper-slide,
+.swiper-wrapper {
+  flex-wrap: nowrap;
+}
+
+/* @media screen and (min-width: 1400px) {
+  .css-1itm6rn,
+  .css-1j5vdez-MuiContainer-root,
+  .css-1cccem2 {
+    -webkit-justify-content: normal !important;
+  }
+} */

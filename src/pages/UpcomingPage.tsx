@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "@mui/material/styles";
 import { Stack, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import MyContext from "../context/Context";
@@ -15,21 +16,24 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
 import { number } from "yup";
+import TvList from "../sections/TvList";
+import UpcomingList from "../sections/UpcomingList";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
-function Movies() {
+function UpcomingPage() {
+  const theme = useTheme();
   const context = useContext(MyContext);
 
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
   const [filterIds, setFilterIds] = useState<number[]>([]);
 
-  //ALL FILMS
-  const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-    ["allMovies", page, context?.filterIds, context?.setFilterIds],
+  //Upcoming
+  const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
+    ["Upcoming"],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${context?.filterIds}`,
+        `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`,
         {
           headers: {
             Authorization:
@@ -38,8 +42,8 @@ function Movies() {
         }
       ),
     {
-      onSuccess: (allData) => {
-        setTotalPages(allData.data.total_pages);
+      onSuccess: (Upcoming) => {
+        setTotalPages(Upcoming?.data.total_pages);
       },
     }
   );
@@ -58,7 +62,7 @@ function Movies() {
 
   //TV SERIES
 
-  if (isLoadingAllMovies) {
+  if (isLoadingUpcoming) {
     return <div>Loading...</div>;
   }
 
@@ -73,7 +77,7 @@ function Movies() {
   return (
     <Stack>
       <Box>
-        <Search movieList={allData?.data?.results ?? []} />
+        <Search movieList={Upcoming?.data?.results ?? []} />
       </Box>
       <Box
         sx={{
@@ -81,7 +85,7 @@ function Movies() {
           flexDirection: "row",
           alignItems: "flex-start",
           paddingTop: "1.5rem",
-          // justifyContent: "space-around",
+          justifyContent: "space-between",
         }}
       >
         <Box
@@ -96,8 +100,8 @@ function Movies() {
           <RightSideBar />
           <RightSideBarBottom />
         </Box>
-        <MovieList
-          movieList={allData?.data?.results ?? []}
+        <UpcomingList
+          movieList={Upcoming?.data?.results ?? []}
           curentPage={page}
           setpage={setPage}
           total={totalPages}
@@ -107,4 +111,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default UpcomingPage;

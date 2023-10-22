@@ -83,7 +83,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton component={Link} to="/movies">
+            <ListItemButton component={Link} to="/tvSeries ">
               <ListItemIcon>
                 <OndemandVideoIcon />
               </ListItemIcon>
@@ -99,7 +99,7 @@ function LeftSideBar() {
             disablePadding
             sx={{ padding: "10px", "&:hover": { background: "#2c6865" } }}
           >
-            <ListItemButton component={Link} to="/movies">
+            <ListItemButton component={Link} to="/upcoming">
               <ListItemIcon>
                 <UpcomingIcon />
               </ListItemIcon>

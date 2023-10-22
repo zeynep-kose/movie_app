@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useTheme } from "@mui/material/styles";
 import {
   TextField,
   Autocomplete,
@@ -18,7 +19,22 @@ type SearchProps = {
 };
 
 function Search({ movieList }: SearchProps) {
+  const theme = useTheme();
   // const handleMovieSearch = (
+  //   e: React.SyntheticEvent,
+  //   value: string | null,
+  //   // reason: AutocompleteChangeReason,
+  //   // details?: AutocompleteChangeDetails<string>
+  // ) => {
+  //   movieList?.filter((movie)=>{return movie.title.toLowerCase().includes(value?.toLocaleLowerCase())})
+  //   }
+  const handleMovieSearch = (value: any | null) => {
+    const filteredMovies = movieList?.filter((movie) =>
+      movie.title.toLowerCase().includes(value?.toLowerCase())
+    );
+    console.log("Eşleşen filmler", filteredMovies);
+  };
+  // const handleMov{ieSearch = (
   //   e: React.SyntheticEvent,
   //   value: string | null,
   //   reason: AutocompleteChangeReason,
@@ -42,6 +58,9 @@ function Search({ movieList }: SearchProps) {
         paddingTop: "20px",
         height: "100%",
         marginLeft: "17rem",
+        [theme.breakpoints.up("xl")]: {
+          marginLeft: "20rem",
+        },
       }}
     >
       <Helmet>
@@ -71,8 +90,8 @@ function Search({ movieList }: SearchProps) {
               };
             }) as any
           }
-          // onChange={handleMovieSearch}
-          renderInput={(params) => (
+          // onChange={(e, value) => handleMovieSearch(value)}
+          renderInput={(params: any) => (
             <TextField
               {...params}
               label="Search for movies, TV shows..."

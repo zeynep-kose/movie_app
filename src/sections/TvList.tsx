@@ -35,21 +35,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-type movieProps = {
+type tvProps = {
   movieList: any[];
   curentPage: number;
   setpage: Dispatch<SetStateAction<number>>;
   total: number;
 };
 
-function Movie({ movieList, curentPage, setpage, total }: movieProps) {
-  const context = useContext(MyContext);
-  const movieId = movieList.map((movieType, i) => {
-    return movieType.genre_ids;
-  });
-  console.log("movieeeeee", movieId);
-
-  // setMovie([...movie, movie]);
+function TvList({ movieList, curentPage, setpage, total }: tvProps) {
   return (
     <Stack
       sx={{
@@ -101,6 +94,7 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                     flexWrap: "wrap",
                     justifyContent: "space-between",
                     margin: "2rem 0",
+                    rowGap: "2rem",
                   }}
                 >
                   {movieList?.map((item, index) => {
@@ -150,25 +144,6 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                   )}
                 />
               </Stack>
-
-              {/* <SnackbarProvider />
-                <button
-                  style={{
-                    backgroundColor: " white",
-                    width: "100%",
-                    padding: ".5rem",
-                    textTransform: "capitalize",
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                    borderRadius: "1rem",
-                    marginTop: "2rem",
-                    height: "40px",
-                  }}
-                  onClick={handleMore}
-                >
-                  LOAD MORE
-                </button> */}
             </Grid>
           </Box>
         </Box>
@@ -177,4 +152,4 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   );
 }
 
-export default Movie;
+export default TvList;

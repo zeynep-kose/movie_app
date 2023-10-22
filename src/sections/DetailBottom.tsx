@@ -22,7 +22,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import { Details } from "@material-ui/icons";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { useContext } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MyContext from "../context/Context";
 import { number } from "yup";
 type detailBottomProps = {
   details: [];
@@ -30,6 +32,7 @@ type detailBottomProps = {
 };
 
 function DetailBottom({ details, topRated }: detailBottomProps) {
+  const context = useContext(MyContext);
   const pullDay = details
     ?.slice(0, 1)
     .map((item: any) => dayjs(item?.release_date).year());
@@ -57,7 +60,7 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
               }}
             >
               <p style={{ display: "flex", columnGap: "1rem" }}>
-                <span> {item?.original_title}</span>
+                <span>{item?.original_title}</span>
                 {pullDay}
               </p>
               <p
