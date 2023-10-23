@@ -1,5 +1,6 @@
 import React from "react";
 import { Stack, Box } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -23,9 +24,14 @@ import {
   Button,
 } from "@mui/material";
 function LeftSideBar() {
+  const theme = useTheme();
   return (
     <Stack
       sx={{
+        // [theme.breakpoints.down("xl")]: {
+        //   width: "19rem",
+        //   justifyContent: "space-between",
+        // },
         backgroundColor: "#212121",
         // height: "100vh",
         width: "15rem",
@@ -114,7 +120,16 @@ function LeftSideBar() {
         </List>
         {/* <Route path="/movies" element={MoviesPage} /> */}
       </Box>
-      <Box sx={{ width: "12rem", margin: ".45rem auto" }}>
+      <Box
+        sx={{
+          width: "12rem",
+          margin: ".45rem auto",
+          // [theme.breakpoints.up("xl")]: {
+          //   marginTop: "5rem",
+          //   width: "15rem",
+          // },
+        }}
+      >
         <Card
           sx={{
             backgroundColor: "#191919",
@@ -123,6 +138,10 @@ function LeftSideBar() {
             alignItems: "center",
             borderRadius: "1.5rem",
             padding: "1rem ",
+            // [theme.breakpoints.up("xl")]: {
+            //   height: "20rem",
+            //   justifyContent: "space-around",
+            // },
           }}
         >
           <CardMedia sx={{ position: "relative" }}>
@@ -163,7 +182,13 @@ function LeftSideBar() {
           </Button>
         </Card>
       </Box>
-      <Box sx={{ display: "flex", alignItems: "center", margin: "1rem auto" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          margin: "1rem auto",
+        }}
+      >
         <img src="images/out.svg" alt="logout"></img>
         <Typography
           sx={{ fontWeight: "bold", fontSize: "2rem", color: "#666666" }}

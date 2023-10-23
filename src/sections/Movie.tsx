@@ -42,16 +42,12 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
   return (
     <Stack
       sx={{
-        [theme.breakpoints.up("xl")]: {
-          width: "100%",
-          marginLeft: "10rem",
-        },
         height: "100%",
-        marginLeft: "19rem",
+        marginLeft: "17rem",
         alignItems: "center",
       }}
     >
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", marginLeft: "2rem" }}>
         <img
           src="images/bigPic.png"
           alt="bigPic"
@@ -105,19 +101,19 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               >
                 <Swiper
                   // install Swiper modules
-                  spaceBetween={50}
+                  spaceBetween={30}
                   slidesPerView={4}
                   style={{
-                    [theme.breakpoints.up("xl")]: {
-                      width: "1600px",
-                    },
+                    // [theme.breakpoints.up("xl")]: {
+                    //   width: "1600px",
+                    // },
                     flexWrap: "nowrap",
                     width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
                   }} // yada buna he tamm
                 >
-                  {movieList?.map((item, index) => {
+                  {movieList?.map((item, id) => {
                     return (
                       <SwiperSlide
                         style={{
@@ -125,7 +121,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "305px",
                         }}
                       >
-                        <Link to={`/details`}>
+                        <Link to={`/details/:${item.id}`}>
                           <img
                             style={{
                               width: "100%",
@@ -189,9 +185,9 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                     width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
-                    [theme.breakpoints.down("xl")]: {
-                      width: "2000px",
-                    },
+                    // [theme.breakpoints.down("xl")]: {
+                    //   width: "2000px",
+                    // },
                   }}
                 >
                   {upcoming?.map((item, index) => {
@@ -200,12 +196,12 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                         style={{
                           width: "100px",
                           height: "300px",
-                          [theme.breakpoints.down("xl")]: {
-                            width: "400px",
-                          },
+                          // [theme.breakpoints.down("xl")]: {
+                          //   width: "400px",
+                          // },
                         }}
                       >
-                        <Link to={`details`}>
+                        <Link to={`/details/:${item.id}`}>
                           <img
                             style={{
                               width: "100%",
@@ -257,7 +253,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
             >
               <Box
                 sx={{
-                  width: "100%", // buna fix bişi vermen gerekiyor bilgin olsun
+                  width: "100%",
                 }}
               >
                 <Swiper
@@ -267,19 +263,18 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   style={{
                     width: "1200px",
                     paddingTop: "1.5rem",
-                    // paddingRight: "2rem",
-                  }} // yada buna he tamm
+                  }}
                 >
-                  {tvList?.map((item, index) => {
+                  {tvList?.map((item, id) => {
                     return (
                       <SwiperSlide
-                        key={index}
+                        key={id}
                         style={{
                           width: "100px",
                           height: "300px",
                         }}
                       >
-                        <Link to={`details`}>
+                        <Link to={`/details/:${item.id}`}>
                           <img
                             style={{
                               width: "100%",

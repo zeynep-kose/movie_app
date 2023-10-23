@@ -26,7 +26,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/" element={<Home />} /> {/* Ana sayfa */}
                 <Route path="/movies" element={<MoviesPage />} />
-                <Route path="/details" element={<DetailMovies />} />
+                <Route path="/details/:id" element={<DetailMovies />} />
                 <Route path="/tvSeries" element={<TvSeriesPage />} />
                 <Route path="/upcoming" element={<UpcomingPage />} />
               </Routes>

@@ -64,7 +64,7 @@ function Home() {
   //   return filterIds.every((filterIds) => e.includes(filterIds));
   // });
   // console.log("filteredArrays", filteredArrays);
-  console.log("Genre IDs:", genreIds);
+  // console.log("Genre IDs:", genreIds);
   // genreIds.filter((e)=>{})
   // const filteredGenreIds = genreIds.filter((genreId) =>
   //   genreId.filter(filterIds)
@@ -96,7 +96,7 @@ function Home() {
         }
       )
   );
-  console.log("tvSeriesData", tvSeriesData);
+  // console.log("tvSeriesData", tvSeriesData);
 
   const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
     ["Upcoming"],
@@ -116,14 +116,6 @@ function Home() {
     return <div>Loading...</div>;
   }
 
-  const genreNames = genresData?.data?.genres.map((item: any) => item);
-  //console.log("2.apidengelen:", genreNames);
-
-  // const type = genreIds.map((item: any) => {
-  //   const names = item.map((typeId: any) => {});
-  // });
-  // console.log("Genre Names Array:", type);
-
   return (
     <MainLayout movieList={allData?.data?.results}>
       <Box
@@ -132,7 +124,6 @@ function Home() {
           flexDirection: "row",
           alignItems: "flex-start",
           paddingTop: "1.5rem",
-          // justifyContent: "space-between",
         }}
       >
         <Movie

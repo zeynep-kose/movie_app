@@ -101,11 +101,12 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                     flexWrap: "wrap",
                     justifyContent: "space-between",
                     margin: "2rem 0",
+                    rowGap: "2rem",
                   }}
                 >
-                  {movieList?.map((item, index) => {
+                  {movieList?.map((item, id) => {
                     return (
-                      <Link to={`/details`}>
+                      <Link to={`/details/:${item.id}`}>
                         <img
                           style={{
                             width: "250px",

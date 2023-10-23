@@ -15,38 +15,25 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 type SearchProps = {
   movieList: any[];
-  // movieSearch(movieName: string): void;
 };
 
 function Search({ movieList }: SearchProps) {
   const theme = useTheme();
-  // const handleMovieSearch = (
-  //   e: React.SyntheticEvent,
-  //   value: string | null,
-  //   // reason: AutocompleteChangeReason,
-  //   // details?: AutocompleteChangeDetails<string>
-  // ) => {
-  //   movieList?.filter((movie)=>{return movie.title.toLowerCase().includes(value?.toLocaleLowerCase())})
-  //   }
-  const handleMovieSearch = (value: any | null) => {
-    const filteredMovies = movieList?.filter((movie) =>
-      movie.title.toLowerCase().includes(value?.toLowerCase())
-    );
-    console.log("Eşleşen filmler", filteredMovies);
+  console.log(movieList);
+  const handleMovieSearch = (value: any) => {
+    console.log("value", value.label);
+    let finded_movie = null;
+    movieList?.map((movie: any) => {
+      if (movie.original_title === value) {
+        finded_movie = movie;
+        return movie;
+      } else {
+        return null;
+      }
+    });
+    console.log("Eşleşen film", finded_movie);
   };
-  // const handleMov{ieSearch = (
-  //   e: React.SyntheticEvent,
-  //   value: string | null,
-  //   reason: AutocompleteChangeReason,
-  //   details?: AutocompleteChangeDetails<string>
-  // ) => {
-  //   if (value && reason === "selectOption") {
-  //     const isMatch = Object.keys(movieList).filter((movie) => {
-  //       return movie.toLowerCase().includes(value.toLowerCase());
-  //     });
-  //     console.log("match movies:", isMatch);
-  //   }
-  // };
+
   return (
     <Stack
       sx={{
@@ -54,13 +41,9 @@ function Search({ movieList }: SearchProps) {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "flex-start",
-        width: "80vw",
         paddingTop: "20px",
         height: "100%",
-        marginLeft: "17rem",
-        [theme.breakpoints.up("xl")]: {
-          marginLeft: "20rem",
-        },
+        marginLeft: "16rem",
       }}
     >
       <Helmet>
@@ -72,6 +55,7 @@ function Search({ movieList }: SearchProps) {
           flexDirection: "column",
           alignItems: "flex-start",
           rowGap: "2rem",
+          // marginLeft: "2rem",
         }}
       >
         <Autocomplete
@@ -80,7 +64,7 @@ function Search({ movieList }: SearchProps) {
           sx={{
             // margin: "0 auto",
             borderRadius: "30px",
-            width: "54rem",
+            width: "55rem",
           }}
           options={
             movieList?.map((e) => {
@@ -90,7 +74,7 @@ function Search({ movieList }: SearchProps) {
               };
             }) as any
           }
-          // onChange={(e, value) => handleMovieSearch(value)}
+          onInputChange={(e, value) => handleMovieSearch(value)}
           renderInput={(params: any) => (
             <TextField
               {...params}

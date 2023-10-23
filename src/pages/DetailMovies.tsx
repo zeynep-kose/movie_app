@@ -1,5 +1,6 @@
 import React from "react";
 import * as yup from "yup";
+import { useParams } from "react-router-dom";
 import {
   TextField,
   Autocomplete,
@@ -26,6 +27,7 @@ import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DetailBottom from "../sections/DetailBottom";
 function DetailMovies() {
+  const { id } = useParams();
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
     () =>

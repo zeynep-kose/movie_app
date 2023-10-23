@@ -72,7 +72,7 @@ function Movies() {
 
   return (
     <Stack>
-      <Box>
+      <Box sx={{ marginLeft: "2rem" }}>
         <Search movieList={allData?.data?.results ?? []} />
       </Box>
       <Box
@@ -81,7 +81,6 @@ function Movies() {
           flexDirection: "row",
           alignItems: "flex-start",
           paddingTop: "1.5rem",
-          // justifyContent: "space-around",
         }}
       >
         <Box
