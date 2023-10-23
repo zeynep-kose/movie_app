@@ -12,10 +12,30 @@ import DetailMovies from "./pages/DetailMovies";
 import TvSeriesPage from "./pages/TvSeriesPage";
 import { MyContextProvider } from "./context/Context";
 import UpcomingPage from "./pages/UpcomingPage";
+import i18next from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 const queryClient = new QueryClient();
 
 function App() {
+  i18next.use(initReactI18next).init({
+    resources: {
+      en: {
+        translation: {
+          // İngilizce çeviri metinleri burada
+        },
+      },
+      tr: {
+        translation: {
+          // Türkçe çeviri metinleri burada
+        },
+      },
+      // Diğer diller...
+    },
+    lng: "en", // Varsayılan dil
+  });
+
   return (
     <HelmetProvider>
       <MyContextProvider>

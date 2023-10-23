@@ -38,17 +38,16 @@ import "swiper/css/scrollbar";
 type tvProps = {
   movieList: any[];
   curentPage: number;
-  setpage: Dispatch<SetStateAction<number>>;
+  setpage: (page: number) => void;
   total: number;
 };
-
 function TvList({ movieList, curentPage, setpage, total }: tvProps) {
   return (
     <Stack
       sx={{
         height: "100%",
         alignItems: "center",
-        width: "85%",
+        // width: "85%",
       }}
     >
       <Container
@@ -71,7 +70,6 @@ function TvList({ movieList, curentPage, setpage, total }: tvProps) {
             sx={{
               display: "flex",
               maxWidth: "100%",
-              justifyContent: "space-between",
             }}
           >
             <Grid
@@ -80,9 +78,10 @@ function TvList({ movieList, curentPage, setpage, total }: tvProps) {
               sm={4}
               md={4}
               lg={1}
+              xl={3}
               sx={{
                 display: "flex",
-                // flexWrap: "wrap",
+
                 width: "100%",
                 height: "100%",
               }}
@@ -94,12 +93,13 @@ function TvList({ movieList, curentPage, setpage, total }: tvProps) {
                     flexWrap: "wrap",
                     justifyContent: "space-between",
                     margin: "2rem 0",
-                    rowGap: "2rem",
+                    rowGap: "3rem",
+                    // width: "90%",
                   }}
                 >
                   {movieList?.map((item, index) => {
                     return (
-                      <Link to={`/details/:${item.id}`}>
+                      <Link key={index} to={`/details/${item.id}`}>
                         <img
                           style={{
                             width: "250px",

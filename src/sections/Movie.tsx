@@ -45,6 +45,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
         height: "100%",
         marginLeft: "17rem",
         alignItems: "center",
+        paddingBottom: "1rem",
       }}
     >
       <Box sx={{ width: "100%", marginLeft: "2rem" }}>

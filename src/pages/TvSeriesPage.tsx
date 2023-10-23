@@ -18,7 +18,18 @@ import { number } from "yup";
 import TvList from "../sections/TvList";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
+interface IFilter {
+  page: number;
+  genres: number[];
+  language: string;
+}
 function Home() {
+  const [filter, setFilter] = useState<IFilter>({
+    page: 1,
+    genres: [],
+    language: "en",
+  });
+
   const context = useContext(MyContext);
 
   const [page, setPage] = useState<number>(1);
@@ -27,10 +38,10 @@ function Home() {
 
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
-    ["tvSeriesData", page, context?.filterIds, context?.setFilterIds],
+    ["tvSeriesData", filter],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&page=${page}`,
+        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=${filter.language}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
@@ -88,8 +99,12 @@ function Home() {
             rowGap: "2rem",
           }}
         >
+          <RightSideBar
+            genres={filter.genres}
+            setGenres={(genres) => setFilter({ ...filter, genres: genres })}
+          />
           {/* <RightSideBar /> */}
-          <RightSideBarBottom />
+          {/* <RightSideBarBottom /> */}
         </Box>
         <TvList
           movieList={tvSeriesData?.data?.results ?? []}

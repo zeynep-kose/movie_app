@@ -123,7 +123,7 @@ function LeftSideBar() {
       <Box
         sx={{
           width: "12rem",
-          margin: ".45rem auto",
+          margin: "0 auto",
           // [theme.breakpoints.up("xl")]: {
           //   marginTop: "5rem",
           //   width: "15rem",
@@ -137,7 +137,8 @@ function LeftSideBar() {
             flexDirection: "column",
             alignItems: "center",
             borderRadius: "1.5rem",
-            padding: "1rem ",
+
+            height: "15.5rem",
             // [theme.breakpoints.up("xl")]: {
             //   height: "20rem",
             //   justifyContent: "space-around",
@@ -162,7 +163,7 @@ function LeftSideBar() {
                 style={{
                   color: "#666666",
                   fontWeight: "400",
-                  marginTop: ".5rem",
+
                   display: "block",
                 }}
               >
@@ -174,7 +175,8 @@ function LeftSideBar() {
             sx={{
               background: "#276361",
               borderRadius: "2rem",
-              padding: ".5rem",
+              padding: ".7rem",
+
               textTransform: "capitalize",
             }}
           >
@@ -186,15 +188,24 @@ function LeftSideBar() {
         sx={{
           display: "flex",
           alignItems: "center",
-          margin: "1rem auto",
+          margin: ".8rem auto",
         }}
       >
-        <img src="images/out.svg" alt="logout"></img>
-        <Typography
-          sx={{ fontWeight: "bold", fontSize: "2rem", color: "#666666" }}
+        <Link
+          to={"/login"}
+          style={{
+            display: "flex",
+            textDecoration: "none",
+            margin: "0 auto",
+          }}
         >
-          Log out
-        </Typography>
+          <img src="images/out.svg" alt="logout"></img>
+          <Typography
+            sx={{ fontWeight: "bold", fontSize: "2rem", color: "#666666" }}
+          >
+            Log out
+          </Typography>
+        </Link>
       </Box>
     </Stack>
   );

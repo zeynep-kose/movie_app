@@ -20,7 +20,7 @@ function Movies() {
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
-    language: "en",
+    language: "",
   });
 
   //ALL FILMS

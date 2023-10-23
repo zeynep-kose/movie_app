@@ -4,20 +4,7 @@ import { useContext, Dispatch, SetStateAction } from "react";
 import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import MyContext from "../context/Context";
 import { MyContextProvider } from "../context/Context";
 import { Link } from "react-router-dom";
@@ -43,6 +30,7 @@ type movieProps = {
 };
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
+  const theme = useTheme();
   const context = useContext(MyContext);
   const movieId = movieList.map((movieType, i) => {
     return movieType.genre_ids;
@@ -53,11 +41,16 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   return (
     <Stack
       sx={{
+        [theme.breakpoints.up("xl")]: {
+          width: "100%",
+        },
+        [theme.breakpoints.up("lg")]: {
+          width: "60%",
+        },
         height: "100%",
         alignItems: "center",
-        width: "60%",
+        // // width: "60%",
         marginLeft: "15rem",
-        justifyContent: "space-between",
       }}
     >
       <Container
@@ -76,85 +69,79 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
             alignItems: "baseline",
           }}
         >
-          <Box
+          <Grid
+            item
+            xs={2}
+            sm={4}
+            md={4}
+            lg={3}
             sx={{
               display: "flex",
-              maxWidth: "100%",
-              justifyContent: "space-between",
+              // flexWrap: "wrap",
+
+              height: "100%",
             }}
           >
-            <Grid
-              item
-              xs={2}
-              sm={4}
-              md={4}
-              lg={4}
-              sx={{
-                display: "flex",
-                // flexWrap: "wrap",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Stack spacing={2}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "space-around",
-                    margin: "2rem 0",
-                    rowGap: "3rem",
-                  }}
-                >
-                  {movieList?.map((item, id) => {
-                    return (
-                      <Link to={`/details/${item.id}`}>
-                        <img
-                          style={{
-                            width: "250px",
-                            height: "300px",
-                            borderRadius: "1.5rem",
-                          }}
-                          alt="img-1"
-                          src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        ></img>{" "}
-                      </Link>
-                    );
-                  })}
-                </Box>
-                <Pagination
-                  page={curentPage}
-                  sx={{
-                    display: "flex",
-                    alignSelf: "center",
-                    backgroundColor: "wheat",
-                    borderRadius: "1.5rem",
-                  }}
-                  onChange={(
-                    event: React.ChangeEvent<unknown>,
-                    page: number
-                  ) => {
-                    setpage(page);
-                  }}
-                  count={total}
-                  renderItem={(item) => (
-                    <PaginationItem
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        width: "100%",
-                      }}
-                      slots={{
-                        previous: ArrowBackIcon,
-                        next: ArrowForwardIcon,
-                      }}
-                      {...item}
-                    />
-                  )}
-                />
-              </Stack>
-            </Grid>
-          </Box>
+            <Stack sx={{ width: "100%" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "space-around",
+                  margin: "2rem 0",
+                  rowGap: "3rem",
+                  [theme.breakpoints.up("xl")]: {
+                    width: "100%",
+
+                    // justifyContent: "space-between",
+                  },
+                }}
+              >
+                {movieList?.map((item, id) => {
+                  return (
+                    <Link to={`/details/${item.id}`}>
+                      <img
+                        style={{
+                          width: "250px",
+                          height: "300px",
+                          borderRadius: "1.5rem",
+                        }}
+                        alt="img-1"
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      ></img>{" "}
+                    </Link>
+                  );
+                })}
+              </Box>
+              <Pagination
+                page={curentPage}
+                sx={{
+                  display: "flex",
+                  alignSelf: "center",
+                  backgroundColor: "wheat",
+                  borderRadius: "1.5rem",
+                }}
+                onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+                  setpage(page);
+                }}
+                count={total}
+                renderItem={(item) => (
+                  <PaginationItem
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "100%",
+                    }}
+                    slots={{
+                      previous: ArrowBackIcon,
+                      next: ArrowForwardIcon,
+                    }}
+                    {...item}
+                  />
+                )}
+              />
+            </Stack>
+          </Grid>
         </Box>
       </Container>
     </Stack>

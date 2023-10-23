@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTheme } from "@mui/material/styles";
 import {
@@ -12,12 +12,25 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 
 type SearchProps = {
   movieList: any[];
 };
 
 function Search({ movieList }: SearchProps) {
+  const { t, i18n } = useTranslation();
+  useEffect(() => {
+    const lng = navigator.language;
+    i18n.changeLanguage(lng);
+  }, []);
+
   const theme = useTheme();
   console.log(movieList);
   const handleMovieSearch = (value: any) => {
@@ -32,6 +45,12 @@ function Search({ movieList }: SearchProps) {
       }
     });
     console.log("Eşleşen film", finded_movie);
+  };
+
+  const clickHandle = (event: SelectChangeEvent<"lang">) => {
+    console.log("bağannennenene");
+    const selectedLang = event.target.value as string;
+    i18n.changeLanguage(selectedLang);
   };
 
   return (
@@ -104,7 +123,7 @@ function Search({ movieList }: SearchProps) {
       </Box>
       <Box
         sx={{
-          width: "15%",
+          width: "20%",
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "space-between",
@@ -118,7 +137,22 @@ function Search({ movieList }: SearchProps) {
             fontSize: "4.2rem",
           }}
         />
-        <img src="images/profile.svg" alt="profile"></img>
+        <Link to={"/login"}>
+          <img src="images/profile.svg" alt="profile"></img>
+        </Link>
+        <FormControl sx={{ m: 1, backgroundColor: "white" }} variant="standard">
+          <Select
+            labelId="demo-customized-select-label"
+            id="demo-customized-select"
+            value={"lang"}
+            onChange={clickHandle}
+            placeholder="lang"
+            // input={<BootstrapInput />}
+          >
+            <MenuItem value={"en"}>en</MenuItem>
+            <MenuItem value={"tr"}>tr</MenuItem>
+          </Select>
+        </FormControl>
       </Box>
     </Stack>
   );
