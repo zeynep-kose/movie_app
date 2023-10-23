@@ -99,7 +99,7 @@ function TvList({ movieList, curentPage, setpage, total }: tvProps) {
                 >
                   {movieList?.map((item, index) => {
                     return (
-                      <Link to={`/details`}>
+                      <Link to={`/details/:${item.id}`}>
                         <img
                           style={{
                             width: "250px",

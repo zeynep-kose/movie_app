@@ -38,7 +38,7 @@ import "swiper/css/scrollbar";
 type movieProps = {
   movieList: any[];
   curentPage: number;
-  setpage: Dispatch<SetStateAction<number>>;
+  setpage: (page: number) => void;
   total: number;
 };
 
@@ -55,7 +55,9 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
       sx={{
         height: "100%",
         alignItems: "center",
-        width: "85%",
+        width: "60%",
+        marginLeft: "15rem",
+        justifyContent: "space-between",
       }}
     >
       <Container
@@ -86,7 +88,7 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
               xs={2}
               sm={4}
               md={4}
-              lg={1}
+              lg={4}
               sx={{
                 display: "flex",
                 // flexWrap: "wrap",
@@ -99,14 +101,14 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                   sx={{
                     display: "flex",
                     flexWrap: "wrap",
-                    justifyContent: "space-between",
+                    justifyContent: "space-around",
                     margin: "2rem 0",
-                    rowGap: "2rem",
+                    rowGap: "3rem",
                   }}
                 >
                   {movieList?.map((item, id) => {
                     return (
-                      <Link to={`/details/:${item.id}`}>
+                      <Link to={`/details/${item.id}`}>
                         <img
                           style={{
                             width: "250px",
@@ -151,25 +153,6 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                   )}
                 />
               </Stack>
-
-              {/* <SnackbarProvider />
-                <button
-                  style={{
-                    backgroundColor: " white",
-                    width: "100%",
-                    padding: ".5rem",
-                    textTransform: "capitalize",
-                    color: "black",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                    borderRadius: "1rem",
-                    marginTop: "2rem",
-                    height: "40px",
-                  }}
-                  onClick={handleMore}
-                >
-                  LOAD MORE
-                </button> */}
             </Grid>
           </Box>
         </Box>

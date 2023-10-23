@@ -28,19 +28,19 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DetailBottom from "../sections/DetailBottom";
 function DetailMovies() {
   const { id } = useParams();
+  // console.log("id", id);
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
     () =>
-      axios.get(
-        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-          },
-        }
-      )
+      axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
+        },
+      })
   );
+
+  console.log("wegregwg", allData);
 
   //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
@@ -75,11 +75,13 @@ function DetailMovies() {
         >
           <ReactPlayer
             url="https://www.youtube.com/watch?v=eoOaKN4qCKw"
-            style={{ width: "500px", height: "300px" }}
+            height={"600px"}
+            width={"1000px"}
+            // style={{ width: "1000px", height: "600px" }}
           />
         </Box>
         <DetailBottom
-          details={allData?.data?.results}
+          details={allData?.data}
           topRated={topRatedMovies?.data?.results}
         />
       </Stack>

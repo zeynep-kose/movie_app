@@ -27,13 +27,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MyContext from "../context/Context";
 import { number } from "yup";
 type detailBottomProps = {
-  details: [];
+  details: any;
   topRated: [];
 };
 
 function DetailBottom({ details, topRated }: detailBottomProps) {
+  console.log("fwefew", details);
   const context = useContext(MyContext);
-  const pullDay = details
+  const pullDay = details?.results
     ?.slice(0, 1)
     .map((item: any) => dayjs(item?.release_date).year());
   console.log("pullDay", pullDay);
@@ -47,32 +48,26 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
         paddingBottom: "1.5rem",
       }}
     >
-      <Box>
-        {details?.slice(0, 1)?.map((item: any, index) => {
-          return (
-            <Typography
-              variant="h4"
-              sx={{
-                color: "#E8E8E8",
-                display: "flex",
-                flexDirection: "column",
-                rowGap: ".8rem",
-              }}
-            >
-              <p style={{ display: "flex", columnGap: "1rem" }}>
-                <span>{item?.original_title}</span>
-                {pullDay}
-              </p>
-              <p
-                style={{ fontSize: "1.1rem", lineHeight: "2rem", width: "70%" }}
-              >
-                {item?.overview}
-              </p>
-            </Typography>
-          );
-        })}
+      <Box sx={{ height: "100%" }}>
+        <Typography
+          variant="h4"
+          sx={{
+            color: "#E8E8E8",
+            display: "flex",
+            flexDirection: "column",
+            rowGap: ".8rem",
+          }}
+        >
+          <p style={{ display: "flex", columnGap: "1rem" }}>
+            <span>{details?.original_title}</span>
+            {pullDay}
+          </p>
+          <p style={{ fontSize: "1.1rem", lineHeight: "2rem", width: "70%" }}>
+            {details?.overview}
+          </p>
+        </Typography>
       </Box>
-      <Box sx={{ width: "90%" }}>
+      <Box sx={{ width: "90%", height: "100%" }}>
         <Accordion sx={{ backgroundColor: "black;" }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon sx={{ color: "grey" }} />}

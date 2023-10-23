@@ -18,22 +18,31 @@ import MoviesPage from "./MoviesPage";
 import { number } from "yup";
 import TvList from "../sections/TvList";
 import UpcomingList from "../sections/UpcomingList";
-const API_Key = `c28667177075291b60900e0a0cb2824e`;
+import { Context } from "react";
 
+interface IFilter {
+  page: number;
+  genres: number[];
+  language: string;
+}
 function UpcomingPage() {
-  const theme = useTheme();
-  const context = useContext(MyContext);
+  const [filter, setFilter] = useState<IFilter>({
+    page: 1,
+    genres: [],
+    language: "tr",
+  });
+  // const theme = useTheme();
+  // const context = useContext(MyContext);
 
-  const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [filterIds, setFilterIds] = useState<number[]>([]);
+  // const [filterIds, setFilterIds] = useState<number[]>([]);
 
   //Upcoming
   const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
-    ["Upcoming"],
+    ["Upcoming", filter],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`,
+        `https://api.themoviedb.org/3/movie/upcoming?language=${filter.language}&page=${filter.page}&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
@@ -66,7 +75,6 @@ function UpcomingPage() {
     return <div>Loading...</div>;
   }
 
-  const genreNames = genresData?.data?.genres.map((item: any) => item);
   //console.log("2.apidengelen:", genreNames);
 
   // const type = genreIds.map((item: any) => {
@@ -75,7 +83,7 @@ function UpcomingPage() {
   // console.log("Genre Names Array:", type);
 
   return (
-    <Stack>
+    <Stack sx={{ width: "88%" }}>
       <Box>
         <Search movieList={Upcoming?.data?.results ?? []} />
       </Box>
@@ -85,7 +93,6 @@ function UpcomingPage() {
           flexDirection: "row",
           alignItems: "flex-start",
           paddingTop: "1.5rem",
-          justifyContent: "space-between",
         }}
       >
         <Box
@@ -97,15 +104,22 @@ function UpcomingPage() {
             rowGap: "2rem",
           }}
         >
-          <RightSideBar />
-          <RightSideBarBottom />
+          <RightSideBar
+            genres={filter.genres}
+            setGenres={(genres) => setFilter({ ...filter, genres: genres })}
+          />
+          {/* <RightSideBarBottom /> */}
         </Box>
-        <UpcomingList
-          movieList={Upcoming?.data?.results ?? []}
-          curentPage={page}
-          setpage={setPage}
-          total={totalPages}
-        />
+        {isLoadingUpcoming ? (
+          <div>Loading...</div>
+        ) : (
+          <UpcomingList
+            movieList={Upcoming?.data?.results ?? []}
+            curentPage={filter.page}
+            setpage={(page: number) => setFilter({ ...filter, page: page })}
+            total={totalPages}
+          />
+        )}
       </Box>
     </Stack>
   );

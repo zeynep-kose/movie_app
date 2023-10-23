@@ -14,31 +14,6 @@ import MoviesPage from "./MoviesPage";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 function Home() {
-  // const getMovie = () => {
-  //   axios
-
-  //     .get(
-  //       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       setMovieList(response.data.results);
-  //       return response.data;
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   getMovie();
-  // }, [movieList]);
-  const [filterIds, setFilterIds] = useState<number[]>([]);
-
-  useEffect(() => {}, []);
   //ALL FILMS
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
@@ -54,21 +29,8 @@ function Home() {
       )
   );
 
-  // console.log("allData:", allData);
-
-  // filtered.filter((e: any[]) => {});
-
   const genreIds: number[] =
     allData?.data?.results?.map((movie: any) => movie.genre_ids) || [];
-  // const filteredArrays = genreIds.filter((e) => {
-  //   return filterIds.every((filterIds) => e.includes(filterIds));
-  // });
-  // console.log("filteredArrays", filteredArrays);
-  // console.log("Genre IDs:", genreIds);
-  // genreIds.filter((e)=>{})
-  // const filteredGenreIds = genreIds.filter((genreId) =>
-  //   genreId.filter(filterIds)
-  // );
 
   //TYPES
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
@@ -81,7 +43,7 @@ function Home() {
         },
       })
   );
-  // console.log("genresData", genresData);é
+
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
     ["tvSeriesData"],

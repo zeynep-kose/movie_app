@@ -101,7 +101,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               >
                 <Swiper
                   // install Swiper modules
-                  spaceBetween={30}
+                  spaceBetween={50}
                   slidesPerView={4}
                   style={{
                     // [theme.breakpoints.up("xl")]: {
@@ -117,16 +117,17 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                     return (
                       <SwiperSlide
                         style={{
-                          width: "100px",
+                          width: "250px",
                           height: "305px",
                         }}
                       >
-                        <Link to={`/details/:${item.id}`}>
+                        <Link to={`/details/${item.id}`}>
                           <img
                             style={{
                               width: "100%",
                               height: "100%",
                               borderRadius: "1.5rem",
+                              objectFit: "fill",
                             }}
                             alt="img-1"
                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -172,7 +173,8 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
             >
               <Box
                 sx={{
-                  width: "100%", // buna fix bişi vermen gerekiyor bilgin olsun
+                  width: "100%",
+                  justifyContent: "space-between", // buna fix bişi vermen gerekiyor bilgin olsun
                 }}
               >
                 <Swiper
@@ -194,14 +196,14 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                     return (
                       <SwiperSlide
                         style={{
-                          width: "100px",
+                          width: "250px",
                           height: "300px",
                           // [theme.breakpoints.down("xl")]: {
                           //   width: "400px",
                           // },
                         }}
                       >
-                        <Link to={`/details/:${item.id}`}>
+                        <Link to={`/details/${item.id}`}>
                           <img
                             style={{
                               width: "100%",
@@ -274,7 +276,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "300px",
                         }}
                       >
-                        <Link to={`/details/:${item.id}`}>
+                        <Link to={`/details/${item.id}`}>
                           <img
                             style={{
                               width: "100%",

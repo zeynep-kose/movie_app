@@ -24,9 +24,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import MyContext from "../context/Context";
 
-function RightSideBar() {
-  const context = useContext(MyContext);
+interface IRightSideBar {
+  genres: number[];
+  setGenres: (genres: number[]) => void;
+}
 
+const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
     ["GenresMovies"],
     async () => {
@@ -46,23 +49,13 @@ function RightSideBar() {
     }
   );
 
-  console.log(isLoadingTrends);
-
-  const handleCheck = (id: number) => {
-    context?.setFilterIds([...context?.filterIds, id]);
-  };
-  const handleUncheckAll = () => {
-    context?.setFilterIds([]);
-  };
-  console.log(context);
-
   return (
-    <Stack sx={{ display: "flex", alignSelf: "end", marginLeft: "3rem" }}>
+    <Stack sx={{ display: "flex", alignSelf: "start" }}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignSelf: "end",
+          alignSelf: "start",
           width: "19rem",
           rowGap: "1rem",
         }}
@@ -82,7 +75,7 @@ function RightSideBar() {
           <Link
             sx={{ fontSize: ".9rem", color: "#666666", fontWeight: "bold" }}
             underline="none"
-            onClick={handleUncheckAll}
+            onClick={() => setGenres([])}
           >
             Uncheck all{" "}
           </Link>
@@ -97,27 +90,37 @@ function RightSideBar() {
         >
           <CardContent>
             <List>
-              {genresData?.data?.genres?.slice(0, 6)?.map((genre: any) => (
-                <Box>
-                  <ListItem
-                    key={genre.id}
-                    sx={{
-                      color: "#E8E8E8",
-                      fontWeight: "bold",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    {genre.name}
-                    <Checkbox
-                      checked={context?.filterIds.includes(genre.id)}
-                      onClick={() => handleCheck(genre.id)}
-                      // onDoubleClick={handleDoubleClick}
-                    ></Checkbox>
-                  </ListItem>
-                  <Divider sx={{ backgroundColor: "#666666" }} />
-                </Box>
-              ))}
+              {genresData?.data?.genres?.map((genre: any) => {
+                const isChecked =
+                  genres.findIndex((c) => c === genre.id) !== -1;
+                return (
+                  <Box>
+                    <ListItem
+                      key={genre.id}
+                      sx={{
+                        color: "#E8E8E8",
+                        fontWeight: "bold",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {genre.name}
+                      <Checkbox
+                        checked={isChecked}
+                        onClick={() => {
+                          if (isChecked) {
+                            setGenres(genres.filter((c) => c !== genre.id));
+                          } else {
+                            setGenres([...genres, ...[genre.id]]);
+                          }
+                        }}
+                        // onDoubleClick={handleDoubleClick}
+                      ></Checkbox>
+                    </ListItem>
+                    <Divider sx={{ backgroundColor: "#666666" }} />
+                  </Box>
+                );
+              })}
             </List>
           </CardContent>
         </Card>
@@ -131,6 +134,6 @@ function RightSideBar() {
     //   )}
     // </>
   );
-}
+};
 
 export default RightSideBar;

@@ -64,12 +64,6 @@ function Home() {
   }
 
   const genreNames = genresData?.data?.genres.map((item: any) => item);
-  //console.log("2.apidengelen:", genreNames);
-
-  // const type = genreIds.map((item: any) => {
-  //   const names = item.map((typeId: any) => {});
-  // });
-  // console.log("Genre Names Array:", type);
 
   return (
     <Stack>
@@ -94,7 +88,7 @@ function Home() {
             rowGap: "2rem",
           }}
         >
-          <RightSideBar />
+          {/* <RightSideBar /> */}
           <RightSideBarBottom />
         </Box>
         <TvList
