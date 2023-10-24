@@ -48,9 +48,10 @@ function Search({ movieList }: SearchProps) {
   };
 
   const clickHandle = (event: SelectChangeEvent<"lang">) => {
-    console.log("bağannennenene");
+    console.log("bağannnne");
     const selectedLang = event.target.value as string;
     i18n.changeLanguage(selectedLang);
+    // movieList.
   };
 
   return (

@@ -11,9 +11,12 @@ import Movie from "../sections/Movie";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
+import useLocales from "../locales/useLocales";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 function Home() {
+  const { translate } = useLocales();
+
   //ALL FILMS
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
@@ -80,6 +83,7 @@ function Home() {
 
   return (
     <MainLayout movieList={allData?.data?.results}>
+      {translate("CARGOTRACKING.CARGOTRACKING_INDEX.TITLE")}
       <Box
         sx={{
           display: "flex",
