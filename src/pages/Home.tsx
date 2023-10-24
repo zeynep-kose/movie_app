@@ -1,6 +1,7 @@
-import React from "react";
-import { Stack, Box } from "@mui/material";
 import { useState, useEffect } from "react";
+import { Stack, Box } from "@mui/material";
+import useLocales from "../locales/useLocales";
+
 import Search from "../components/Search";
 import LeftSideBar from "../components/LeftSideBar";
 import axios from "axios";
@@ -11,29 +12,41 @@ import Movie from "../sections/Movie";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
-import useLocales from "../locales/useLocales";
+
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
-function Home() {
-  const { translate } = useLocales();
+interface IFilter {
+  page: number;
+  genres: number[];
+}
 
-  //ALL FILMS
+function Home() {
+  const [totalPages, setTotalPages] = useState(1);
+  const [filter, setFilter] = useState<IFilter>({
+    page: 1,
+    genres: [],
+  });
+
+  const { currentLang, allLangs, onChangeLang } = useLocales();
+
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-    ["allMovies"],
+    ["allMovies", filter, currentLang.value, onChangeLang],
     () =>
       axios.get(
-        "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc",
+        `https://api.themoviedb.org/3/discover/movie?language=${currentLang.value}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
           },
         }
-      )
+      ),
+    {
+      onSuccess: (allData) => {
+        setTotalPages(allData.data.total_pages);
+      },
+    }
   );
-
-  const genreIds: number[] =
-    allData?.data?.results?.map((movie: any) => movie.genre_ids) || [];
 
   //TYPES
   const { isLoading: isLoadingTrends, data: genresData } = useQuery(
@@ -49,10 +62,10 @@ function Home() {
 
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
-    ["tvSeriesData"],
+    ["tvSeriesData", currentLang.value, onChangeLang],
     () =>
       axios.get(
-        "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc",
+        `https://api.themoviedb.org/3/discover/tv?language=${currentLang.value}&page=1&sort_by=popularity.desc`,
         {
           headers: {
             Authorization:
@@ -61,13 +74,12 @@ function Home() {
         }
       )
   );
-  // console.log("tvSeriesData", tvSeriesData);
 
   const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
-    ["Upcoming"],
+    ["Upcoming", currentLang.value, onChangeLang],
     () =>
       axios.get(
-        "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
+        `https://api.themoviedb.org/3/movie/upcoming?language=${currentLang.value}&page=1`,
         {
           headers: {
             Authorization:
@@ -83,7 +95,6 @@ function Home() {
 
   return (
     <MainLayout movieList={allData?.data?.results}>
-      {translate("CARGOTRACKING.CARGOTRACKING_INDEX.TITLE")}
       <Box
         sx={{
           display: "flex",

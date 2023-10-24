@@ -23,8 +23,11 @@ import {
   CardMedia,
   Button,
 } from "@mui/material";
+import useLocales from "../locales/useLocales";
 function LeftSideBar() {
   const theme = useTheme();
+  const { translate } = useLocales();
+
   return (
     <Stack
       sx={{
@@ -41,6 +44,7 @@ function LeftSideBar() {
         position: "fixed",
         zIndex: 1000,
         height: "100%",
+        justifyContent: "space-between",
       }}
     >
       <Helmet>
@@ -61,6 +65,7 @@ function LeftSideBar() {
               <ListItemIcon>
                 <HomeIcon></HomeIcon>
               </ListItemIcon>
+              {/* {translate("demo_text")} */}
               <ListItemText
                 primaryTypographyProps={{
                   sx: { fontWeight: "bold", color: "#666666" },

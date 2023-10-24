@@ -10,6 +10,7 @@ import LeftSideBar from "../components/LeftSideBar";
 import axios from "axios";
 import RightSideBar from "../components/RightSideBar";
 import MainLayout from "../layouts/MainLayout";
+import useLocales from "../locales/useLocales";
 import RightSideBarBottom from "../components/RightSideBarBottom";
 import MovieList from "../sections/MovieList";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -23,13 +24,12 @@ import { Context } from "react";
 interface IFilter {
   page: number;
   genres: number[];
-  language: string;
 }
 function UpcomingPage() {
+  const { currentLang, allLangs, onChangeLang } = useLocales();
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
-    language: "tr",
   });
   // const theme = useTheme();
   // const context = useContext(MyContext);
@@ -39,10 +39,10 @@ function UpcomingPage() {
 
   //Upcoming
   const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
-    ["Upcoming", filter],
+    ["Upcoming", filter, currentLang.value, onChangeLang],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/movie/upcoming?language=${filter.language}&page=${filter.page}&with_genres=${filter.genres}`,
+        `https://api.themoviedb.org/3/movie/upcoming?language=${currentLang.value}&page=${filter.page}&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
@@ -83,10 +83,9 @@ function UpcomingPage() {
   // console.log("Genre Names Array:", type);
 
   return (
-    <Stack sx={{ width: "88%" }}>
-      <Box>
-        <Search movieList={Upcoming?.data?.results ?? []} />
-      </Box>
+    <Stack sx={{}}>
+      <Search movieList={Upcoming?.data?.results ?? []} />
+
       <Box
         sx={{
           display: "flex",

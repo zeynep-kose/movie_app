@@ -1,6 +1,7 @@
 import React from "react";
 //i18n
-import i18next from "i18next";
+// i18n
+import "./locales/i18n";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";

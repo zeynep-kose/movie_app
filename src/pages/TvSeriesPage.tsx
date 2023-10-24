@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import MyContext from "../context/Context";
 import { MyContextProvider } from "../context/Context";
 import { useContext } from "react";
+import useLocales from "../locales/useLocales";
 import Search from "../components/Search";
 import LeftSideBar from "../components/LeftSideBar";
 import axios from "axios";
@@ -21,13 +22,12 @@ const API_Key = `c28667177075291b60900e0a0cb2824e`;
 interface IFilter {
   page: number;
   genres: number[];
-  language: string;
 }
 function Home() {
+  const { currentLang, allLangs, onChangeLang } = useLocales();
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
-    language: "en",
   });
 
   const context = useContext(MyContext);
@@ -38,10 +38,10 @@ function Home() {
 
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
-    ["tvSeriesData", filter],
+    ["tvSeriesData", filter, currentLang.value, onChangeLang],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=${filter.language}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
+        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=${currentLang.value}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
@@ -103,13 +103,11 @@ function Home() {
             genres={filter.genres}
             setGenres={(genres) => setFilter({ ...filter, genres: genres })}
           />
-          {/* <RightSideBar /> */}
-          {/* <RightSideBarBottom /> */}
         </Box>
         <TvList
           movieList={tvSeriesData?.data?.results ?? []}
           curentPage={page}
-          setpage={setPage}
+          setpage={(page: number) => setFilter({ ...filter, page: page })}
           total={totalPages}
         />
       </Box>

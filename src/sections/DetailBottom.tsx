@@ -25,7 +25,7 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { useContext } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MyContext from "../context/Context";
-import { number } from "yup";
+
 type detailBottomProps = {
   details: any;
   topRated: [];
@@ -34,10 +34,10 @@ type detailBottomProps = {
 function DetailBottom({ details, topRated }: detailBottomProps) {
   console.log("fwefew", details);
   const context = useContext(MyContext);
-  const pullDay = details?.results
-    ?.slice(0, 1)
-    .map((item: any) => dayjs(item?.release_date).year());
-  console.log("pullDay", pullDay);
+  // const pullDay = details?.results
+  //   ?.slice(0, 1)
+  //   .map((item: any) => dayjs(item?.release_date).year());
+  // console.log("pullDay", pullDay);
   return (
     <Stack
       sx={{
@@ -60,7 +60,7 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
         >
           <p style={{ display: "flex", columnGap: "1rem" }}>
             <span>{details?.original_title}</span>
-            {pullDay}
+            {/* {pullDay} */}
           </p>
           <p style={{ fontSize: "1.1rem", lineHeight: "2rem", width: "70%" }}>
             {details?.overview}

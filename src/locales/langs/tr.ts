@@ -1,486 +1,489 @@
-import { IKeys } from '../keys';
+import { IKeys } from "../keys";
 
 const tr: IKeys = {
-  demo_text: 'demo yazı',
+  demo_text: "selam",
 
   COMMON: {
-    SAVE: 'Kaydet',
-    CANCEL: 'Vazgeç',
-    EDIT: 'Düzenle',
-    SEND: 'Gönder',
-    DELETE: 'Sil',
-    SEARCH: 'Arama',
-    LOGOUT: 'Çıkış Yap',
-    REPORTS: 'Raporlar',
-    NEXT: 'İleri',
-    PREVIOUS: 'Geri',
-    ADD: 'Ekle',
-    CLEAR: 'Temizle',
+    SAVE: "Kaydet",
+    CANCEL: "Vazgeç",
+    EDIT: "Düzenle",
+    SEND: "Gönder",
+    DELETE: "Sil",
+    SEARCH: "Arama",
+    LOGOUT: "Çıkış Yap",
+    REPORTS: "Raporlar",
+    NEXT: "İleri",
+    PREVIOUS: "Geri",
+    ADD: "Ekle",
+    CLEAR: "Temizle",
 
     MOUNTS: {
-      JANUARY: 'Ocak',
-      FEBRUARY: 'Şubat',
-      MARCH: 'Mart',
-      APRIL: 'Nisan',
-      MAY: 'Mayıs',
-      JUNE: 'Haziran',
-      JULY: 'Temmuz',
-      AUGUST: 'Ağustos',
-      SEPTEMBER: 'Eylül',
-      OCTOBER: 'Ekim',
-      NOVEMBER: 'Kasım',
-      DECEMBER: 'Aralık',
+      JANUARY: "Ocak",
+      FEBRUARY: "Şubat",
+      MARCH: "Mart",
+      APRIL: "Nisan",
+      MAY: "Mayıs",
+      JUNE: "Haziran",
+      JULY: "Temmuz",
+      AUGUST: "Ağustos",
+      SEPTEMBER: "Eylül",
+      OCTOBER: "Ekim",
+      NOVEMBER: "Kasım",
+      DECEMBER: "Aralık",
     },
   },
 
   LANGUAGES: {
-    TURKISH: 'Türkçe',
-    ENGLISH: 'İngilizce',
-    GERMANY: 'Almanca',
-    FRENCH: 'Fransızca',
-    RUSSIAN: 'Rusça',
-    ITALIAN: 'İtalyanca',
-    SPANISH: 'İspanyolca',
+    TURKISH: "Türkçe",
+    ENGLISH: "İngilizce",
+    GERMANY: "Almanca",
+    FRENCH: "Fransızca",
+    RUSSIAN: "Rusça",
+    ITALIAN: "İtalyanca",
+    SPANISH: "İspanyolca",
   },
 
   AUTH: {
     LOGIN: {
-      USER_NAME: 'Kullanıcı Adı',
-      PASSWORD: 'Şifre',
-      REMEMBER_ME: 'Beni hatırla',
-      FORGAT_PASSWORD: 'Şifremi Unuttum',
-      LOGIN: 'Giriş Yap',
+      USER_NAME: "Kullanıcı Adı",
+      PASSWORD: "Şifre",
+      REMEMBER_ME: "Beni hatırla",
+      FORGAT_PASSWORD: "Şifremi Unuttum",
+      LOGIN: "Giriş Yap",
     },
     FORGAT_PASSWORD: {
-      BACK: 'Geri Dön',
-      FORGAT_YOUR_PASSWORD: 'Şifrenizi mi Unuttunuz?',
-      DESCRIPTION: 'Şifreniz sistemimizde kayıtlı olan cep telefonunuza sms olarak gönderilecektir.',
-      PHONE_NUMBER: 'Telefon Numarası',
-      SEND_PASSWORD: 'Şifre Gönder',
+      BACK: "Geri Dön",
+      FORGAT_YOUR_PASSWORD: "Şifrenizi mi Unuttunuz?",
+      DESCRIPTION:
+        "Şifreniz sistemimizde kayıtlı olan cep telefonunuza sms olarak gönderilecektir.",
+      PHONE_NUMBER: "Telefon Numarası",
+      SEND_PASSWORD: "Şifre Gönder",
     },
   },
 
   LAUNCHPAD: {
     MODULES: {
-      TITLE: 'Modüller',
+      TITLE: "Modüller",
     },
   },
 
   PREFERENCES: {
-    TITLE: 'Tercihlerim',
+    TITLE: "Tercihlerim",
     THEME: {
-      TITLE: 'Tema',
+      TITLE: "Tema",
     },
     LANGUAGE: {
-      TITLE: 'Dil',
+      TITLE: "Dil",
     },
     NOTIFICATIONS: {
-      TITLE: 'Bildirim Tercihlerim',
+      TITLE: "Bildirim Tercihlerim",
     },
   },
 
   SOCIAL: {
-    TITLE: 'Sosyal',
+    TITLE: "Sosyal",
     DASHBOARD: {
-      TITLE: 'Anasayfa',
+      TITLE: "Anasayfa",
       DASHBOARD_WHATDOUTHINK: {
-        TITLE: 'Ne düşünüyorsun?',
+        TITLE: "Ne düşünüyorsun?",
       },
       DASHBOARD_WRITE_HERE: {
-        TITLE: 'Buraya yaz',
+        TITLE: "Buraya yaz",
       },
       DASHBOARD_LIKE: {
-        TITLE: 'Beğen',
+        TITLE: "Beğen",
       },
       DASHBOARD_LIKE_COUNT: {
-        TITLE: 'Beğeni',
+        TITLE: "Beğeni",
       },
       DASHBOARD_WRITE_COMMENT: {
-        TITLE: 'Yorum Yap',
+        TITLE: "Yorum Yap",
       },
       DASHBOARD_COMMENT_COUNT: {
-        TITLE: 'Yorum',
+        TITLE: "Yorum",
       },
       DASHBOARD_SAVE: {
-        TITLE: 'Kaydet',
+        TITLE: "Kaydet",
       },
     },
     INTERACTIONS: {
-      TITLE: 'Etkileşimler',
+      TITLE: "Etkileşimler",
       INTERACTIONS_LIKES: {
-        TITLE: 'Beğeniler',
+        TITLE: "Beğeniler",
       },
       INTERACTIONS_SAVES: {
-        TITLE: 'Kaydedilenler',
+        TITLE: "Kaydedilenler",
       },
     },
     PERSONS: {
-      TITLE: 'Kişiler',
+      TITLE: "Kişiler",
       PERSONS_PHOTO: {
-        TITLE: 'Profil Resmi',
+        TITLE: "Profil Resmi",
         PHOTO_UPLOAD_LABEL: {
-          TITLE: 'Fotoğraf Yükle',
+          TITLE: "Fotoğraf Yükle",
         },
         PHOTO_UPLOAD: {
-          TITLE: 'Profil Resmi Yükle',
+          TITLE: "Profil Resmi Yükle",
         },
         PHOTO_UPLOAD_CANCEL: {
-          TITLE: 'Vazgeç',
+          TITLE: "Vazgeç",
         },
         PHOTO_UPLOAD_DELETE: {
-          TITLE: 'Sil',
+          TITLE: "Sil",
         },
         PHOTO_UPLOAD_CLEAR: {
-          TITLE: 'Temizle',
+          TITLE: "Temizle",
         },
       },
       PERSONS_POSTS: {
-        TITLE: 'Gönderiler',
+        TITLE: "Gönderiler",
       },
       PERSONS_ABOUT: {
-        TITLE: 'Hakkında',
+        TITLE: "Hakkında",
         ABOUT_SKILLS: {
-          TITLE: 'Yetenekler',
+          TITLE: "Yetenekler",
           SKILLS_EDIT: {
-            TITLE: 'Yetenekleri Düzenle',
+            TITLE: "Yetenekleri Düzenle",
           },
         },
         ABOUT_EDUCATIONS: {
-          TITLE: 'Eğitimler',
+          TITLE: "Eğitimler",
           EDUCATIONS_ADD_EDUCATION: {
-            TITLE: 'Eğitim Ekle',
+            TITLE: "Eğitim Ekle",
           },
           EDUCATIONS_SCHOOL: {
-            TITLE: 'Okul',
+            TITLE: "Okul",
           },
           EDUCATIONS_DEPARTMENT: {
-            TITLE: 'Bölüm',
+            TITLE: "Bölüm",
           },
           EDUCATIONS_DEGREE: {
-            TITLE: 'Derece',
+            TITLE: "Derece",
           },
           EDUCATIONS_HOWMANYYEARS: {
-            TITLE: 'Kaç Yıl',
+            TITLE: "Kaç Yıl",
           },
           EDUCATIONS_STATUS: {
-            TITLE: 'Durum',
+            TITLE: "Durum",
           },
           EDUCATIONS_START_DATE: {
-            TITLE: 'Başlangıç Tarihi',
+            TITLE: "Başlangıç Tarihi",
           },
           EDUCATIONS_END_DATE: {
-            TITLE: 'Bitiş Tarihi',
+            TITLE: "Bitiş Tarihi",
           },
         },
         ABOUT_EXPERINCES: {
-          TITLE: 'Deneyimler',
+          TITLE: "Deneyimler",
           EXPERINCES_ADD_EXPERINCE: {
-            TITLE: 'Eğitim Ekle',
+            TITLE: "Eğitim Ekle",
           },
           EXPERINCES_COMPANY: {
-            TITLE: 'Şirket',
+            TITLE: "Şirket",
           },
           EXPERINCES_DUTY: {
-            TITLE: 'Ünvan',
+            TITLE: "Ünvan",
           },
           EXPERINCES_COUNTRY: {
-            TITLE: 'Ülke',
+            TITLE: "Ülke",
           },
           EXPERINCES_CITY: {
-            TITLE: 'Şehir',
+            TITLE: "Şehir",
           },
           EXPERINCES_START_DATE: {
-            TITLE: 'Başlangıç Tarihi',
+            TITLE: "Başlangıç Tarihi",
           },
           EXPERINCES_END_DATE: {
-            TITLE: 'Bitiş Tarihi',
+            TITLE: "Bitiş Tarihi",
           },
           EXPERINCES_CONTINUES: {
-            TITLE: 'Devam Ediyor',
+            TITLE: "Devam Ediyor",
           },
         },
         ABOUT_ADD_NEW: {
-          TITLE: 'Yeni Ekle',
+          TITLE: "Yeni Ekle",
         },
         ABOUT_CANCEL: {
-          TITLE: 'Vazgeç',
+          TITLE: "Vazgeç",
         },
         ABOUT_SAVE: {
-          TITLE: 'Kaydet',
+          TITLE: "Kaydet",
         },
         ABOUT_EDIT: {
-          TITLE: 'Düzenle',
+          TITLE: "Düzenle",
           EDIT_ABOUT: {
-            TITLE: 'Hakkında Düzenle',
+            TITLE: "Hakkında Düzenle",
           },
         },
       },
       PERSONS_PHOTOS: {
-        TITLE: 'Fotoğraflar',
+        TITLE: "Fotoğraflar",
         PHOTOS_ALBUMS: {
-          TITLE: 'Albümler',
+          TITLE: "Albümler",
         },
       },
       PERSONS_FRIENDS: {
-        TITLE: 'Arkadaşlar',
+        TITLE: "Arkadaşlar",
       },
       PERSONS_CONTACT_INFORMATIONS: {
-        TITLE: 'İletişim Bilgieri',
+        TITLE: "İletişim Bilgieri",
         CONTACT_INFORMATIONS_PHONE_NUMBER: {
-          TITLE: 'Telefon Numarası',
+          TITLE: "Telefon Numarası",
         },
         CONTACT_INFORMATIONS_OTHER_PHONE_NUMBER: {
-          TITLE: 'Diğer Telefon Numarası',
+          TITLE: "Diğer Telefon Numarası",
         },
         CONTACT_INFORMATIONS_WORKPLACE_EMAIL: {
-          TITLE: 'İşyeri E-Posta',
+          TITLE: "İşyeri E-Posta",
         },
         CONTACT_INFORMATIONS_PRIVATE_EMAIL: {
-          TITLE: 'Özel E-Posta',
+          TITLE: "Özel E-Posta",
         },
         CONTACT_INFORMATIONS_INTERCOM_NUMBER: {
-          TITLE: 'Dahili Telefon',
+          TITLE: "Dahili Telefon",
         },
       },
       PERSONS_SETTINGS: {
-        TITLE: 'Ayarlar',
+        TITLE: "Ayarlar",
         SETTINGS_PROFILE_VIEW: {
-          TITLE: 'Profil Görüntüleme',
+          TITLE: "Profil Görüntüleme",
         },
         SETTINGS_CONTACT_INFORMATIONS_VIEW: {
-          TITLE: 'İletişim Bilgileri Görüntüleme',
+          TITLE: "İletişim Bilgileri Görüntüleme",
         },
         SETTINGS_ADD_FRIEND: {
-          TITLE: 'Arkadaş Olarak Ekleme',
+          TITLE: "Arkadaş Olarak Ekleme",
         },
         SETTINGS_PRIVACY_TYPE_COMPANY: {
-          TITLE: 'Şirket çalışanların tümü',
+          TITLE: "Şirket çalışanların tümü",
         },
         SETTINGS_PRIVACY_TYPE_FRIENDS: {
-          TITLE: 'Arkadaşlar',
+          TITLE: "Arkadaşlar",
         },
       },
       PERSONS_SEARCH: {
-        TITLE: 'Kişilerde ara',
+        TITLE: "Kişilerde ara",
       },
       PERSONS_SELECT_POSITION: {
-        TITLE: 'Pozisyon Seçimi',
+        TITLE: "Pozisyon Seçimi",
       },
       PERSONS_SEND_MESSAGE: {
-        TITLE: 'Mesaj Yaz',
+        TITLE: "Mesaj Yaz",
       },
       PERSONS_ADD_FRIEND: {
-        TITLE: 'Arkadaş Ekle',
+        TITLE: "Arkadaş Ekle",
       },
       PERSONS_REMOVE_FRIEND: {
-        TITLE: 'Arkadaşı Sil',
+        TITLE: "Arkadaşı Sil",
       },
       PERSONS_UNDO_REQUEST_FRIEND: {
-        TITLE: 'İsteği Geri Al',
+        TITLE: "İsteği Geri Al",
       },
       PERSONS_ACCEPT_REQUEST_FRIEND: {
-        TITLE: 'Onayla',
+        TITLE: "Onayla",
       },
       PERSONS_REJECT_REQUEST_FRIEND: {
-        TITLE: 'Reddet',
+        TITLE: "Reddet",
       },
       PERSONS_MUTUAL_FRIENDS: {
-        TITLE: 'ortak arkadaş',
+        TITLE: "ortak arkadaş",
       },
     },
     GROUPS: {
-      TITLE: 'Gruplar',
+      TITLE: "Gruplar",
       GROUPS_SEARCH: {
-        TITLE: 'Grup ara',
+        TITLE: "Grup ara",
       },
       GROUPS_JOIN_GROUP: {
-        TITLE: 'Gruba Katıl',
+        TITLE: "Gruba Katıl",
       },
       GROUPS_LEAVE_GROUP: {
-        TITLE: 'Gruptan Çık',
+        TITLE: "Gruptan Çık",
       },
       GROUPS_UNDO_REQUEST_GROUP: {
-        TITLE: 'İsteği Geri Al',
+        TITLE: "İsteği Geri Al",
       },
     },
     IN_HOUSE_APPLICATIONS: {
-      TITLE: 'Kurum İçi Uygulamalar',
+      TITLE: "Kurum İçi Uygulamalar",
       IN_HOUSE_APPLICATIONS_DOWNLOAD: {
-        TITLE: 'Download',
+        TITLE: "Download",
       },
     },
     GALLERY: {
-      TITLE: 'Galeri',
+      TITLE: "Galeri",
       GALLERY_ALBUM_NAME: {
-        TITLE: 'Albüm Adı',
+        TITLE: "Albüm Adı",
       },
       GALLERY_ALBUM_NAME_PLACEHOLDER: {
-        TITLE: 'Albüm adını giriniz',
+        TITLE: "Albüm adını giriniz",
       },
       GALLERY_ALBUM_DESCRIPTION: {
-        TITLE: 'Albüm Açılaması',
+        TITLE: "Albüm Açılaması",
       },
       GALLERY_ALBUM_DESCRIPTION_PLACEHOLDER: {
-        TITLE: 'Albüm açıklamanız (İsteğe Bağlı)',
+        TITLE: "Albüm açıklamanız (İsteğe Bağlı)",
       },
       GALLERY_CREATE_ALBUM: {
-        TITLE: 'Albüm Oluştur',
+        TITLE: "Albüm Oluştur",
       },
       GALLERY_EDIT_ALBUM: {
-        TITLE: 'Albüm Düzenle',
+        TITLE: "Albüm Düzenle",
       },
       GALLERY_UPDATE_ALBUM: {
-        TITLE: 'Albüm Güncelle',
+        TITLE: "Albüm Güncelle",
       },
       GALLERY_PHOTO_COUNT: {
-        TITLE: 'fotoğraf',
+        TITLE: "fotoğraf",
       },
       GALLERY_SELECT: {
-        TITLE: 'Seç',
+        TITLE: "Seç",
       },
       GALLERY_SELECT_ALL: {
-        TITLE: 'Tümünü Seç',
+        TITLE: "Tümünü Seç",
       },
       GALLERY_UNDO_SELECT_ALL: {
-        TITLE: 'Tümünü Kaldır',
+        TITLE: "Tümünü Kaldır",
       },
       GALLERY_DOWNLOAD_PHOTO: {
-        TITLE: 'İndir',
+        TITLE: "İndir",
       },
       GALLERY_SELECT_CANCEL: {
-        TITLE: 'Vazgeç',
+        TITLE: "Vazgeç",
       },
       GALLERY_ADD_PHOTO: {
-        TITLE: 'Fotoğraf Ekle',
+        TITLE: "Fotoğraf Ekle",
       },
       GALLERY_UPLOAD_PHOTO: {
-        TITLE: 'Fotoğraf Yükle',
+        TITLE: "Fotoğraf Yükle",
       },
       GALLERY_UPLOAD_PHOTO_CANCEL: {
-        TITLE: 'Vazgeç',
+        TITLE: "Vazgeç",
       },
       GALLERY_VIEW_PHOTO: {
-        TITLE: 'Görüntüle',
+        TITLE: "Görüntüle",
       },
       GALLERY_MENTION_PHOTO: {
-        TITLE: 'Etiketle',
+        TITLE: "Etiketle",
       },
       GALLERY_MENTION_PERSON: {
-        TITLE: 'Kişi Etiketle',
+        TITLE: "Kişi Etiketle",
       },
       GALLERY_MENTION_SEARCH_PERSON: {
-        TITLE: 'Kişi Ara',
+        TITLE: "Kişi Ara",
       },
       GALLERY_MENTION_SELECT_POSITION: {
-        TITLE: 'Pozisyon Seç',
+        TITLE: "Pozisyon Seç",
       },
       GALLERY_MENTION_ADDED_PERSONS: {
-        TITLE: 'Eklenen Kişiler',
+        TITLE: "Eklenen Kişiler",
       },
       GALLERY_MENTION_CANCEL: {
-        TITLE: 'Vazgeç',
+        TITLE: "Vazgeç",
       },
       GALLERY_DELETE_PHOTO: {
-        TITLE: 'Sil',
+        TITLE: "Sil",
       },
     },
     SETTINGS: {
-      TITLE: 'Ayarlar',
+      TITLE: "Ayarlar",
       SETTINGS_RESTRICTIONS: {
-        TITLE: 'Kısıtlamalar',
+        TITLE: "Kısıtlamalar",
         RESTRICTIONS_WORDS_LABEL: {
-          TITLE: 'Words That Should Be Restricted',
+          TITLE: "Words That Should Be Restricted",
         },
         RESTRICTIONS_WORDS_DESCRIPTION: {
-          TITLE: 'Kelimelerin arasına virgül koyarak birden fazla ekleme yapabilirsiniz.',
+          TITLE:
+            "Kelimelerin arasına virgül koyarak birden fazla ekleme yapabilirsiniz.",
         },
         RESTRICTIONS_WORDS_WRITE: {
-          TITLE: 'Write',
+          TITLE: "Write",
         },
         RESTRICTIONS_WORDS_ADD: {
-          TITLE: 'Ekle',
+          TITLE: "Ekle",
         },
         RESTRICTIONS_WORDS_INDEX: {
-          TITLE: 'Kısıtlanacak Kelimeler',
+          TITLE: "Kısıtlanacak Kelimeler",
         },
         RESTRICTIONS_WORDS_SEARCH: {
-          TITLE: 'Ara',
+          TITLE: "Ara",
         },
       },
     },
     CLUB_AND_GROUPS: {
-      TITLE: 'Kulüp ve Gruplar',
+      TITLE: "Kulüp ve Gruplar",
       CLUB_AND_GROUPS_ALL: {
-        TITLE: 'Tümü',
+        TITLE: "Tümü",
       },
       CLUB_AND_GROUPS_CREATE: {
-        TITLE: 'Yeni Kulüp/Grup Oluştur',
+        TITLE: "Yeni Kulüp/Grup Oluştur",
       },
     },
     FRIENDS: {
-      TITLE: 'Arkadaşlar',
+      TITLE: "Arkadaşlar",
       FRIENDS_ALL: {
-        TITLE: 'Tümü',
+        TITLE: "Tümü",
       },
       FRIENDS_ADD: {
-        TITLE: 'Yeni Arkadaş Ekle',
+        TITLE: "Yeni Arkadaş Ekle",
       },
     },
   },
 
   MYSECURITY: {
-    TITLE: 'Güvenlik',
+    TITLE: "Güvenlik",
     PASSWORD_MANAGEMENT: {
-      TITLE: 'Şifre Yönetimi',
-      CURRENT_PASSWORD: 'Mevcut Şifre',
-      CURRENT_PASSWORD_PLACEHOLDER: 'Mevcut şifrenizi giriniz',
-      CURRENT_PASSWORD_DESCRIPTION: 'Eski şifreniz size SMS ile iletilen koddur.',
-      NEW_PASSWORD: 'Yeni Şifre',
-      NEW_PASSWORD_PLACEHOLDER: 'Yeni şifrenizi giriniz',
-      NEW_PASSWORD_AGAIN: 'Yeni Şifre Tekrar',
-      NEW_PASSWORD_AGAIN_PLACEHOLDER: 'Tekrar yeni şifrenizi giriniz',
-      CHANGE_PASSWORD: 'Şifremi Değiştir',
+      TITLE: "Şifre Yönetimi",
+      CURRENT_PASSWORD: "Mevcut Şifre",
+      CURRENT_PASSWORD_PLACEHOLDER: "Mevcut şifrenizi giriniz",
+      CURRENT_PASSWORD_DESCRIPTION:
+        "Eski şifreniz size SMS ile iletilen koddur.",
+      NEW_PASSWORD: "Yeni Şifre",
+      NEW_PASSWORD_PLACEHOLDER: "Yeni şifrenizi giriniz",
+      NEW_PASSWORD_AGAIN: "Yeni Şifre Tekrar",
+      NEW_PASSWORD_AGAIN_PLACEHOLDER: "Tekrar yeni şifrenizi giriniz",
+      CHANGE_PASSWORD: "Şifremi Değiştir",
     },
     LOGIN_DEVICES: {
-      TITLE: 'Giriş Yapılan Cihazlar',
-      LOGOUT_OF_ALL_SESSIONS: 'Tüm Oturumlardan Çıkış Yap',
+      TITLE: "Giriş Yapılan Cihazlar",
+      LOGOUT_OF_ALL_SESSIONS: "Tüm Oturumlardan Çıkış Yap",
     },
     CONTRACTS: {
-      TITLE: 'Sözleşmeler',
+      TITLE: "Sözleşmeler",
     },
     POSITION_GROUPS: {
-      TITLE: 'Pozisyon Grupları',
+      TITLE: "Pozisyon Grupları",
     },
   },
 
   ORGANIZATION: {
-    TITLE: 'Organizasyon',
+    TITLE: "Organizasyon",
     CORPORATION_INDEX: {
-      TITLE: 'Şirket Listesi',
+      TITLE: "Şirket Listesi",
     },
     ORGANIZATION_INDEX: {
-      TITLE: 'Organizasyon Listesi',
+      TITLE: "Organizasyon Listesi",
     },
     REGION_INDEX: {
-      TITLE: 'Bölge Listesi',
+      TITLE: "Bölge Listesi",
     },
     PROJECT_INDEX: {
-      TITLE: 'Proje Listesi',
+      TITLE: "Proje Listesi",
     },
     WORKPLACE_INDEX: {
-      TITLE: 'İşyeri Listesi',
+      TITLE: "İşyeri Listesi",
     },
     POSITION_POSITION: {
-      TITLE: 'Pozisyon Listesi',
+      TITLE: "Pozisyon Listesi",
     },
     ORGANIZATION_POSITION: {
-      TITLE: 'Organizasyona Göre Pozisyon',
+      TITLE: "Organizasyona Göre Pozisyon",
     },
     POSITION_GROUP: {
-      TITLE: 'Pozisyon Grupları',
+      TITLE: "Pozisyon Grupları",
     },
     ORGANIZATION_SCHEMA: {
-      TITLE: 'Organizasyon Şeması',
+      TITLE: "Organizasyon Şeması",
     },
     // { title: 'ORGANIZATION.CORPORATION_INDEX.TITLE', path: PATH_PAGE.legacy_organization.corporation_index },
     // { title: 'ORGANIZATION.ORGANIZATION_INDEX.TITLE', path: PATH_PAGE.legacy_organization.organization_index },
@@ -494,832 +497,832 @@ const tr: IKeys = {
   },
 
   PERSONAL: {
-    TITLE: 'Sicil Bilgilerim',
+    TITLE: "Sicil Bilgilerim",
     PERSONAL_INDEX: {
-      TITLE: 'Sicil Bilgileri',
+      TITLE: "Sicil Bilgileri",
     },
     PERSONAL_PROFILE: {
-      TITLE: 'Profil',
+      TITLE: "Profil",
       PROFILE_TAG: {
-        TITLE: 'Künye',
+        TITLE: "Künye",
         PROFILE_TAG_ID_INFORMATIONS: {
-          TITLE: 'Kimlik Bilgileri',
+          TITLE: "Kimlik Bilgileri",
           ID_INFORMATIONS_FIRSTNAME: {
-            TITLE: 'Ad',
+            TITLE: "Ad",
           },
           ID_INFORMATIONS_SECONDNAME: {
-            TITLE: 'İkinci Ad',
+            TITLE: "İkinci Ad",
           },
           ID_INFORMATIONS_SURNAME: {
-            TITLE: 'Soyad',
+            TITLE: "Soyad",
           },
           ID_INFORMATIONS_PREVIOUS_SURNAME: {
-            TITLE: 'Önceki Soyad',
+            TITLE: "Önceki Soyad",
           },
           ID_INFORMATIONS_GENDER: {
-            TITLE: 'Cinsiyet',
+            TITLE: "Cinsiyet",
           },
           ID_INFORMATIONS_ID_NUMBER: {
-            TITLE: 'Kimlik Numarası',
+            TITLE: "Kimlik Numarası",
           },
           ID_INFORMATIONS_NATIONALITY: {
-            TITLE: 'Uyruk',
+            TITLE: "Uyruk",
           },
         },
         PROFILE_TAG_CONTACT_INFORMATIONS: {
-          TITLE: 'İletişim Bilgileri',
+          TITLE: "İletişim Bilgileri",
           CONTACT_INFORMATIONS_PHONE_NUMBER: {
-            TITLE: 'Telefon Numarası',
+            TITLE: "Telefon Numarası",
           },
           CONTACT_INFORMATIONS_OTHER_PHONE_NUMBER: {
-            TITLE: 'Diğer Telefon Numarası',
+            TITLE: "Diğer Telefon Numarası",
           },
           CONTACT_INFORMATIONS_WORKPLACE_EMAIL: {
-            TITLE: 'İşyeri E-Posta',
+            TITLE: "İşyeri E-Posta",
           },
           CONTACT_INFORMATIONS_PRIVATE_EMAIL: {
-            TITLE: 'Özel E-Posta',
+            TITLE: "Özel E-Posta",
           },
           CONTACT_INFORMATIONS_INTERCOM_NUMBER: {
-            TITLE: 'Dahili Telefon Numaranız',
+            TITLE: "Dahili Telefon Numaranız",
           },
         },
         PROFILE_TAG_WORKPLACE_INFORMATIONS: {
-          TITLE: 'İşyeri Bilgileri',
+          TITLE: "İşyeri Bilgileri",
           WORKPLACE_INFORMATIONS_REGISTRATION_NO: {
-            TITLE: 'Sicil No',
+            TITLE: "Sicil No",
           },
           WORKPLACE_INFORMATIONS_WORKPLACE: {
-            TITLE: 'İşyeri',
+            TITLE: "İşyeri",
           },
           WORKPLACE_INFORMATIONS_WORKPLACE_START_DATE: {
-            TITLE: 'İşyerine başlama Tarihi',
+            TITLE: "İşyerine başlama Tarihi",
           },
           WORKPLACE_INFORMATIONS_EMPLOYMENT_START_DATE: {
-            TITLE: 'İşyerine giriş Tarihi',
+            TITLE: "İşyerine giriş Tarihi",
           },
           WORKPLACE_INFORMATIONS_PERMISSION_GROUP: {
-            TITLE: 'İzin grubu',
+            TITLE: "İzin grubu",
           },
           WORKPLACE_INFORMATIONS_PDKS_CARD_NO: {
-            TITLE: 'PDKS Kart No',
+            TITLE: "PDKS Kart No",
           },
           WORKPLACE_INFORMATIONS_BADGE: {
-            TITLE: 'Yaka Kartı',
+            TITLE: "Yaka Kartı",
           },
         },
         PROFILE_TAG_CONTRACT_INFORMATIONS: {
-          TITLE: 'Sözleşme Bilgileri',
+          TITLE: "Sözleşme Bilgileri",
           CONTRACT_INFORMATIONS_CONTRACT_START_DATE: {
-            TITLE: 'Sözleşme Başlangıç Tarihi',
+            TITLE: "Sözleşme Başlangıç Tarihi",
           },
           CONTRACT_INFORMATIONS_CONTRACT_END_DATE: {
-            TITLE: 'Sözleşme Bitiş Tarihi',
+            TITLE: "Sözleşme Bitiş Tarihi",
           },
           CONTRACT_INFORMATIONS_EMPLOYEE_STAFF_STATUS: {
-            TITLE: 'Çalışan Kadro Durumu',
+            TITLE: "Çalışan Kadro Durumu",
           },
         },
         PROFILE_TAG_MILITARY_INFORMATIONS: {
-          TITLE: 'Askerlik Bilgileri',
+          TITLE: "Askerlik Bilgileri",
           MILITARY_INFORMATIONS_MILITARY_STATUS: {
-            TITLE: 'Askerlik Durumu',
+            TITLE: "Askerlik Durumu",
           },
           MILITARY_INFORMATIONS_DISCHARGE_DATE: {
-            TITLE: 'Askerlik Terhis Tarihi',
+            TITLE: "Askerlik Terhis Tarihi",
           },
           MILITARY_INFORMATIONS_MILITARY_DELAY_DATE: {
-            TITLE: 'Askerlik Tecil Tarihi',
+            TITLE: "Askerlik Tecil Tarihi",
           },
           MILITARY_INFORMATIONS_MILITARY_DEGREE: {
-            TITLE: 'Askerlik Derecesi',
+            TITLE: "Askerlik Derecesi",
           },
           MILITARY_INFORMATIONS_CERTIFICATE_NO: {
-            TITLE: 'Askerlik Sertifika No',
+            TITLE: "Askerlik Sertifika No",
           },
           MILITARY_INFORMATIONS_EXEMPT_CODE: {
-            TITLE: 'Askerlik Muaf Kodu',
+            TITLE: "Askerlik Muaf Kodu",
           },
           MILITARY_INFORMATIONS_DISCHARGE_CERTIFICATE: {
-            TITLE: 'Askerlik Terhis Belgesi',
+            TITLE: "Askerlik Terhis Belgesi",
           },
         },
         PROFILE_TAG_HEALTH_INFORMATIONS: {
-          TITLE: 'Sağlık Bilgileri',
+          TITLE: "Sağlık Bilgileri",
           HEALTH_INFORMATIONS_HEIGHT: {
-            TITLE: 'Boy (cm)',
+            TITLE: "Boy (cm)",
           },
           HEALTH_INFORMATIONS_WEIGHT: {
-            TITLE: 'Kilo (kg)',
+            TITLE: "Kilo (kg)",
           },
           HEALTH_INFORMATIONS_SHOE_SIZE: {
-            TITLE: 'Ayakkabı Numarası',
+            TITLE: "Ayakkabı Numarası",
           },
           HEALTH_INFORMATIONS_BODY: {
-            TITLE: 'Beden',
+            TITLE: "Beden",
           },
           HEALTH_INFORMATIONS_DISABILITY_STATUS: {
-            TITLE: 'Engellilik Durumu',
+            TITLE: "Engellilik Durumu",
           },
           HEALTH_INFORMATIONS_DISABILITY_CARD: {
-            TITLE: 'Engellilik Kartı',
+            TITLE: "Engellilik Kartı",
           },
           HEALTH_INFORMATIONS_DISABILITY_CATEGORY: {
-            TITLE: 'Engelilik Kategorisi',
+            TITLE: "Engelilik Kategorisi",
           },
           HEALTH_INFORMATIONS_DISABILITY_DEGREE: {
-            TITLE: 'Engelilik Derecesi',
+            TITLE: "Engelilik Derecesi",
           },
           HEALTH_INFORMATIONS_DISABILITY_RATE: {
-            TITLE: 'Engelilik Oranı',
+            TITLE: "Engelilik Oranı",
           },
           HEALTH_INFORMATIONS_DISABILITY_DESCRIPTION: {
-            TITLE: 'Engelilik Açıklaması',
+            TITLE: "Engelilik Açıklaması",
           },
           HEALTH_INFORMATIONS_DISABILITY_START_DATE: {
-            TITLE: 'Engelilik Başlangıç Tarihi',
+            TITLE: "Engelilik Başlangıç Tarihi",
           },
           HEALTH_INFORMATIONS_DISABILITY_END_DATE: {
-            TITLE: 'Engelilik Bitiş Tarihi',
+            TITLE: "Engelilik Bitiş Tarihi",
           },
           HEALTH_INFORMATIONS_HEALTH_REPORT: {
-            TITLE: 'Sağlık Raporu',
+            TITLE: "Sağlık Raporu",
           },
           HEALTH_INFORMATIONS_USING_CIGARETTE: {
-            TITLE: 'Sigara İçiyor Mu?',
+            TITLE: "Sigara İçiyor Mu?",
           },
         },
         PROFILE_TAG_INSURANCE_INFORMATIONS: {
-          TITLE: 'Sigorta Bilgileri',
+          TITLE: "Sigorta Bilgileri",
           INSURANCE_INFORMATIONS_SSI_NO: {
-            TITLE: 'SSK No',
+            TITLE: "SSK No",
           },
           INSURANCE_INFORMATIONS_RETIRED_REGISTRATION_NO: {
-            TITLE: 'Emekli Sicil No',
+            TITLE: "Emekli Sicil No",
           },
           INSURANCE_INFORMATIONS_RETIREMENT_DATE: {
-            TITLE: 'Emeklilik Tarihi',
+            TITLE: "Emeklilik Tarihi",
           },
         },
         PROFILE_TAG_JUDICIAL_REGISTRY_INFORMATIONS: {
-          TITLE: 'Adli Sicil Bilgileri',
+          TITLE: "Adli Sicil Bilgileri",
           JUDICIAL_REGISTRY_INFORMATIONS_CRIMINAL_RECORDS: {
-            TITLE: 'Sabıka Kaydı',
+            TITLE: "Sabıka Kaydı",
           },
           JUDICIAL_REGISTRY_INFORMATIONS_PROVISION_EXPLANATION: {
-            TITLE: 'Hüküm Açıklaması',
+            TITLE: "Hüküm Açıklaması",
           },
           JUDICIAL_REGISTRY_INFORMATIONS_ANTI_TERRORISIM: {
-            TITLE: 'Terörle Mücadele mi?',
+            TITLE: "Terörle Mücadele mi?",
           },
         },
         PROFILE_TAG_TERMINATION_INFORMATIONS: {
-          TITLE: 'Çıkış Bilgileri',
+          TITLE: "Çıkış Bilgileri",
           EXIT_INFORMATIONS_TERMINATION_DATE: {
-            TITLE: 'Çıkış Tarihi',
+            TITLE: "Çıkış Tarihi",
           },
           EXIT_INFORMATIONS_TERMINATION_REASON: {
-            TITLE: 'Çıkış Nedeni',
+            TITLE: "Çıkış Nedeni",
           },
         },
         PROFILE_TAG_OTHER_INFORMATIONS: {
-          TITLE: 'Diğer Bilgiler',
+          TITLE: "Diğer Bilgiler",
           OTHER_INFORMATIONS_TRAIL_PERIOD_END_DATE: {
-            TITLE: 'Deneme Süresi Bitiş Tarihi',
+            TITLE: "Deneme Süresi Bitiş Tarihi",
           },
           OTHER_INFORMATIONS_RESUME: {
-            TITLE: 'Özgeçmiş',
+            TITLE: "Özgeçmiş",
           },
           OTHER_INFORMATIONS_NOTE: {
-            TITLE: 'Not',
+            TITLE: "Not",
           },
           OTHER_INFORMATIONS_TAX_DISCOUNTS: {
-            TITLE: 'Vergi İndirimi Var mı?',
+            TITLE: "Vergi İndirimi Var mı?",
           },
           OTHER_INFORMATIONS_TRAVEL: {
-            TITLE: 'Seyahat Edebilir Mi?',
+            TITLE: "Seyahat Edebilir Mi?",
           },
           OTHER_INFORMATIONS_OVERTIME: {
-            TITLE: 'Fazla Mesai Kalabilir Mi?',
+            TITLE: "Fazla Mesai Kalabilir Mi?",
           },
         },
         PROFILE_TAG_PORTAL_INFORMATIONS: {
-          TITLE: 'Portal Bilgileri',
+          TITLE: "Portal Bilgileri",
           PORTAL_INFORMATIONS_PORTAL_LANGUAGE: {
-            TITLE: 'Portal Dili',
+            TITLE: "Portal Dili",
           },
           PORTAL_INFORMATIONS_PORTAL_USER: {
-            TITLE: 'Portal Kullanıcısı?',
+            TITLE: "Portal Kullanıcısı?",
           },
         },
       },
       PROFILE_PAYROLL_INFORMATIONS: {
-        TITLE: 'Bodro Bilgileri',
+        TITLE: "Bodro Bilgileri",
       },
       PROFILE_BONUS_INFORMATIONS: {
-        TITLE: 'Prim Bilgileri',
+        TITLE: "Prim Bilgileri",
       },
       PROFILE_SERVICE_AND_TRANSPORTATION: {
-        TITLE: 'Servis Ve Ulaşım',
+        TITLE: "Servis Ve Ulaşım",
       },
       PROFILE_REPRESENT: {
-        TITLE: 'Vekalet',
+        TITLE: "Vekalet",
       },
     },
     PERSONAL_SIDEBENEFITBULKINSERT: {
-      TITLE: 'Toplu Yan Hak Ekleme',
+      TITLE: "Toplu Yan Hak Ekleme",
     },
     PERSONAL_STOPPAGEBULKINSERT: {
-      TITLE: 'Toplu Kesinti Ekleme',
+      TITLE: "Toplu Kesinti Ekleme",
     },
     PERSONAL_PAYROLLBULKINSERT: {
-      TITLE: 'Toplu Bordro Yükleme',
+      TITLE: "Toplu Bordro Yükleme",
     },
     PERSONAL_ADPBULKINSERT: {
-      TITLE: 'ADP Toplu Bordro Yükleme',
+      TITLE: "ADP Toplu Bordro Yükleme",
     },
     PERSONAL_NETSISBULKINSERT: {
-      TITLE: 'Netsis Toplu Bordro Yükleme',
+      TITLE: "Netsis Toplu Bordro Yükleme",
     },
     PERSONAL_DAKIKABULKINSERT: {
-      TITLE: 'Dakika Toplu Bordro Yükleme',
+      TITLE: "Dakika Toplu Bordro Yükleme",
     },
     PERSONAL_REPORTS: {
-      TITLE: 'Raporlar',
+      TITLE: "Raporlar",
     },
     PERSONAL_REGISTERCARDS: {
-      TITLE: 'Sicil Kart Bilgileri',
+      TITLE: "Sicil Kart Bilgileri",
     },
     PERSONAL_TEAMLIST: {
-      TITLE: 'Ekip Listesi',
+      TITLE: "Ekip Listesi",
     },
     PERSONAL_ANNUALLEAVECARDS: {
-      TITLE: 'Yıllık İzin Kartları',
+      TITLE: "Yıllık İzin Kartları",
     },
     PERSONAL_SCORINGREPORT: {
-      TITLE: 'İK Puantaj Raporu',
+      TITLE: "İK Puantaj Raporu",
     },
     PERSONAL_USERCONTRACTREPORT: {
-      TITLE: 'Kullanıcı Sözleşmesi Raporu',
+      TITLE: "Kullanıcı Sözleşmesi Raporu",
     },
     PERSONAL_PAYROLLDISPLAYREPORT: {
-      TITLE: 'Bordro Görüntüleme Raporu',
+      TITLE: "Bordro Görüntüleme Raporu",
     },
     PERSONAL_PAYROLLAPPEALREPORT: {
-      TITLE: 'Bordro İtiraz Raporu',
+      TITLE: "Bordro İtiraz Raporu",
     },
   },
 
   WORKSCHEDULE: {
-    TITLE: 'Çalışma Takvimi',
+    TITLE: "Çalışma Takvimi",
     WORKSCHEDULE_INDEX: {
-      TITLE: 'Çalışma Takvimleri',
+      TITLE: "Çalışma Takvimleri",
     },
     WORKSCHEDULE_SHIFT: {
-      TITLE: 'Çalışma Zamanları',
+      TITLE: "Çalışma Zamanları",
     },
     WORKSCHEDULE_WEEKTEMPLATE: {
-      TITLE: 'Haftalık Çalışma Şablonları',
+      TITLE: "Haftalık Çalışma Şablonları",
     },
     WORKSCHEDULE_PERSONSCORECARD: {
-      TITLE: 'Çalışan Adına Puantaj',
+      TITLE: "Çalışan Adına Puantaj",
     },
     WORKSCHEDULE_PERSONSCORECARDSUMMARY: {
-      TITLE: 'Puantaj Denkleştirme İşlemleri',
+      TITLE: "Puantaj Denkleştirme İşlemleri",
     },
     WORKSCHEDULE_ANOMALICALENDAR: {
-      TITLE: 'Anomali Takvimi',
+      TITLE: "Anomali Takvimi",
     },
     ROTATION_INDEX: {
-      TITLE: 'Rotasyon Listesi',
+      TITLE: "Rotasyon Listesi",
     },
     WORKSCHEDULE_PERSONNELWORKPLANREPORT: {
-      TITLE: 'Günlük Çalışma Planı Raporu',
+      TITLE: "Günlük Çalışma Planı Raporu",
     },
     WORKSCHEDULE_FEWERTIMEANOMALYREPORT: {
-      TITLE: 'Eksik Süreler Anomali Raporu',
+      TITLE: "Eksik Süreler Anomali Raporu",
     },
     WORKSCHEDULE_OVERTIMEANOMALYREPORT: {
-      TITLE: 'Fazla Mesai Anomali Raporu',
+      TITLE: "Fazla Mesai Anomali Raporu",
     },
     WORKSCHEDULE_NNARSOFTREPORT: {
-      TITLE: 'Narsoft Aktarım Raporu',
+      TITLE: "Narsoft Aktarım Raporu",
     },
     WORKSCHEDULE_PERSONNELWORKINGHOURSREPOR: {
-      TITLE: 'Toplam Çalışma Saatleri Raporu',
+      TITLE: "Toplam Çalışma Saatleri Raporu",
     },
     WORKSCHEDULE_MONTHLYPAYROLLREPORT: {
-      TITLE: 'Aylık Puantaj Raporu',
+      TITLE: "Aylık Puantaj Raporu",
     },
     WORKSCHEDULE_WEEKLYSHIFTCHANGEREPORT: {
-      TITLE: 'Haftalık Vardiya Değişim Raporu',
+      TITLE: "Haftalık Vardiya Değişim Raporu",
     },
     WORKSCHEDULE_WEEKLYSHIFTPLANREPORT: {
-      TITLE: 'Haftalık Vardiya Planı Raporu',
+      TITLE: "Haftalık Vardiya Planı Raporu",
     },
   },
 
   BONUS: {
-    TITLE: 'Prim İşlemleri',
+    TITLE: "Prim İşlemleri",
     BONUS_INDEX: {
-      TITLE: 'Prim Tanımları',
+      TITLE: "Prim Tanımları",
     },
     BONUS_CALCULATE: {
-      TITLE: 'Prim Hesaplama',
+      TITLE: "Prim Hesaplama",
     },
     BONUS_BONUSLEAVEPARAMETER: {
-      TITLE: 'İzin Tanımlama',
+      TITLE: "İzin Tanımlama",
     },
   },
 
   METRIC: {
-    TITLE: 'Metrikler',
+    TITLE: "Metrikler",
     METRIC_INDEX: {
-      TITLE: 'IK Metrikleri',
+      TITLE: "IK Metrikleri",
     },
   },
 
   FORMS: {
-    TITLE: 'Formlar',
+    TITLE: "Formlar",
     FORMSFORMWORKFLOW_INDEX: {
-      TITLE: 'Onay Bekleyenler',
+      TITLE: "Onay Bekleyenler",
     },
     LEAVE_CALENDAR: {
-      TITLE: 'İzin Takvimi',
+      TITLE: "İzin Takvimi",
     },
     LEAVE_LEAVE: {
-      TITLE: 'İzin Formları',
+      TITLE: "İzin Formları",
     },
     LEAVE_MANAGERLEAVE: {
-      TITLE: 'Çalışan Adına İzin',
+      TITLE: "Çalışan Adına İzin",
     },
     LEAVE_AGGREGATELEAVE: {
-      TITLE: 'Toplu İzin Formu',
+      TITLE: "Toplu İzin Formu",
     },
     DUTYTRAVEL_INDEX: {
-      TITLE: 'Seyahat Formları',
+      TITLE: "Seyahat Formları",
     },
     EXPENSE_INDEX: {
-      TITLE: 'Masraf Formları',
+      TITLE: "Masraf Formları",
     },
     OVERWORK_INDEX: {
-      TITLE: 'Çalışan adına fazla mesai',
+      TITLE: "Çalışan adına fazla mesai",
     },
     OVERWORK_SAPTRANSFER: {
-      TITLE: 'Sap Aktarımı',
+      TITLE: "Sap Aktarımı",
     },
     OVERWORK_AGGREGATEINDEX: {
-      TITLE: 'Toplu Fazla Mesai',
+      TITLE: "Toplu Fazla Mesai",
     },
     OVERWORK_NOTIFICATIONINDEX: {
-      TITLE: 'Toplu Fazla Mesai Bildirimi',
+      TITLE: "Toplu Fazla Mesai Bildirimi",
     },
     OVERWORK_OVERWORKPLANREPORT: {
-      TITLE: 'Fazla Mesai Plan Raporu',
+      TITLE: "Fazla Mesai Plan Raporu",
     },
     OVERWORK_SAPTRANSFERREPORT: {
-      TITLE: 'SapTransfer Raporu',
+      TITLE: "SapTransfer Raporu",
     },
   },
 
   COMPANYFORMS: {
-    TITLE: 'Şirkete Özel Formlar',
+    TITLE: "Şirkete Özel Formlar",
     FORMCORPORATION_PRODUCTDEMAND: {
-      TITLE: 'Personel Ürün Talep Formu',
+      TITLE: "Personel Ürün Talep Formu",
     },
     PERSONAL_PERSONNELRELATIVEDATALIST: {
-      TITLE: 'Personel Akrabalık Formu',
+      TITLE: "Personel Akrabalık Formu",
     },
     PERSONAL_PERSONNELRELATIVELIST: {
-      TITLE: 'Personel Akrabalık Listesi',
+      TITLE: "Personel Akrabalık Listesi",
     },
     PERSONAL_BEASTARINDEX: {
-      TITLE: 'Be A Star Formu',
+      TITLE: "Be A Star Formu",
     },
     PERSONAL_BEASTARLIST: {
-      TITLE: 'Be A Star Raporu',
+      TITLE: "Be A Star Raporu",
       BEASTARLIST_INTERVAL: {
-        TITLE: 'Be A Star Dönem Listesi',
+        TITLE: "Be A Star Dönem Listesi",
       },
     },
     FORMCORPORATION_EXPERIENCE: {
-      TITLE: 'Deneyim Formu',
+      TITLE: "Deneyim Formu",
       EXPERIENCE_REPORT: {
-        TITLE: 'Deneyim Raporu',
+        TITLE: "Deneyim Raporu",
       },
     },
   },
 
   ADMINISTRATIVEAFFAIRS: {
-    TITLE: 'İdari İşler',
+    TITLE: "İdari İşler",
     INVENTORY_INDEX: {
-      TITLE: 'Demirbaş Listesi',
+      TITLE: "Demirbaş Listesi",
     },
     SHUTTLE_INDEX: {
-      TITLE: 'Servis Güzergahları',
+      TITLE: "Servis Güzergahları",
     },
 
     SHUTTLE_ADMIN_INDEX: {
-      TITLE: 'Servis Güzergahları Listesi',
+      TITLE: "Servis Güzergahları Listesi",
     },
     SERVICEVEHICLE_INDEX: {
-      TITLE: 'Servis Araçları',
+      TITLE: "Servis Araçları",
     },
     SERVICEDRIVER_INDEX: {
-      TITLE: 'Servis Sürücüleri',
+      TITLE: "Servis Sürücüleri",
     },
     MEALSCHEDULE_INDEX: {
-      TITLE: 'Yemek Menüsü',
+      TITLE: "Yemek Menüsü",
     },
     MEAL_INDEX: {
-      TITLE: 'Öğün Listesi',
+      TITLE: "Öğün Listesi",
     },
     DISH_INDEX: {
-      TITLE: 'Yemek Listesi',
+      TITLE: "Yemek Listesi",
     },
     MEALSCHEDULE_CREATE: {
-      TITLE: 'Yemek Menüsü Oluştur',
+      TITLE: "Yemek Menüsü Oluştur",
     },
     SAFETYCALL_INDEX: {
-      TITLE: 'Güvendeyim',
+      TITLE: "Güvendeyim",
     },
     DOCTOR_INDEX: {
-      TITLE: 'Şirkete Ait Doktor Listesi',
+      TITLE: "Şirkete Ait Doktor Listesi",
     },
     PERSONAL_NEWCOMERS: {
-      TITLE: 'Aramıza Yeni Katılanlar',
+      TITLE: "Aramıza Yeni Katılanlar",
     },
     PERSONAL_TODAYBORNS: {
-      TITLE: 'Bugün Doğanlar',
+      TITLE: "Bugün Doğanlar",
     },
     CONTACT_INDEX: {
-      TITLE: 'Kişiler',
+      TITLE: "Kişiler",
     },
     BEACON_INDEX: {
-      TITLE: 'Beacon Listesi',
+      TITLE: "Beacon Listesi",
     },
     CORPORATION_SOCIALMEDIALINKS: {
-      TITLE: 'Sosyal Medya Linkleri',
+      TITLE: "Sosyal Medya Linkleri",
     },
     CORPORATION_JOBADVERTISEMENTLINKS: {
-      TITLE: 'İş İlanı Linkleri',
+      TITLE: "İş İlanı Linkleri",
     },
     CORPORATION_USEFULLLINKS: {
-      TITLE: 'Yararlı Linkler',
+      TITLE: "Yararlı Linkler",
     },
     CORPORATION_APPLICATIONLINKS: {
-      TITLE: 'Kurum İçi Uygulamalar',
+      TITLE: "Kurum İçi Uygulamalar",
     },
   },
 
   WORKSTATION: {
-    TITLE: 'Çalışma Masaları',
+    TITLE: "Çalışma Masaları",
     WORKSTATIONZONE_ZONEINDEX: {
-      TITLE: 'Bölüm Tanımlama',
+      TITLE: "Bölüm Tanımlama",
     },
     WORKSTATIONRESERVATION_INDEX: {
-      TITLE: 'Rezervasyon',
+      TITLE: "Rezervasyon",
     },
     WORKSTATIONRESERVATION_RESERVATIONREPORT: {
-      TITLE: 'Rezervasyon Raporları',
+      TITLE: "Rezervasyon Raporları",
     },
     WORKSTATIONRESERVATION_RESERVATIONPENDINGCONFIRMATIONREPORT: {
-      TITLE: 'Onay Bekleyen Raporu',
+      TITLE: "Onay Bekleyen Raporu",
     },
   },
 
   MEETINGROOM: {
-    TITLE: 'Toplantı Odaları',
+    TITLE: "Toplantı Odaları",
     MEETINGROOM_INDEX: {
-      TITLE: 'Tanımlamalar',
+      TITLE: "Tanımlamalar",
     },
     MEETIN_INDEX: {
-      TITLE: 'Rezervasyonlar',
+      TITLE: "Rezervasyonlar",
     },
   },
 
   DOCTOR: {
-    TITLE: 'Doktor',
+    TITLE: "Doktor",
     DOCTOR_SELECTAPPOINTMENT: {
-      TITLE: 'Randevu Saatleri',
+      TITLE: "Randevu Saatleri",
     },
     DOCTOR_PERSONELAPPOINTMENT: {
-      TITLE: 'Randevu Listem',
+      TITLE: "Randevu Listem",
     },
   },
 
   VISITOR: {
-    TITLE: 'Ziyaretçi Yönetimi',
+    TITLE: "Ziyaretçi Yönetimi",
     VISITOR_INDEX: {
-      TITLE: 'Ziyaret Kayıtları',
+      TITLE: "Ziyaret Kayıtları",
     },
     VISITOR_GUESTS: {
-      TITLE: 'Ziyaretçi Listesi',
+      TITLE: "Ziyaretçi Listesi",
       GUEST_HISTORY: {
-        TITLE: 'Ziyaretçinin Geçmiş Ziyaret Kayıtları',
+        TITLE: "Ziyaretçinin Geçmiş Ziyaret Kayıtları",
       },
     },
     VISITOR_CARDS: {
-      TITLE: 'Ziyaretçi Kartları',
+      TITLE: "Ziyaretçi Kartları",
     },
     VISITOR_REPORT: {
-      TITLE: 'Ziyaret Raporu',
+      TITLE: "Ziyaret Raporu",
     },
   },
 
   CARGOTRACKING: {
-    TITLE: 'Kargo Yönetimi',
+    TITLE: "Kargo Yönetimi",
     CARGOTRACKING_INDEX: {
-      TITLE: 'Kargolarım',
+      TITLE: "Kargolarım",
     },
     CARGOTRACKING_WORKPLACECARGOS: {
-      TITLE: 'İşyeri Kargoları',
+      TITLE: "İşyeri Kargoları",
     },
     CARGOTRACKING_REPORT: {
-      TITLE: 'Kargo Kayıtları Raporu',
+      TITLE: "Kargo Kayıtları Raporu",
     },
   },
 
   FAQ: {
-    TITLE: 'Sıkça Sorulan Sorular',
+    TITLE: "Sıkça Sorulan Sorular",
     FAQ_INDEX: {
-      TITLE: 'S.S.S',
+      TITLE: "S.S.S",
     },
     FAQ_MANAGMENT: {
-      TITLE: 'S.S.S Listesi',
+      TITLE: "S.S.S Listesi",
       MANAGEMENT_EDIT: {
-        TITLE: 'S.S.S Düzenle',
+        TITLE: "S.S.S Düzenle",
       },
       MANAGEMENT_ADD: {
-        TITLE: 'S.S.S Ekle',
+        TITLE: "S.S.S Ekle",
       },
     },
   },
 
   ANNOUNCEMENT: {
-    TITLE: 'Duyuru Yönetimi',
+    TITLE: "Duyuru Yönetimi",
     ANNOUNCEMENT_INDEX: {
-      TITLE: 'Duyurularım',
-      MANAGMENT: 'Duyuru Listesi',
+      TITLE: "Duyurularım",
+      MANAGMENT: "Duyuru Listesi",
     },
   },
 
   CAMPAIGN: {
-    TITLE: 'Kampanya Yönetimi',
+    TITLE: "Kampanya Yönetimi",
     CAMPAIGN_INDEX: {
-      TITLE: 'Kampanyalar',
+      TITLE: "Kampanyalar",
     },
     CAMPAIGN_MANAGEMENT: {
-      TITLE: 'Kampanya Listesi',
+      TITLE: "Kampanya Listesi",
     },
   },
 
   CORPORATIONNEWS: {
-    TITLE: 'Şirketten Haberler',
+    TITLE: "Şirketten Haberler",
     CORPORATION_NEWS: {
-      TITLE: 'Haberler',
+      TITLE: "Haberler",
     },
     CORPORATION_NEWS_MANAGEMENT: {
-      TITLE: 'Haber Listesi',
+      TITLE: "Haber Listesi",
     },
   },
 
   CEOPOST: {
-    TITLE: 'CEO Köşesi',
+    TITLE: "CEO Köşesi",
     CEOPOST_INDEX: {
-      TITLE: 'Mesajlar',
+      TITLE: "Mesajlar",
     },
     CEOPOST_MANAGEMENT: {
-      TITLE: 'Mesaj Listesi',
+      TITLE: "Mesaj Listesi",
     },
   },
 
   TOURNAMENT: {
-    TITLE: 'Yarışma Yönetimi',
+    TITLE: "Yarışma Yönetimi",
     TOURNAMENT_INDEX: {
-      TITLE: 'Yarışmalar',
+      TITLE: "Yarışmalar",
     },
     TOURNAMENT_MANAGEMENT: {
-      TITLE: 'Yarışma Listesi',
+      TITLE: "Yarışma Listesi",
     },
   },
 
   EVENT: {
-    TITLE: 'Etkinlik Yönetimi',
+    TITLE: "Etkinlik Yönetimi",
     EVENT_INDEX: {
-      TITLE: 'Etkinlikler',
+      TITLE: "Etkinlikler",
     },
     EVENT_MANAGEMENT: {
-      TITLE: 'Etkinlik Listesi',
+      TITLE: "Etkinlik Listesi",
     },
   },
 
   CELEBRATION: {
-    TITLE: 'Kutlamalar',
+    TITLE: "Kutlamalar",
     CELEBRATION_INDEX: {
-      TITLE: 'Kutlama Listesi',
+      TITLE: "Kutlama Listesi",
     },
   },
 
   POLL: {
-    TITLE: 'Anket Yönetimi',
+    TITLE: "Anket Yönetimi",
     POLL_INDEX: {
-      TITLE: 'Anket Listesi',
+      TITLE: "Anket Listesi",
     },
     POLL_SURVEYTEMPLATE: {
-      TITLE: 'Form Şablonları',
+      TITLE: "Form Şablonları",
     },
     POLL_SURVEYINDEX: {
-      TITLE: 'Form Anket Listesi',
+      TITLE: "Form Anket Listesi",
     },
   },
 
   MYPOLL: {
-    TITLE: 'Anketlerim',
+    TITLE: "Anketlerim",
     POLLPERSONELINDEX: {
-      TITLE: 'Hızlı Anketler',
+      TITLE: "Hızlı Anketler",
     },
     SURVEYTEMPLATEINDEX: {
-      TITLE: 'Form Anketler',
+      TITLE: "Form Anketler",
     },
   },
 
   LIBARY: {
-    TITLE: 'Döküman Yönetimi',
+    TITLE: "Döküman Yönetimi",
     LIBRARY_INDEX: {
-      TITLE: 'Kütüphanem',
+      TITLE: "Kütüphanem",
     },
     LIBRARY_PUBLICDOCUMENTS: {
-      TITLE: 'Genel Dokümanlar',
+      TITLE: "Genel Dokümanlar",
     },
     LIBRARY_PERSONNELDOCSBULKINSERT: {
-      TITLE: 'Toplu Kişisel Döküman',
+      TITLE: "Toplu Kişisel Döküman",
     },
   },
 
   SUGGESTION: {
-    TITLE: 'Öneri Kutusu',
+    TITLE: "Öneri Kutusu",
     SUGGESTION_INDEX: {
-      TITLE: 'Öneriler',
+      TITLE: "Öneriler",
     },
     SUGGESTION_ALL_INDEX: {
-      TITLE: 'Tüm Öneriler',
+      TITLE: "Tüm Öneriler",
     },
     SUGGESTION_MY_INDEX: {
-      TITLE: 'Önerilerim',
+      TITLE: "Önerilerim",
     },
     SUGGESTION_ACTIVE_INDEX: {
-      TITLE: 'Aktif Öneriler',
+      TITLE: "Aktif Öneriler",
     },
     SUGGESTION_FINISHED_INDEX: {
-      TITLE: 'Sonlanmış Öneriler',
+      TITLE: "Sonlanmış Öneriler",
     },
     SUGGESTION_APPLIED_INDEX: {
-      TITLE: 'Uygulanmış Öneriler',
+      TITLE: "Uygulanmış Öneriler",
     },
     SUGGESTION_DECLINED_INDEX: {
-      TITLE: 'Reddedilen Öneriler',
+      TITLE: "Reddedilen Öneriler",
     },
     SUGGESTION_COMPETITION: {
-      TITLE: 'Yarışmalar',
+      TITLE: "Yarışmalar",
     },
     SUGGESTION_ONREVIEW: {
-      TITLE: 'Onay Bekleyenler',
+      TITLE: "Onay Bekleyenler",
     },
     SUGGESTION_CATEGORY: {
-      TITLE: 'Kategoriler',
+      TITLE: "Kategoriler",
     },
     SUGGESTION_ANALYZES: {
-      TITLE: 'Analizler',
+      TITLE: "Analizler",
     },
     SUGGESTION_SUGGESTIONNUMBERSREPORT: {
-      TITLE: 'Öneri Sayısı Raporu',
+      TITLE: "Öneri Sayısı Raporu",
     },
     SUGGESTION_SUGGESTIONONREVIEWREPORT: {
-      TITLE: 'Onay Bekleyenler Raporu',
+      TITLE: "Onay Bekleyenler Raporu",
     },
     SUGGESTION_SUGGESTIONONREVIEWTIMEREPORT: {
-      TITLE: 'Öneri Bekleme Süresi Raporu',
+      TITLE: "Öneri Bekleme Süresi Raporu",
     },
   },
 
   SUPPORTTICKET: {
-    TITLE: 'Destek Kayıtları',
+    TITLE: "Destek Kayıtları",
     SUPPORTTICKET_INDEX: {
-      TITLE: 'Destek Kayıtlarım',
+      TITLE: "Destek Kayıtlarım",
     },
     SUPPORTTICKET_TICKETS: {
-      TITLE: 'Destek Kayıtları',
+      TITLE: "Destek Kayıtları",
     },
   },
 
   EDUCATION: {
-    TITLE: 'Eğitim Yönetimi',
+    TITLE: "Eğitim Yönetimi",
     EDUCATION_ACTIVITY: {
-      TITLE: 'Eğitim Listesi',
+      TITLE: "Eğitim Listesi",
     },
     EDUCATION_INSTRUCTOR: {
-      TITLE: 'Eğitmen Listesi',
+      TITLE: "Eğitmen Listesi",
     },
     EDUCATION_EVALUATIONFORM: {
-      TITLE: 'Eğitim Değerlendirme Formları',
+      TITLE: "Eğitim Değerlendirme Formları",
     },
   },
 
   ONBOARDING: {
-    TITLE: 'İşe Alım İşlemleri',
+    TITLE: "İşe Alım İşlemleri",
 
     ONBOARDING_INDEX: {
-      TITLE: 'Aday Yönetimi',
+      TITLE: "Aday Yönetimi",
     },
 
     ONBOARDING_DOCUMENTINDEX: {
-      TITLE: 'Döküman Yönetimi',
+      TITLE: "Döküman Yönetimi",
     },
 
     ONBOARDING_ORIENTATIONINDEX: {
-      TITLE: 'Değerlendirme Formu',
+      TITLE: "Değerlendirme Formu",
     },
     ONBOARDING_EQUIPMENTS: {
-      TITLE: 'Araç Gereç Yönetimi',
+      TITLE: "Araç Gereç Yönetimi",
     },
     ONBOARDING_SETTINGINDEX: {
-      TITLE: 'Ayarlar',
+      TITLE: "Ayarlar",
     },
   },
 
   GENERALDEFINITIONS: {
-    TITLE: 'Genel Tanımlar',
+    TITLE: "Genel Tanımlar",
     WORKFLOW_INDEX: {
-      TITLE: 'İş Akışları',
+      TITLE: "İş Akışları",
     },
     LEAVE_LEAVEGROUP: {
-      TITLE: 'İzin Kıdem Tablosu',
+      TITLE: "İzin Kıdem Tablosu",
     },
     DEFINITION_GROUP: {
-      TITLE: 'Tanım Grupları',
+      TITLE: "Tanım Grupları",
     },
     USER_ROLE: {
-      TITLE: 'Rol Listesi',
+      TITLE: "Rol Listesi",
     },
     OFFICIALDAY_INDEX: {
-      TITLE: 'Resmi Tatiller',
+      TITLE: "Resmi Tatiller",
     },
     CORPORATION_DIRECTORYAUTHORIZATION: {
-      TITLE: 'Yaka Tipine Göre Rehber Yetkilendirme',
+      TITLE: "Yaka Tipine Göre Rehber Yetkilendirme",
     },
     CORPORATION_FIELDDIRECTORYAUTHORIZATION: {
-      TITLE: 'Alanlara Göre Yetkilendirme',
+      TITLE: "Alanlara Göre Yetkilendirme",
     },
   },
 
   SECURITY: {
-    TITLE: 'Devriye Yönetimi',
+    TITLE: "Devriye Yönetimi",
     SECURITY_PATROL: {
-      TITLE: 'Devriye Listesi',
+      TITLE: "Devriye Listesi",
     },
     SECURITY_ROUTE: {
-      TITLE: 'Rota Listesi',
+      TITLE: "Rota Listesi",
       ROUTE_POINT: {
-        TITLE: 'Rota Nokta Listesi',
+        TITLE: "Rota Nokta Listesi",
       },
     },
     SECURITY_POINT: {
-      TITLE: 'Nokta Listesi',
+      TITLE: "Nokta Listesi",
     },
     SECURITY_PROJECT: {
-      TITLE: 'Proje Listesi',
+      TITLE: "Proje Listesi",
     },
     SECURITY_WORKPLACE: {
-      TITLE: 'İşyeri Listesi',
+      TITLE: "İşyeri Listesi",
     },
     SECURITY_CUSTOMER: {
-      TITLE: 'Müşteri Listesi',
+      TITLE: "Müşteri Listesi",
     },
     SECURITY_PERSONNEL: {
-      TITLE: 'Personel Listesi',
+      TITLE: "Personel Listesi",
     },
     SECURITY_REPORT: {
-      TITLE: 'Raporlar',
+      TITLE: "Raporlar",
       REPORT_INCIDENT: {
-        TITLE: 'Olay/Kaza Raporu',
+        TITLE: "Olay/Kaza Raporu",
       },
       REPORT_PERSONNEL: {
-        TITLE: 'Personel Raporu',
+        TITLE: "Personel Raporu",
       },
       REPORT_CHECKPOINT: {
-        TITLE: 'Kontrol Noktası Raporu',
+        TITLE: "Kontrol Noktası Raporu",
       },
       REPORT_POINTVISIT: {
-        TITLE: 'Nokta Ziyaret Raporu',
+        TITLE: "Nokta Ziyaret Raporu",
       },
       REPORT_PATROLDIFFRENCETIME: {
-        TITLE: 'Eksik&Fazla Kapatılan Devriye Raporu',
+        TITLE: "Eksik&Fazla Kapatılan Devriye Raporu",
       },
       REPORT_FAILUREDESCRIPTION: {
-        TITLE: 'Eksik Tamamlanan Devriye Raporu',
+        TITLE: "Eksik Tamamlanan Devriye Raporu",
         FAILURE_DESCRIPTION: {
-          TITLE: 'Eksik Tamamlanan Devriye Döküman Raporu',
+          TITLE: "Eksik Tamamlanan Devriye Döküman Raporu",
         },
       },
     },

@@ -1,4 +1,5 @@
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, Container } from "@mui/material";
+import useLocales from "../locales/useLocales";
 import { useState } from "react";
 import Search from "../components/Search";
 import axios from "axios";
@@ -11,24 +12,25 @@ const API_Key = `c28667177075291b60900e0a0cb2824e`;
 interface IFilter {
   page: number;
   genres: number[];
-  language: string;
 }
 
 function Movies() {
+  const { currentLang, allLangs, onChangeLang } = useLocales();
+  console.log(onChangeLang);
   const [totalPages, setTotalPages] = useState(1);
+  console.log("damn", currentLang.value);
 
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
-    language: "",
   });
 
   //ALL FILMS
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-    ["allMovies", filter],
+    ["allMovies", filter, currentLang.value, onChangeLang],
     () =>
       axios.get(
-        `https://api.themoviedb.org/3/discover/movie?language=${filter.language}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
+        `https://api.themoviedb.org/3/discover/movie?language=${currentLang.value}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
         {
           headers: {
             Authorization:
@@ -42,20 +44,7 @@ function Movies() {
       },
     }
   );
-
-  //TYPES
-  // const { isLoading: isLoadingTrends, data: genresData } = useQuery(
-  //   ["GenresMovies"],
-  //   () =>
-  //     axios.get("https://api.themoviedb.org/3/genre/movie/list?language=tr", {
-  //       headers: {
-  //         Authorization:
-  //           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //       },
-  //     })
-  // );
-
-  //TV SERIES
+  console.log("first", totalPages);
 
   return (
     <MainLayout movieList={allData?.data?.results}>
@@ -68,7 +57,9 @@ function Movies() {
         }}
       >
         {isLoadingAllMovies ? (
-          <div>Loading...</div>
+          <Box sx={{ width: "100%", height: "100%", marginLeft: "19rem" }}>
+            Loading...
+          </Box>
         ) : (
           <MovieList
             movieList={allData?.data?.results ?? []}
@@ -77,7 +68,6 @@ function Movies() {
             total={totalPages}
           />
         )}
-
         <Box>
           <RightSideBar
             genres={filter.genres}

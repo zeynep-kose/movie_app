@@ -41,109 +41,110 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   return (
     <Stack
       sx={{
-        [theme.breakpoints.up("xl")]: {
-          width: "100%",
-        },
-        [theme.breakpoints.up("lg")]: {
-          width: "60%",
-        },
+        // [theme.breakpoints.up("xl")]: {
+        //   width: "100%",
+        // },
+
         height: "100%",
         alignItems: "center",
-        // // width: "60%",
-        marginLeft: "15rem",
+        width: "55%",
+        marginLeft: "19rem",
+        [theme.breakpoints.up("lg")]: {
+          width: "57%",
+        },
       }}
     >
-      <Container
+      <Box
         sx={{
-          rowGap: "3rem",
           display: "flex",
           flexDirection: "column",
-          height: "100%",
+          paddingTop: "2rem",
+          alignItems: "baseline",
         }}
       >
-        <Box
+        <Grid
+          item
+          xs={2}
+          sm={4}
+          md={4}
+          lg={3}
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: "2rem",
-            alignItems: "baseline",
+            // display: "flex",
+            // flexWrap: "wrap",
+
+            height: "100%",
           }}
         >
-          <Grid
-            item
-            xs={2}
-            sm={4}
-            md={4}
-            lg={3}
+          <Box
             sx={{
               display: "flex",
-              // flexWrap: "wrap",
-
-              height: "100%",
+              flexDirection: "column",
+              justifyContent: "center",
             }}
           >
-            <Stack sx={{ width: "100%" }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "space-around",
-                  margin: "2rem 0",
-                  rowGap: "3rem",
-                  [theme.breakpoints.up("xl")]: {
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                margin: "2rem 0",
+                rowGap: "3rem",
+                // position: "fixed",
+                right: "0",
+                // [theme.breakpoints.up("xl")]: {
+                //   width: "100%",
+                //   // justifyContent: "space-between",
+                // },
+              }}
+            >
+              {movieList?.map((item, id) => {
+                return (
+                  <Link to={`/details/${item.id}`}>
+                    <img
+                      style={{
+                        width: "250px",
+                        height: "300px",
+                        borderRadius: "1.5rem",
+                      }}
+                      alt="img-1"
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    ></img>{" "}
+                  </Link>
+                );
+              })}
+            </Box>
+            <Pagination
+              page={curentPage}
+              sx={{
+                display: "flex",
+                alignSelf: "center",
+                backgroundColor: "wheat",
+                borderRadius: "1.5rem",
+                width: "23rem",
+                margin: "0 auto ",
+              }}
+              onChange={(event: React.ChangeEvent<unknown>, page: number) => {
+                setpage(page);
+              }}
+              count={total}
+              renderItem={(item) => (
+                <PaginationItem
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
                     width: "100%",
-
-                    // justifyContent: "space-between",
-                  },
-                }}
-              >
-                {movieList?.map((item, id) => {
-                  return (
-                    <Link to={`/details/${item.id}`}>
-                      <img
-                        style={{
-                          width: "250px",
-                          height: "300px",
-                          borderRadius: "1.5rem",
-                        }}
-                        alt="img-1"
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                      ></img>{" "}
-                    </Link>
-                  );
-                })}
-              </Box>
-              <Pagination
-                page={curentPage}
-                sx={{
-                  display: "flex",
-                  alignSelf: "center",
-                  backgroundColor: "wheat",
-                  borderRadius: "1.5rem",
-                }}
-                onChange={(event: React.ChangeEvent<unknown>, page: number) => {
-                  setpage(page);
-                }}
-                count={total}
-                renderItem={(item) => (
-                  <PaginationItem
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      width: "100%",
-                    }}
-                    slots={{
-                      previous: ArrowBackIcon,
-                      next: ArrowForwardIcon,
-                    }}
-                    {...item}
-                  />
-                )}
-              />
-            </Stack>
-          </Grid>
-        </Box>
-      </Container>
+                  }}
+                  slots={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                />
+              )}
+            />
+          </Box>
+        </Grid>
+      </Box>
     </Stack>
   );
 }

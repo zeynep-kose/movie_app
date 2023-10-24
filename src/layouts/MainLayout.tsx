@@ -17,6 +17,7 @@ const MainLayout = ({ children, movieList }: HomeLayoutProps) => {
         flexDirection: "row",
         alignItems: "flex-start",
         justifyContent: "space-between",
+        width: "100%",
       }}
     >
       <LeftSideBar />

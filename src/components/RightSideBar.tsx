@@ -58,6 +58,7 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
           alignSelf: "start",
           width: "19rem",
           rowGap: "1rem",
+          paddingRight: "1rem",
         }}
       >
         <Typography

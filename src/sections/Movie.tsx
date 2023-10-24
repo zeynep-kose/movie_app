@@ -96,7 +96,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
             >
               <Box
                 sx={{
-                  width: "100%", // buna fix bişi vermen gerekiyor bilgin olsun
+                  width: "100%",
                   // height: "120px",
                 }}
               >
@@ -122,7 +122,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "305px",
                         }}
                       >
-                        <Link to={`/details/${item.id}`}>
+                        <Link to={`/details/movie?=/${item.id}`}>
                           <img
                             style={{
                               width: "100%",

@@ -23,12 +23,15 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DetailBottom from "../sections/DetailBottom";
+
 function DetailMovies() {
+  const theme = useTheme();
   const { id } = useParams();
-  // console.log("id", id);
+
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
     () =>
