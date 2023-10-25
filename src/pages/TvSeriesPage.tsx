@@ -30,11 +30,8 @@ function Home() {
     genres: [],
   });
 
-  const context = useContext(MyContext);
-
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [filterIds, setFilterIds] = useState<number[]>([]);
 
   //TV SERIES
   const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
@@ -73,8 +70,6 @@ function Home() {
   if (isLoadingTv) {
     return <div>Loading...</div>;
   }
-
-  const genreNames = genresData?.data?.genres.map((item: any) => item);
 
   return (
     <Stack>

@@ -37,7 +37,7 @@ function Search({ movieList }: SearchProps) {
     movieList?.map((movie: any) => {
       if (movie.original_title === value) {
         finded_movie = movie;
-        console.log("sldkşfkh", finded_movie.id);
+
         navigate(`/details/${finded_movie.id}`);
         return movie;
       }
@@ -84,6 +84,9 @@ function Search({ movieList }: SearchProps) {
             // margin: "0 auto",
             borderRadius: "30px",
             width: "55rem",
+          }}
+          onChange={(e) => {
+            console.log("result", e);
           }}
           options={
             movieList?.map((e) => {
@@ -133,12 +136,14 @@ function Search({ movieList }: SearchProps) {
           sx={{ m: 1, backgroundColor: "white", width: "45px" }}
           variant="standard"
         >
+          {/* <InputLabel>Lang</InputLabel> */}
           <Select
             labelId="demo-customized-select-label"
             id="demo-customized-select"
             value={"lang"}
             onChange={handleLanguageChange}
             placeholder="lang"
+            label="lang"
           >
             <MenuItem value={"en"}>en</MenuItem>
             <MenuItem value={"tr"}>tr</MenuItem>

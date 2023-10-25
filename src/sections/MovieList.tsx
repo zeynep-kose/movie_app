@@ -1,19 +1,13 @@
-import React, { useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
-import { useContext, Dispatch, SetStateAction } from "react";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import { Stack, Box, Container, Typography, Grid } from "@mui/material";
-import MyContext from "../context/Context";
-import { MyContextProvider } from "../context/Context";
+import { Stack, Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/bundle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 // import { Pagination, Navigation, Scrollbar, A11y } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 // Import Swiper styles
@@ -31,11 +25,10 @@ type movieProps = {
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   const theme = useTheme();
-  const context = useContext(MyContext);
   const movieId = movieList.map((movieType, i) => {
     return movieType.genre_ids;
   });
-  console.log("movieeeeee", movieId);
+  // console.log("movieeeeee", movieId);
 
   // setMovie([...movie, movie]);
   return (

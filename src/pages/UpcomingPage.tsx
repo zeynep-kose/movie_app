@@ -75,13 +75,6 @@ function UpcomingPage() {
     return <div>Loading...</div>;
   }
 
-  //console.log("2.apidengelen:", genreNames);
-
-  // const type = genreIds.map((item: any) => {
-  //   const names = item.map((typeId: any) => {});
-  // });
-  // console.log("Genre Names Array:", type);
-
   return (
     <Stack sx={{}}>
       <Search movieList={Upcoming?.data?.results ?? []} />
@@ -107,7 +100,6 @@ function UpcomingPage() {
             genres={filter.genres}
             setGenres={(genres) => setFilter({ ...filter, genres: genres })}
           />
-          {/* <RightSideBarBottom /> */}
         </Box>
         {isLoadingUpcoming ? (
           <div>Loading...</div>

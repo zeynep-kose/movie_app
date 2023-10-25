@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Checkbox } from "@mui/material";
+import { Checkbox, Hidden } from "@mui/material";
 import {
   Card,
   CardActions,
@@ -22,7 +22,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import MyContext from "../context/Context";
 
 interface IRightSideBar {
   genres: number[];
@@ -50,7 +49,12 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
   );
 
   return (
-    <Stack sx={{ display: "flex", alignSelf: "start" }}>
+    <Stack
+      sx={{
+        display: "flex",
+        alignSelf: "start",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -59,6 +63,7 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
           width: "19rem",
           rowGap: "1rem",
           paddingRight: "1rem",
+          height: "38rem",
         }}
       >
         <Typography
@@ -70,61 +75,70 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
             alignItems: "center",
           }}
         >
-          <Link sx={{ color: "#E8E8E8", fontSize: "1.5rem" }} underline="none">
-            Categories
-          </Link>
-          <Link
-            sx={{ fontSize: ".9rem", color: "#666666", fontWeight: "bold" }}
-            underline="none"
-            onClick={() => setGenres([])}
+          <ListItem
+            sx={{ overflowY: "scroll", justifyContent: "space-between" }}
           >
-            Uncheck all{" "}
-          </Link>
+            <Link
+              sx={{ color: "#E8E8E8", fontSize: "1.5rem" }}
+              underline="none"
+            >
+              Categories
+            </Link>
+            <Link
+              sx={{ fontSize: ".9rem", color: "#666666", fontWeight: "bold" }}
+              underline="none"
+              onClick={() => setGenres([])}
+            >
+              Uncheck all{" "}
+            </Link>
+          </ListItem>
         </Typography>
-        <Card
-          sx={{
-            borderRadius: "1.5rem",
-            // backgroundColor: "#191919",
-            width: "100%",
-            backgroundColor: "#212121",
-          }}
-        >
-          <CardContent>
-            <List>
-              {genresData?.data?.genres?.map((genre: any) => {
-                const isChecked =
-                  genres.findIndex((c) => c === genre.id) !== -1;
-                return (
-                  <Box>
-                    <ListItem
-                      key={genre.id}
-                      sx={{
-                        color: "#E8E8E8",
-                        fontWeight: "bold",
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {genre.name}
-                      <Checkbox
-                        checked={isChecked}
-                        onClick={() => {
-                          if (isChecked) {
-                            setGenres(genres.filter((c) => c !== genre.id));
-                          } else {
-                            setGenres([...genres, ...[genre.id]]);
-                          }
+        <Box sx={{ overflowY: "scroll" }}>
+          <Card
+            sx={{
+              borderRadius: "1.5rem",
+              // backgroundColor: "#191919",
+              width: "100%",
+              backgroundColor: "#212121",
+            }}
+          >
+            <CardContent>
+              <List>
+                {genresData?.data?.genres?.map((genre: any) => {
+                  const isChecked =
+                    genres.findIndex((c) => c === genre.id) !== -1;
+                  return (
+                    <Box>
+                      <ListItem
+                        key={genre.id}
+                        sx={{
+                          color: "#E8E8E8",
+                          fontWeight: "bold",
+                          display: "flex",
+                          justifyContent: "space-between",
                         }}
-                        // onDoubleClick={handleDoubleClick}
-                      ></Checkbox>
-                    </ListItem>
-                    <Divider sx={{ backgroundColor: "#666666" }} />
-                  </Box>
-                );
-              })}
-            </List>
-          </CardContent>
-        </Card>
+                      >
+                        {genre.name}
+                        <Checkbox
+                          checked={isChecked}
+                          onClick={() => {
+                            if (isChecked) {
+                              setGenres(genres.filter((c) => c !== genre.id));
+                            } else {
+                              setGenres([...genres, ...[genre.id]]);
+                            }
+                          }}
+                          // onDoubleClick={handleDoubleClick}
+                        ></Checkbox>
+                      </ListItem>
+                      <Divider sx={{ backgroundColor: "#666666" }} />
+                    </Box>
+                  );
+                })}
+              </List>
+            </CardContent>
+          </Card>
+        </Box>
       </Box>
     </Stack>
     // <>

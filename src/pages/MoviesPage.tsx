@@ -18,7 +18,7 @@ function Movies() {
   const { currentLang, allLangs, onChangeLang } = useLocales();
   console.log(onChangeLang);
   const [totalPages, setTotalPages] = useState(1);
-  console.log("damn", currentLang.value);
+  // console.log("damn", currentLang.value);
 
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
@@ -44,7 +44,7 @@ function Movies() {
       },
     }
   );
-  console.log("first", totalPages);
+  // console.log("first", totalPages);
 
   return (
     <MainLayout movieList={allData?.data?.results}>

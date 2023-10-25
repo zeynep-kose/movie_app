@@ -3,20 +3,7 @@ import LoginForm from "../components/LoginForm";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import axios from "axios";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import LoginRightPart from "../components/LoginRightPart";
 function LoginPage() {
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(

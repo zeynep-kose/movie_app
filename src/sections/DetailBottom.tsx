@@ -32,7 +32,7 @@ type detailBottomProps = {
 };
 
 function DetailBottom({ details, topRated }: detailBottomProps) {
-  console.log("fwefew", details);
+  // console.log("fwefew", details);
   const context = useContext(MyContext);
   // const pullDay = details?.results
   //   ?.slice(0, 1)

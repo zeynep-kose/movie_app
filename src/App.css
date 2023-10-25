@@ -10,24 +10,14 @@
   height: 100%;
   width: 100%;
 }
-
-/* .MuiAutocomplete-hasPopupIcon.css-10toc6b-MuiAutocomplete-root
-  .MuiOutlinedInput-root,
-.MuiAutocomplete-hasClearIcon.css-10toc6b-MuiAutocomplete-root
-  .MuiOutlinedInput-root {
-  border-radius: 2rem !important;
-} */
-/* .MuiAutocomplete-hasPopupIcon.css-1pzvkph-MuiAutocomplete-root
-  .MuiOutlinedInput-root,
-.MuiAutocomplete-hasClearIcon.css-1pzvkph-MuiAutocomplete-root
-  .MuiOutlinedInput-root {
-  border-radius: 2rem !important;
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(48, 47, 47);
+  border-radius: 1.5rem;
 }
 
-.css-14k9abt-MuiAutocomplete-root,
-.css-wb57ya-MuiFormControl-root-MuiTextField-root {
-  border-radius: 2rem !important;
-} */
 .css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 2rem !important;
   /* background-color: #212121; */
@@ -38,18 +28,6 @@
   flex-direction: row !important;
 }
 
-/* .css-1mrw4zb-MuiFormControl-root-MuiTextField-root,
-.css-v4u5dn-MuiInputBase-root-MuiInput-root,
-.css-1x51dt5-MuiInputBase-input-MuiInput-input {
-  color: white !important;
-} */
-/* .swiper-horizontal .swiper .swiper-button-prev,
-.swiper-button-next {
-  background: red;
-  border-radius: 50%;
-  padding: 30px;
-  top: 0;
-} */
 .swiper-android .swiper-slide,
 .swiper-ios .swiper-slide,
 .swiper-wrapper {

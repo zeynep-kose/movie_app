@@ -43,7 +43,7 @@ function DetailMovies() {
       })
   );
 
-  console.log("wegregwg", allData);
+  // console.log("wegregwg", allData);
 
   //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
@@ -80,7 +80,6 @@ function DetailMovies() {
             url="https://www.youtube.com/watch?v=eoOaKN4qCKw"
             height={"600px"}
             width={"1000px"}
-            // style={{ width: "1000px", height: "600px" }}
           />
         </Box>
         <DetailBottom
