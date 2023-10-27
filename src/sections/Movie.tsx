@@ -9,11 +9,6 @@ import {
   Container,
   Typography,
   Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import "swiper/css";
@@ -122,7 +117,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "305px",
                         }}
                       >
-                        <Link to={`/details/movie?=/${item.id}`}>
+                        <Link to={`/details/movie/${item.id}`}>
                           <img
                             style={{
                               width: "100%",

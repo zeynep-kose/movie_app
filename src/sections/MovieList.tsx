@@ -27,10 +27,9 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   const theme = useTheme();
   const movieId = movieList.map((movieType, i) => {
     return movieType.genre_ids;
+    console.log("movielist", movieList);
   });
-  // console.log("movieeeeee", movieId);
 
-  // setMovie([...movie, movie]);
   return (
     <Stack
       sx={{
@@ -90,6 +89,7 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                 // },
               }}
             >
+              {/* localhost:300/details/movie?=id */}
               {movieList?.map((item, id) => {
                 return (
                   <Link to={`/details/${item.id}`}>

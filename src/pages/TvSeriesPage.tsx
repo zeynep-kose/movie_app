@@ -17,6 +17,7 @@ import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
 import { number } from "yup";
 import TvList from "../sections/TvList";
+import { genresApi } from "../api/api";
 const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 interface IFilter {
@@ -53,8 +54,9 @@ function Home() {
     }
   );
   console.log("tvSeriesData", tvSeriesData);
+
   //TYPES
-  const { isLoading: isLoadingTrends, data: genresData } = useQuery(
+  const { isLoading: isLoadingGenres, data: genresData } = useQuery(
     ["GenresMovies"],
     () =>
       axios.get("https://api.themoviedb.org/3/genre/movie/list?language=tr", {

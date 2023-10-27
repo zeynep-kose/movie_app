@@ -1,28 +1,12 @@
 import React from "react";
 import * as yup from "yup";
 import { useParams } from "react-router-dom";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Button,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { Stack, Box } from "@mui/material";
 
 import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
 import { useTheme } from "@mui/material/styles";
 import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -31,6 +15,9 @@ import DetailBottom from "../sections/DetailBottom";
 function DetailMovies() {
   const theme = useTheme();
   const { id } = useParams();
+  console.log("idddididididi", id);
+  let x = useParams();
+  console.log("x=>", x);
 
   const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
     ["allMovies"],
@@ -43,7 +30,7 @@ function DetailMovies() {
       })
   );
 
-  // console.log("wegregwg", allData);
+  console.log("Details", allData?.data?.title);
 
   //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(

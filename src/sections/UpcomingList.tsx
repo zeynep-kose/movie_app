@@ -43,7 +43,6 @@ type movieProps = {
 };
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
-  const context = useContext(MyContext);
   const movieId = movieList.map((movieType, i) => {
     return movieType.genre_ids;
   });

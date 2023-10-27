@@ -5,26 +5,10 @@ import {
   Stack,
   Box,
   ListItem,
-  Button,
-  Container,
   Typography,
-  Divider,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
 } from "@mui/material";
-import dayjs from "dayjs";
-import axios from "axios";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
-import { Details } from "@material-ui/icons";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
-import { useContext } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MyContext from "../context/Context";
 
 type detailBottomProps = {
   details: any;
@@ -32,12 +16,11 @@ type detailBottomProps = {
 };
 
 function DetailBottom({ details, topRated }: detailBottomProps) {
-  // console.log("fwefew", details);
-  const context = useContext(MyContext);
   // const pullDay = details?.results
   //   ?.slice(0, 1)
   //   .map((item: any) => dayjs(item?.release_date).year());
   // console.log("pullDay", pullDay);
+
   return (
     <Stack
       sx={{

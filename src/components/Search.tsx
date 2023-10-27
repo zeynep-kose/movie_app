@@ -30,15 +30,13 @@ function Search({ movieList }: SearchProps) {
   const { currentLang, allLangs, onChangeLang } = useLocales();
 
   const theme = useTheme();
-  console.log(movieList);
   const handleMovieSearch = (value: any) => {
-    console.log("value", value.label);
     let finded_movie = null;
     movieList?.map((movie: any) => {
       if (movie.original_title === value) {
         finded_movie = movie;
 
-        navigate(`/details/${finded_movie.id}`);
+        navigate(`/details/movie?id=${finded_movie.id}`);
         return movie;
       }
     });
