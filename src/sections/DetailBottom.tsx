@@ -20,7 +20,7 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
   //   ?.slice(0, 1)
   //   .map((item: any) => dayjs(item?.release_date).year());
   // console.log("pullDay", pullDay);
-
+  console.log("detailsssss", details);
   return (
     <Stack
       sx={{

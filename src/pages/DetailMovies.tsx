@@ -1,38 +1,37 @@
-import React from "react";
-import * as yup from "yup";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Stack, Box } from "@mui/material";
 
 import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
 import { useQuery } from "@tanstack/react-query";
-
+import {
+  allMovies,
+  tvSeriesData,
+  upcomingApi,
+  getMovieDetails,
+} from "../api/api";
 import { useTheme } from "@mui/material/styles";
 import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DetailBottom from "../sections/DetailBottom";
 
 function DetailMovies() {
+  const [details, setDetails] = useState<any>();
   const theme = useTheme();
   const { id } = useParams();
-  console.log("idddididididi", id);
+
   let x = useParams();
   console.log("x=>", x);
 
-  const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-    ["allMovies"],
-    () =>
-      axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-        },
-      })
-  );
+  useEffect(() => {
+    getMovieDetails(id)
+      .then((data) => setDetails(data))
+      .catch((error) => console.error(error));
+  }, [id]);
 
-  console.log("Details", allData?.data?.title);
-
-  //TOP RATED MOVIES
+  console.log("bıhtımmmmm", details);
+  // //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
     ["topRatedMovies"],
     () =>
@@ -48,7 +47,7 @@ function DetailMovies() {
   );
 
   return (
-    <MainLayout movieList={allData?.data?.results}>
+    <MainLayout movieList={details?.data?.results}>
       <Stack
         sx={{
           height: "100%",
@@ -70,7 +69,7 @@ function DetailMovies() {
           />
         </Box>
         <DetailBottom
-          details={allData?.data}
+          details={details}
           topRated={topRatedMovies?.data?.results}
         />
       </Stack>

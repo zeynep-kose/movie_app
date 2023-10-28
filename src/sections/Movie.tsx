@@ -33,6 +33,7 @@ type movieProps = {
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Movie({ movieList, tvList, upcoming }: movieProps) {
+  console.log("yarabbi", movieList);
   const theme = useTheme();
   return (
     <Stack

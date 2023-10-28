@@ -32,7 +32,6 @@ function UpcomingPage() {
     page: 1,
     genres: [],
   });
-  // const theme = useTheme();
 
   const [totalPages, setTotalPages] = useState(1);
   useEffect(() => {
@@ -47,40 +46,7 @@ function UpcomingPage() {
         }
       }
     );
-  }, [setFilter, filter.genres, filter.page]);
-  //Upcoming
-  // const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
-  //   ["Upcoming", filter, currentLang.value, onChangeLang],
-  //   () =>
-  //     axios.get(
-  //       `https://api.themoviedb.org/3/movie/upcoming?language=${currentLang.value}&page=${filter.page}&with_genres=${filter.genres}`,
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //         },
-  //       }
-  //     ),
-  //   {
-  //     onSuccess: (Upcoming) => {
-  //       setTotalPages(Upcoming?.data.total_pages);
-  //     },
-  //   }
-  // );
-
-  //TYPES
-  // const { isLoading: isLoadingGenres, data: genresData } = useQuery(
-  //   ["GenresMovies"],
-  //   () =>
-  //     axios.get("https://api.themoviedb.org/3/genre/movie/list?language=tr", {
-  //       headers: {
-  //         Authorization:
-  //           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //       },
-  //     })
-  // );
-
-  //TV SERIES
+  }, [setFilter, filter.genres, filter.page, currentLang.value]);
 
   if (!upcomingData) {
     return <div>Loading...</div>;

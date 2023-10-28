@@ -43,12 +43,6 @@ type movieProps = {
 };
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
-  const movieId = movieList.map((movieType, i) => {
-    return movieType.genre_ids;
-  });
-  console.log("movieeeeee", movieId);
-
-  // setMovie([...movie, movie]);
   return (
     <Stack
       sx={{

@@ -3,6 +3,7 @@ import { Stack, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import MyContext from "../context/Context";
 import { MyContextProvider } from "../context/Context";
+import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
 import { useContext } from "react";
 import useLocales from "../locales/useLocales";
 import Search from "../components/Search";
@@ -25,6 +26,7 @@ interface IFilter {
   genres: number[];
 }
 function Home() {
+  const [tvShows, setTvShows] = useState<any[]>([]);
   const { currentLang, allLangs, onChangeLang } = useLocales();
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
@@ -34,49 +36,28 @@ function Home() {
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  //TV SERIES
-  const { isLoading: isLoadingTv, data: tvSeriesData } = useQuery(
-    ["tvSeriesData", filter, currentLang.value, onChangeLang],
-    () =>
-      axios.get(
-        `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=${currentLang.value}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-          },
+  useEffect(() => {
+    tvSeriesData(currentLang.value, filter.page, filter.genres).then(
+      (data: any) => {
+        if (data) {
+          console.log("upcoming Data: ", data);
+          setTvShows(data.results);
+          setTotalPages(data?.total_pages);
+        } else {
+          console.error("upcoming çağrısı başarısız: Veri boş veya tanımsız.");
         }
-      ),
-    {
-      onSuccess: (allData) => {
-        setTotalPages(allData.data.total_pages);
-      },
-    }
-  );
-  console.log("tvSeriesData", tvSeriesData);
+      }
+    );
+  }, [setFilter, filter.genres, filter.page]);
 
-  //TYPES
-  const { isLoading: isLoadingGenres, data: genresData } = useQuery(
-    ["GenresMovies"],
-    () =>
-      axios.get("https://api.themoviedb.org/3/genre/movie/list?language=tr", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-        },
-      })
-  );
-
-  //TV SERIES
-
-  if (isLoadingTv) {
+  if (!tvShows) {
     return <div>Loading...</div>;
   }
 
   return (
     <Stack>
       <Box>
-        <Search movieList={tvSeriesData?.data?.results ?? []} />
+        <Search movieList={tvShows ?? []} />
       </Box>
       <Box
         sx={{
@@ -102,7 +83,7 @@ function Home() {
           />
         </Box>
         <TvList
-          movieList={tvSeriesData?.data?.results ?? []}
+          movieList={tvShows ?? []}
           curentPage={page}
           setpage={(page: number) => setFilter({ ...filter, page: page })}
           total={totalPages}
