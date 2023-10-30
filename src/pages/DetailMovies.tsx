@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Stack, Box } from "@mui/material";
-
+import useLocales from "../locales/useLocales";
 import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
 import { useQuery } from "@tanstack/react-query";
@@ -16,21 +16,48 @@ import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DetailBottom from "../sections/DetailBottom";
 
+interface IFilter {
+  page: number;
+  genres: number[];
+}
+
 function DetailMovies() {
+  const { currentLang, allLangs, onChangeLang } = useLocales();
   const [details, setDetails] = useState<any>();
   const theme = useTheme();
   const { id } = useParams();
+  const [filter, setFilter] = useState<IFilter>({
+    page: 1,
+    genres: [],
+  });
 
   let x = useParams();
   console.log("x=>", x);
 
   useEffect(() => {
-    getMovieDetails(id)
+    console.log("lang=>", currentLang.value);
+
+    getMovieDetails(id, currentLang.value)
       .then((data) => setDetails(data))
       .catch((error) => console.error(error));
-  }, [id]);
+  }, [id, currentLang.value]);
 
-  console.log("bıhtımmmmm", details);
+  // useEffect(() => {
+  //   tvSeriesData(currentLang.value, filter.page, filter.genres)
+  //     .then((data: any) => {
+  //       if (data) {
+  //         setTvShows((prevTvShows: any) => [...data.results]);
+  //       } else {
+  //         console.error(
+  //           "tvSeriesData çağrısı başarısız: Veri boş veya tanımsız."
+  //         );
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("tvSeriesData çağrısı başarısız: ", error);
+  //     });
+  // }, [id]);
+
   // //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
     ["topRatedMovies"],

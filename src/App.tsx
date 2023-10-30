@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import LoginPage from "./pages/LoginPage";
 import MoviesPage from "./pages/MoviesPage";
 import DetailMovies from "./pages/DetailMovies";
+import DetailSeries from "./pages/DetailSeries";
 import TvSeriesPage from "./pages/TvSeriesPage";
 import { MyContextProvider } from "./context/Context";
 import UpcomingPage from "./pages/UpcomingPage";
@@ -21,9 +22,10 @@ function App() {
             <Router>
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/" element={<Home />} /> {/* Ana sayfa */}
+                <Route path="/" element={<Home />} /> {/* Ana sayfa */}s
                 <Route path="/movies" element={<MoviesPage />} />
                 <Route path="/details/:type/:id" element={<DetailMovies />} />
+                <Route path="/detail/:tv/:id" element={<DetailSeries />} />
                 <Route path="/tvSeries" element={<TvSeriesPage />} />
                 <Route path="/upcoming" element={<UpcomingPage />} />
               </Routes>

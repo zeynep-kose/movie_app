@@ -98,7 +98,7 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                 >
                   {movieList?.map((item, id) => {
                     return (
-                      <Link to={`/details/upcoming?=${item.id}`}>
+                      <Link to={`/details/upcoming/${item.id}`}>
                         <img
                           style={{
                             width: "250px",

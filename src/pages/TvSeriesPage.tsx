@@ -5,6 +5,7 @@ import MyContext from "../context/Context";
 import { MyContextProvider } from "../context/Context";
 import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import useLocales from "../locales/useLocales";
 import Search from "../components/Search";
 import LeftSideBar from "../components/LeftSideBar";
@@ -25,14 +26,14 @@ interface IFilter {
   page: number;
   genres: number[];
 }
-function Home() {
-  const [tvShows, setTvShows] = useState<any[]>([]);
+function Tvseries() {
+  const [tvShows, setTvShows] = useState<any>();
   const { currentLang, allLangs, onChangeLang } = useLocales();
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
   });
-
+  console.log("currentLanguage====>", currentLang);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -48,11 +49,13 @@ function Home() {
         }
       }
     );
-  }, [setFilter, filter.genres, filter.page]);
+  }, [setFilter, filter.genres, filter.page, currentLang.value]);
 
   if (!tvShows) {
     return <div>Loading...</div>;
   }
+
+  console.log("tvShow", tvShows);
 
   return (
     <Stack>
@@ -93,4 +96,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Tvseries;

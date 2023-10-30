@@ -42,8 +42,6 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
         }
       );
 
-      console.log("response", res);
-
       return res || [];
     }
   );

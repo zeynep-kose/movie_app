@@ -12,11 +12,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
 
 type detailBottomProps = {
-  details: any;
+  tvShow: any;
   topRated: [];
 };
 
-function DetailBottom({ details, topRated }: detailBottomProps) {
+function DetailBottomSeries({ tvShow, topRated }: detailBottomProps) {
   // const pullDay = details?.results
   //   ?.slice(0, 1)
   //   .map((item: any) => dayjs(item?.release_date).year());
@@ -43,11 +43,11 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
           }}
         >
           <p style={{ display: "flex", columnGap: "1rem" }}>
-            <span>{details?.original_title}</span>
+            <span>{tvShow?.original_name}</span>
             {/* {pullDay} */}
           </p>
           <p style={{ fontSize: "1.1rem", lineHeight: "2rem", width: "70%" }}>
-            {details?.overview}
+            {tvShow?.overview}
           </p>
         </Typography>
       </Box>
@@ -86,4 +86,4 @@ function DetailBottom({ details, topRated }: detailBottomProps) {
   );
 }
 
-export default DetailBottom;
+export default DetailBottomSeries;

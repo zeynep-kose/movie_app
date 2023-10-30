@@ -50,13 +50,13 @@ function Movies() {
           console.log("allmovies Data: ", data);
           setMovies(data?.results);
           setTotalPages(data?.total_pages);
-          console.log("filterPageeee", filter.page);
         } else {
           console.error("allmovies çağrısı başarısız: Veri boş veya tanımsız.");
         }
       }
     );
   }, [setFilter, filter.genres, filter.page, currentLang.value]);
+
   return (
     <MainLayout movieList={movies ?? []}>
       <Box

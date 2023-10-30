@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { Stack, Box } from "@mui/material";
 import useLocales from "../locales/useLocales";
+import { useParams } from "react-router-dom";
 
-import Search from "../components/Search";
-import LeftSideBar from "../components/LeftSideBar";
-import axios from "axios";
-import RightSideBar from "../components/RightSideBar";
 import MainLayout from "../layouts/MainLayout";
 import RightSideBarBottom from "../components/RightSideBarBottom";
 import Movie from "../sections/Movie";
@@ -22,20 +19,15 @@ interface IFilter {
 }
 
 function Home() {
-  const [scrollData, setScrollData] = useState(1);
-  const [loadMore, setLoadMore] = useState(true);
-  const [totalPages, setTotalPages] = useState(1);
+  const { currentLang, allLangs, onChangeLang } = useLocales();
   const [pageNumber, setPageNumber] = useState(1);
   const [movies, setMovies] = useState<any[]>([]);
-  const [tvShows, setTvShows] = useState<any[]>([]);
+  const [tvShows, setTvShows] = useState<any>([]);
   const [upcomingData, setUpComingData] = useState<any[]>([]);
-  const [filtered, setFiltered] = useState(movies.slice(0, 20));
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
   });
-
-  const { currentLang, allLangs, onChangeLang } = useLocales();
 
   useEffect(() => {
     allMovies(pageNumber, currentLang.value, filter.genres)

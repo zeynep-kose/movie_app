@@ -33,10 +33,11 @@ function Search({ movieList }: SearchProps) {
   const handleMovieSearch = (value: any) => {
     let finded_movie = null;
     movieList?.map((movie: any) => {
+      console.log(movie);
       if (movie.original_title === value) {
         finded_movie = movie;
 
-        navigate(`/details/movie?id=${finded_movie.id}`);
+        navigate(`/details/movie/${finded_movie.id}`);
         return movie;
       }
     });
@@ -45,7 +46,6 @@ function Search({ movieList }: SearchProps) {
 
   const handleLanguageChange = (e: any) => {
     onChangeLang(e.target.value);
-    console.log(e.target.value);
   };
   return (
     <Stack
@@ -90,10 +90,14 @@ function Search({ movieList }: SearchProps) {
             movieList?.map((e) => {
               return {
                 id: e.id,
-                label: e.title,
+                label: e.title ?? e.name,
               };
-            }) as any
+            }) ?? []
           }
+          onClick={(e: any) => {
+            console.log("wegwegew", e.target.value);
+            // navigate(`/details/movie/${finded_movie.id}`);
+          }}
           onInputChange={(e, value) => handleMovieSearch(value)}
           renderInput={(params: any) => (
             <TextField

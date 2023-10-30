@@ -33,7 +33,6 @@ type movieProps = {
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Movie({ movieList, tvList, upcoming }: movieProps) {
-  console.log("yarabbi", movieList);
   const theme = useTheme();
   return (
     <Stack
@@ -200,7 +199,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           // },
                         }}
                       >
-                        <Link to={`/details/${item.id}`}>
+                        <Link to={`/details/upcoming/${item.id}`}>
                           <img
                             style={{
                               width: "100%",
@@ -273,7 +272,7 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                           height: "300px",
                         }}
                       >
-                        <Link to={`/details/${item.id}`}>
+                        <Link to={`/detail/tv/${item.id}`}>
                           <img
                             style={{
                               width: "100%",
