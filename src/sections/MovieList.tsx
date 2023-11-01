@@ -28,18 +28,19 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
 
   return (
     <Stack
+      className="movieList"
       sx={{
-        // [theme.breakpoints.up("xl")]: {
-        //   width: "100%",
-        // },
+        [theme.breakpoints.up("md")]: {
+          width: "57%",
+          marginLeft: "19rem",
+        },
+        [theme.breakpoints.up("xl")]: {
+          width: "62%",
+          marginLeft: "21rem",
+        },
 
         height: "100%",
         alignItems: "center",
-        width: "55%",
-        marginLeft: "19rem",
-        [theme.breakpoints.up("lg")]: {
-          width: "57%",
-        },
       }}
     >
       <Box

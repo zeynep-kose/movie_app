@@ -10,13 +10,14 @@ import DetailSeries from "./pages/DetailSeries";
 import TvSeriesPage from "./pages/TvSeriesPage";
 import { MyContextProvider } from "./context/Context";
 import UpcomingPage from "./pages/UpcomingPage";
+import ThemeProvider from "./theme/themeProvider";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <HelmetProvider>
-      <MyContextProvider>
+      <ThemeProvider>
         <QueryClientProvider client={queryClient}>
           <div className="app">
             <Router>
@@ -32,7 +33,7 @@ function App() {
             </Router>
           </div>
         </QueryClientProvider>
-      </MyContextProvider>
+      </ThemeProvider>
     </HelmetProvider>
   );
 }

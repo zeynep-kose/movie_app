@@ -11,22 +11,17 @@ import VideocamIcon from "@mui/icons-material/Videocam";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UpcomingIcon from "@mui/icons-material/Upcoming";
-import MoviesPage from "../pages/MoviesPage";
 
 import { Helmet } from "react-helmet-async";
 import {
   Card,
-  CardActions,
-  CardHeader,
   CardContent,
   Typography,
   CardMedia,
   Button,
 } from "@mui/material";
-import useLocales from "../locales/useLocales";
 function LeftSideBar() {
   const theme = useTheme();
-  const { translate } = useLocales();
 
   return (
     <Stack
@@ -123,7 +118,6 @@ function LeftSideBar() {
             </ListItemButton>
           </ListItem>
         </List>
-        {/* <Route path="/movies" element={MoviesPage} /> */}
       </Box>
       <Box
         sx={{

@@ -1,36 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { useContext, Dispatch, SetStateAction } from "react";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
-import MyContext from "../context/Context";
-import { MyContextProvider } from "../context/Context";
+import { Stack, Box, Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/bundle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-// import { Pagination, Navigation, Scrollbar, A11y } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-// Import Swiper styles
-
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
@@ -47,7 +25,8 @@ function TvList({ movieList, curentPage, setpage, total }: tvProps) {
       sx={{
         height: "100%",
         alignItems: "center",
-        // width: "85%",
+        width: "55%",
+        marginLeft: "19rem",
       }}
     >
       <Container

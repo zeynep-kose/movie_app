@@ -1,36 +1,15 @@
 // export default UpcomingList;
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { useContext, Dispatch, SetStateAction } from "react";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
-import MyContext from "../context/Context";
-import { MyContextProvider } from "../context/Context";
+import { Stack, Box, Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/bundle";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-// import { Pagination, Navigation, Scrollbar, A11y } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-// Import Swiper styles
-
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
@@ -43,11 +22,16 @@ type movieProps = {
 };
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
+  const theme = useTheme();
   return (
     <Stack
       sx={{
         height: "100%",
         alignItems: "center",
+        marginLeft: "18rem",
+        [theme.breakpoints.up("xl")]: {
+          width: "100%",
+        },
       }}
     >
       <Container
@@ -84,6 +68,9 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                 // flexWrap: "wrap",
                 width: "100%",
                 height: "100%",
+                [theme.breakpoints.up("xl")]: {
+                  width: "100%",
+                },
               }}
             >
               <Stack spacing={2}>
@@ -94,11 +81,14 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
                     justifyContent: "space-between",
                     margin: "2rem 0",
                     rowGap: "3rem",
+                    [theme.breakpoints.up("xl")]: {
+                      minWidth: "1400px",
+                    },
                   }}
                 >
                   {movieList?.map((item, id) => {
                     return (
-                      <Link to={`/details/upcoming/${item.id}`}>
+                      <Link key={id} to={`/details/upcoming/${item.id}`}>
                         <img
                           style={{
                             width: "250px",

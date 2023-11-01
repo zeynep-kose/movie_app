@@ -1,15 +1,6 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { useContext } from "react";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-} from "@mui/material";
+import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/bundle";

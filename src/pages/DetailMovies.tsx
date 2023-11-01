@@ -2,15 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Stack, Box } from "@mui/material";
 import useLocales from "../locales/useLocales";
-import axios from "axios";
 import MainLayout from "../layouts/MainLayout";
-import { useQuery } from "@tanstack/react-query";
-import {
-  allMovies,
-  tvSeriesData,
-  upcomingApi,
-  getMovieDetails,
-} from "../api/api";
+import { getMovieDetails, topRatedFilms } from "../api/api";
 import { useTheme } from "@mui/material/styles";
 import ReactPlayer from "react-player";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -30,9 +23,10 @@ function DetailMovies() {
     page: 1,
     genres: [],
   });
+  const [topRated, setTopRated] = useState<any>();
 
-  let x = useParams();
-  console.log("x=>", x);
+  // let x = useParams();
+  // console.log("x=>", x);
 
   useEffect(() => {
     console.log("lang=>", currentLang.value);
@@ -42,39 +36,15 @@ function DetailMovies() {
       .catch((error) => console.error(error));
   }, [id, currentLang.value]);
 
-  // useEffect(() => {
-  //   tvSeriesData(currentLang.value, filter.page, filter.genres)
-  //     .then((data: any) => {
-  //       if (data) {
-  //         setTvShows((prevTvShows: any) => [...data.results]);
-  //       } else {
-  //         console.error(
-  //           "tvSeriesData çağrısı başarısız: Veri boş veya tanımsız."
-  //         );
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("tvSeriesData çağrısı başarısız: ", error);
-  //     });
-  // }, [id]);
-
-  // //TOP RATED MOVIES
-  const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
-    ["topRatedMovies"],
-    () =>
-      axios.get(
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-          },
-        }
-      )
-  );
+  useEffect(() => {
+    topRatedFilms()
+      .then((data) => setTopRated(data))
+      .catch((error) => console.error(error));
+  }, []);
+  console.log("=====>>>>>>>>", topRated);
 
   return (
-    <MainLayout movieList={details?.data?.results}>
+    <MainLayout movieList={topRated?.results}>
       <Stack
         sx={{
           height: "100%",
@@ -95,10 +65,7 @@ function DetailMovies() {
             width={"1000px"}
           />
         </Box>
-        <DetailBottom
-          details={details}
-          topRated={topRatedMovies?.data?.results}
-        />
+        <DetailBottom details={details} topRated={topRated?.results} />
       </Stack>
     </MainLayout>
   );

@@ -1,24 +1,10 @@
-import React, { useRef } from "react";
 import { useTheme } from "@mui/material/styles";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardHeader,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import "swiper/css";
 import "swiper/css/bundle";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Scrollbar, A11y } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
 type LoginProps = {

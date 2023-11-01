@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 import { Stack, Box } from "@mui/material";
 import useLocales from "../locales/useLocales";
@@ -6,7 +8,7 @@ import { useParams } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import RightSideBarBottom from "../components/RightSideBarBottom";
 import Movie from "../sections/Movie";
-import { useMutation, useQuery } from "@tanstack/react-query";
+//import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
 import MoviesPage from "./MoviesPage";
 import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
@@ -29,12 +31,16 @@ function Home() {
     genres: [],
   });
 
+  const [done, setDone] = useState<any[]>([]);
+
   useEffect(() => {
     allMovies(pageNumber, currentLang.value, filter.genres)
       .then((data) => {
         setMovies((prevMovies) => [...prevMovies, ...data.results]);
-        if (pageNumber < 30) {
+        if (pageNumber < 2) {
           setPageNumber(pageNumber + 1);
+        } else {
+          setDone(movies);
         }
       })
       .catch((error) => {
@@ -57,7 +63,7 @@ function Home() {
         console.error("tvSeriesData çağrısı başarısız: ", error);
       });
   }, []);
-
+  //yeni bir state olarak movie2 tanımlanır eğer sayfa 30 olursa movieler movie2ye aktarılır prop olarak movie değil movie 2 gider
   useEffect(() => {
     upcomingApi(currentLang.value, filter.page, filter.genres).then(
       (data: any) => {
@@ -79,7 +85,7 @@ function Home() {
   // }
 
   return (
-    <MainLayout movieList={movies}>
+    <MainLayout movieList={done}>
       <Box
         sx={{
           display: "flex",

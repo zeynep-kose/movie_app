@@ -23,7 +23,7 @@ const MainLayout = ({ children, movieList }: HomeLayoutProps) => {
       <LeftSideBar />
 
       <Stack>
-        <Search movieList={movieList} />
+        <Search />
         <main>{children}</main>
       </Stack>
     </Stack>

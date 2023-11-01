@@ -24,30 +24,11 @@ function Movies() {
     genres: [],
   });
 
-  //ALL FILMS
-  // const { isLoading: isLoadingAllMovies, data: allData } = useQuery(
-  //   ["allMovies", filter, currentLang.value, onChangeLang],
-  //   () =>
-  //     axios.get(
-  //       `https://api.themoviedb.org/3/discover/movie?language=${currentLang.value}&page=${filter.page}&sort_by=popularity.desc&with_genres=${filter.genres}`,
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //         },
-  //       }
-  //     ),
-  //   {
-  //     onSuccess: (allData) => {
-  //       setTotalPages(allData.data.total_pages);
-  //     },
-  //   }
-  // );
   useEffect(() => {
     allMovies(currentLang.value, filter.page, filter.genres).then(
       (data: any) => {
         if (data) {
-          console.log("allmovies Data: ", data);
+          // console.log("allmovies Data: ", data);
           setMovies(data?.results);
           setTotalPages(data?.total_pages);
         } else {

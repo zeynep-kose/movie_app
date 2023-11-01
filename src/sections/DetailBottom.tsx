@@ -1,15 +1,8 @@
 import React from "react";
-import {
-  TextField,
-  Autocomplete,
-  Stack,
-  Box,
-  ListItem,
-  Typography,
-} from "@mui/material";
+import { Stack, Box, ListItem, Typography } from "@mui/material";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
+import { tvSeriesData, upcomingApi } from "../api/api";
 
 type detailBottomProps = {
   details: any;

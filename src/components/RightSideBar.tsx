@@ -1,27 +1,12 @@
-import React from "react";
-import { useContext } from "react";
-import { Checkbox, Hidden } from "@mui/material";
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardContent,
-  Typography,
-  CardMedia,
-  Button,
-  Stack,
-  Box,
-  Link,
-} from "@mui/material";
+import { useEffect, useState } from "react";
+
+import { Checkbox } from "@mui/material";
+import { Card, CardContent, Typography, Stack, Box, Link } from "@mui/material";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { genresApi } from "../api/api";
 
 interface IRightSideBar {
   genres: number[];
@@ -29,22 +14,58 @@ interface IRightSideBar {
 }
 
 const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
-  const { isLoading: isLoadingTrends, data: genresData } = useQuery(
-    ["GenresMovies"],
-    async () => {
-      const res = await axios.get(
-        "https://api.themoviedb.org/3/genre/movie/list?language=en",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-          },
-        }
-      );
+  const [isLoading, setIsLoading] = useState(false);
+  const [genresData, setGenresData] = useState<any>([]);
+  // const { isLoading: isLoadingTrends, data: genresData } = useQuery(
+  //   ["GenresMovies"],
+  //   async () => {
+  //     const res = await axios.get(
+  //       "https://api.themoviedb.org/3/genre/movie/list?language=en",
+  //       {
+  //         headers: {
+  //           Authorization:
+  //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
+  //         },
+  //       }
+  //     );
 
-      return res || [];
+  //     return res || [];
+  //   }
+  // );
+  useEffect(() => {
+    // genresApi().then((data: any) => {
+    //   if (data) {
+    //     if (!isLoading) {
+    //       setIsLoading(true);
+
+    //       try {
+    //         const response = await genresApi();
+    //         if (response) {
+    //           setGenresData(response);
+    //         }
+    //       } catch (error) {
+    //         console.error("API isteği sırasında bir hata oluştu: ", error);
+    //       }
+    //     }
+    //   }
+    // });
+    const fetchData = async () => {
+      try {
+        const response = await genresApi();
+
+        if (response) {
+          setGenresData(response);
+        }
+      } catch (error) {
+        console.error("API isteği sırasında bir hata oluştu: ", error);
+      }
+    };
+
+    // Call the async function when isLoading is false.
+    if (!isLoading) {
+      fetchData();
     }
-  );
+  }, [isLoading]);
 
   return (
     <Stack
@@ -102,7 +123,7 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
           >
             <CardContent>
               <List>
-                {genresData?.data?.genres?.map((genre: any) => {
+                {genresData.genres?.map((genre: any) => {
                   const isChecked =
                     genres.findIndex((c) => c === genre.id) !== -1;
                   return (

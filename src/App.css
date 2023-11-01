@@ -38,13 +38,3 @@
 .swiper-wrapper {
   flex-wrap: nowrap;
 }
-
-@media screen and (min-width: 1400px) {
-  .css-1utvtmx-MuiStack-root,
-  .css-3l06g9-MuiContainer-root {
-    min-width: none !important;
-  }
-  .swiper {
-    margin-left: 0;
-  }
-}

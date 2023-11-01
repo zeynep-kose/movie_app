@@ -89,6 +89,7 @@ export const genresApi = async () => {
       },
     }
   );
+  return response.data;
 };
 // / const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
 //   //   ["Upcoming", currentLang.value, onChangeLang],
@@ -103,3 +104,16 @@ export const genresApi = async () => {
 //   //       }
 //   //     )
 //   // );
+
+export const topRatedFilms = async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`,
+    {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
+      },
+    }
+  );
+  return response.data;
+};
