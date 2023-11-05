@@ -29,7 +29,6 @@ export const getMovieDetails = async (id: any, currentLang: any) => {
       },
     }
   );
-  console.log("=====>", currentLang);
   return response.data;
 };
 
@@ -38,7 +37,7 @@ export const tvSeriesData = async (
   pages: any,
   genres: any
 ) => {
-  console.log("current===============>", currentLang);
+  // console.log("current===============>", currentLang);
   const response = await axios.get(
     `https://api.themoviedb.org/3/discover/tv?language=${currentLang}&page=${pages}&sort_by=popularity.desc&with_genres=${genres}`,
     {
@@ -91,19 +90,6 @@ export const genresApi = async () => {
   );
   return response.data;
 };
-// / const { isLoading: isLoadingUpcoming, data: Upcoming } = useQuery(
-//   //   ["Upcoming", currentLang.value, onChangeLang],
-//   //   () =>
-//   //     axios.get(
-//   //       `https://api.themoviedb.org/3/movie/upcoming?language=${currentLang.value}&page=1`,
-//   //       {
-//   //         headers: {
-//   //           Authorization:
-//   //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-//   //         },
-//   //       }
-//   //     )
-//   // );
 
 export const topRatedFilms = async () => {
   const response = await axios.get(

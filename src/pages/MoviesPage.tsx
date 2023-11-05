@@ -1,14 +1,10 @@
-import { Stack, Box, Container } from "@mui/material";
-import { allMovies, tvSeriesData, upcomingApi } from "../api/api";
+import { Box } from "@mui/material";
+import { allMovies } from "../api/api";
 import useLocales from "../locales/useLocales";
 import { useState, useEffect } from "react";
-import Search from "../components/Search";
-import axios from "axios";
 import RightSideBar from "../components/RightSideBar";
 import MovieList from "../sections/MovieList";
-import { useQuery } from "@tanstack/react-query";
 import MainLayout from "../layouts/MainLayout";
-const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 interface IFilter {
   page: number;
@@ -16,7 +12,7 @@ interface IFilter {
 }
 
 function Movies() {
-  const { currentLang, allLangs, onChangeLang } = useLocales();
+  const { currentLang } = useLocales();
   const [movies, setMovies] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [filter, setFilter] = useState<IFilter>({
@@ -24,11 +20,15 @@ function Movies() {
     genres: [],
   });
 
+  const [time, setTime] = useState(500);
+  useEffect(() => {
+    setTime(time + 100);
+  }, [time]);
+
   useEffect(() => {
     allMovies(currentLang.value, filter.page, filter.genres).then(
       (data: any) => {
         if (data) {
-          // console.log("allmovies Data: ", data);
           setMovies(data?.results);
           setTotalPages(data?.total_pages);
         } else {

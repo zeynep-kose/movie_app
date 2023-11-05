@@ -2,18 +2,12 @@ import React from "react";
 import { Stack, Box, ListItem, Typography } from "@mui/material";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
 type detailBottomProps = {
   tvShow: any;
   topRated: [];
 };
 
 function DetailBottomSeries({ tvShow, topRated }: detailBottomProps) {
-  // const pullDay = details?.results
-  //   ?.slice(0, 1)
-  //   .map((item: any) => dayjs(item?.release_date).year());
-  // console.log("pullDay", pullDay);
-
   return (
     <Stack
       sx={{
@@ -36,7 +30,6 @@ function DetailBottomSeries({ tvShow, topRated }: detailBottomProps) {
         >
           <p style={{ display: "flex", columnGap: "1rem" }}>
             <span>{tvShow?.original_name}</span>
-            {/* {pullDay} */}
           </p>
           <p style={{ fontSize: "1.1rem", lineHeight: "2rem", width: "70%" }}>
             {tvShow?.overview}

@@ -9,7 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import HomeIcon from "@mui/icons-material/Home";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UpcomingIcon from "@mui/icons-material/Upcoming";
 
 import { Helmet } from "react-helmet-async";

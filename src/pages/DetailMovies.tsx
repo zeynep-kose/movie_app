@@ -29,8 +29,6 @@ function DetailMovies() {
   // console.log("x=>", x);
 
   useEffect(() => {
-    console.log("lang=>", currentLang.value);
-
     getMovieDetails(id, currentLang.value)
       .then((data) => setDetails(data))
       .catch((error) => console.error(error));
@@ -41,7 +39,6 @@ function DetailMovies() {
       .then((data) => setTopRated(data))
       .catch((error) => console.error(error));
   }, []);
-  console.log("=====>>>>>>>>", topRated);
 
   return (
     <MainLayout movieList={topRated?.results}>

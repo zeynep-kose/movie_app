@@ -6,7 +6,6 @@ import useLocales from "../locales/useLocales";
 import { useParams } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
-import RightSideBarBottom from "../components/RightSideBarBottom";
 import Movie from "../sections/Movie";
 //import { useMutation, useQuery } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "react-query-devtools";
@@ -46,7 +45,7 @@ function Home() {
       .catch((error) => {
         console.error("API çağrısı başarısız: ", error);
       });
-  }, [pageNumber]);
+  }, [pageNumber, currentLang.value]);
 
   useEffect(() => {
     tvSeriesData(currentLang.value, filter.page, filter.genres)
@@ -62,23 +61,37 @@ function Home() {
       .catch((error) => {
         console.error("tvSeriesData çağrısı başarısız: ", error);
       });
-  }, []);
-  //yeni bir state olarak movie2 tanımlanır eğer sayfa 30 olursa movieler movie2ye aktarılır prop olarak movie değil movie 2 gider
+  }, [currentLang.value]);
+  const [isCurrent, setIsCurrent] = useState(currentLang.value);
+
   useEffect(() => {
     upcomingApi(currentLang.value, filter.page, filter.genres).then(
       (data: any) => {
         if (data) {
-          console.log("upcoming Data: ", data);
+          console.log("upcoming Data: ", data.results[0].poster_path);
           setUpComingData((prevUpcomingData: any) => [
             ...prevUpcomingData,
             ...data.results,
           ]);
+          setIsCurrent(currentLang.value);
         } else {
           console.error("upcoming çağrısı başarısız: Veri boş veya tanımsız.");
         }
       }
     );
-  }, []);
+  }, [currentLang.value]);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setX(x + 1);
+  //     console.log("======>>>");
+  //     if (currentLang.value === "tr") {
+  //       currentLang.value = "en";
+  //     } else {
+  //       currentLang.value = "tr";
+  //     }
+  //   }, 2500);
+  // }, [x]);
 
   // if (isLoadingAllMovies) {
   //   return <div>Loading...</div>;
@@ -94,7 +107,11 @@ function Home() {
           paddingTop: "1.5rem",
         }}
       >
-        <Movie movieList={movies} tvList={tvShows} upcoming={upcomingData} />
+        {isCurrent === "tr" ? (
+          <Movie movieList={movies} tvList={tvShows} upcoming={upcomingData} />
+        ) : (
+          <Movie movieList={movies} tvList={tvShows} upcoming={upcomingData} />
+        )}
       </Box>
     </MainLayout>
   );

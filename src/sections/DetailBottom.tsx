@@ -2,7 +2,6 @@ import React from "react";
 import { Stack, Box, ListItem, Typography } from "@mui/material";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { tvSeriesData, upcomingApi } from "../api/api";
 
 type detailBottomProps = {
   details: any;
@@ -10,11 +9,6 @@ type detailBottomProps = {
 };
 
 function DetailBottom({ details, topRated }: detailBottomProps) {
-  // const pullDay = details?.results
-  //   ?.slice(0, 1)
-  //   .map((item: any) => dayjs(item?.release_date).year());
-  // console.log("pullDay", pullDay);
-
   return (
     <Stack
       sx={{

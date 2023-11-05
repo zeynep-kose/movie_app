@@ -1,4 +1,3 @@
-import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { Stack, Box, Container, Typography, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -18,13 +17,16 @@ type movieProps = {
   movieList: any[];
   tvList: any[];
   upcoming: any[];
-  // setPhoto: React.Dispatch<React.SetStateAction<any[]>>;
 };
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Movie({ movieList, tvList, upcoming }: movieProps) {
+  // useEffect(() => {
+  //   console.log("upcomingler===>", movieList);
+  // }, []);
   const theme = useTheme();
+  // console.log("upcomingler===>", upcoming[0]);
   return (
     <Stack
       sx={{
@@ -32,9 +34,21 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
         marginLeft: "17rem",
         alignItems: "center",
         paddingBottom: "1rem",
+        [theme.breakpoints.up("xl")]: {
+          marginLeft: "20rem",
+        },
       }}
     >
-      <Box sx={{ width: "100%", marginLeft: "2rem" }}>
+      <Box
+        sx={{
+          width: "100%",
+          marginLeft: "1rem",
+          [theme.breakpoints.up("xl")]: {
+            width: "1300px",
+            alignItems: "flex-start",
+          },
+        }}
+      >
         <img
           src="images/bigPic.png"
           alt="bigPic"
@@ -47,6 +61,10 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          [theme.breakpoints.up("xl")]: {
+            width: "100%",
+            marginLeft: "0",
+          },
         }}
       >
         <Box
@@ -84,6 +102,9 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                 sx={{
                   width: "100%",
                   // height: "120px",
+                  [theme.breakpoints.up("xl")]: {
+                    width: "1300px",
+                  },
                 }}
               >
                 <Swiper
@@ -91,11 +112,10 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   spaceBetween={50}
                   slidesPerView={4}
                   style={{
-                    // [theme.breakpoints.up("xl")]: {
-                    //   width: "1600px",
-                    // },
+                    [theme.breakpoints.up("xl")]: {
+                      width: "100%",
+                    },
                     flexWrap: "nowrap",
-                    width: "1200px",
                     paddingTop: "1.5rem",
                     // paddingRight: "2rem",
                   }} // yada buna he tamm
@@ -161,7 +181,10 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               <Box
                 sx={{
                   width: "100%",
-                  justifyContent: "space-between", // buna fix bişi vermen gerekiyor bilgin olsun
+                  justifyContent: "space-between",
+                  [theme.breakpoints.up("xl")]: {
+                    width: "1300px",
+                  },
                 }}
               >
                 <Swiper
@@ -171,12 +194,8 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   slidesPerView={4}
                   style={{
                     flexWrap: "nowrap",
-                    width: "1200px",
+
                     paddingTop: "1.5rem",
-                    // paddingRight: "2rem",
-                    // [theme.breakpoints.down("xl")]: {
-                    //   width: "2000px",
-                    // },
                   }}
                 >
                   {upcoming?.map((item, index) => {
@@ -243,6 +262,9 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
               <Box
                 sx={{
                   width: "100%",
+                  [theme.breakpoints.up("xl")]: {
+                    width: "1300px",
+                  },
                 }}
               >
                 <Swiper
@@ -250,7 +272,6 @@ function Movie({ movieList, tvList, upcoming }: movieProps) {
                   spaceBetween={50}
                   slidesPerView={4}
                   style={{
-                    width: "1200px",
                     paddingTop: "1.5rem",
                   }}
                 >

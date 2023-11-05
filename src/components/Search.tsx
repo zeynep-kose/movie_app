@@ -22,6 +22,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import useLocales from "../locales/useLocales";
+import ThemeProvider from "../theme/themeProvider";
+
 import {
   BrowserRouter,
   Route,
@@ -30,14 +32,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import axios from "axios";
+import { red } from "@mui/material/colors";
 
 function Search() {
+  const theme = useTheme();
   const { currentLang, allLangs, onChangeLang } = useLocales();
   const navigate = useNavigate();
   const handleMovieSearch = (value: any) => {
     let finded_movie = null;
     options?.map((movie: any) => {
-      console.log(movie);
       if (movie.original_title === value) {
         finded_movie = movie;
         navigate(`/details/movie/${finded_movie.id}`);
@@ -46,13 +49,19 @@ function Search() {
     });
   };
 
+  const handleLanguageChange = (e: any) => {
+    onChangeLang(e.target.value);
+    currentLang.value = e.target.value;
+    console.log(currentLang.value);
+  };
+
   const [page, setPage] = useState(1);
   const [options, setOptions] = useState<any[]>([]);
 
-  const fetchMoreData = async (currentLang: any) => {
+  const fetchMoreData = async (currentLang: any, page: any) => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?language=${currentLang}&page=${page}&sort_by=popularity.desc`,
+        `https://api.themoviedb.org/3/discover/movie?language=${currentLang.value}&page=${page}&sort_by=popularity.desc`,
         {
           headers: {
             Authorization:
@@ -66,20 +75,20 @@ function Search() {
       setOptions((prevOptions) => [...prevOptions, ...newOptions]);
       setPage(page + 1);
     } catch (error) {
-      console.error("Veriler alınırken bir hata oluştu", error);
+      console.error("There is something wrong!!!", error);
     }
   };
 
   useEffect(() => {
-    fetchMoreData(currentLang.value);
-  }, [currentLang.value]);
+    fetchMoreData(currentLang, page);
+  }, [currentLang]);
 
   const handleScroll = (event: any) => {
     const listboxNode = event.currentTarget;
 
     const position = listboxNode.scrollTop + listboxNode.clientHeight;
     if (listboxNode.scrollHeight - position <= 1) {
-      fetchMoreData(currentLang.value);
+      fetchMoreData(currentLang, page);
     }
   };
 
@@ -94,6 +103,10 @@ function Search() {
         height: "100%",
         marginLeft: "17rem",
         width: "80%",
+        [theme.breakpoints.up("xl")]: {
+          marginLeft: "21rem",
+          justifyContent: "space-between",
+        },
       }}
     >
       <Helmet>
@@ -134,7 +147,6 @@ function Search() {
                 ...params.inputProps,
                 autoComplete: "new-password", // disable autocomplete and autofill
               }}
-              helperText={`Current page: ${page}`}
             />
           )}
           ListboxProps={{
@@ -163,15 +175,19 @@ function Search() {
           <img src="images/profile.svg" alt="profile"></img>
         </Link>
         <FormControl
-          sx={{ m: 1, backgroundColor: "white", width: "45px" }}
+          sx={{
+            m: 1,
+            width: "4rem",
+            background: "#cacaca",
+            borderRadius: ".5rem",
+          }}
           variant="standard"
         >
-          {/* <InputLabel>Lang</InputLabel> */}
           <Select
             labelId="demo-customized-select-label"
             id="demo-customized-select"
             value={"lang"}
-            // onChange={handleLanguageChange}
+            onChange={handleLanguageChange}
             placeholder="lang"
             label="lang"
           >

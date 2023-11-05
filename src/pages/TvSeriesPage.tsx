@@ -1,22 +1,12 @@
 import React from "react";
-import { Stack, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import { tvSeriesData } from "../api/api";
-import { useParams } from "react-router-dom";
 import useLocales from "../locales/useLocales";
-import Search from "../components/Search";
-import LeftSideBar from "../components/LeftSideBar";
 import RightSideBar from "../components/RightSideBar";
 import MainLayout from "../layouts/MainLayout";
-import RightSideBarBottom from "../components/RightSideBarBottom";
-import MovieList from "../sections/MovieList";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
-import MoviesPage from "./MoviesPage";
-import { number } from "yup";
 import TvList from "../sections/TvList";
-import { genresApi } from "../api/api";
-const API_Key = `c28667177075291b60900e0a0cb2824e`;
+// const API_Key = `c28667177075291b60900e0a0cb2824e`;
 
 interface IFilter {
   page: number;
@@ -29,7 +19,6 @@ function Tvseries() {
     page: 1,
     genres: [],
   });
-  console.log("currentLanguage====>", currentLang);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -37,7 +26,6 @@ function Tvseries() {
     tvSeriesData(currentLang.value, filter.page, filter.genres).then(
       (data: any) => {
         if (data) {
-          console.log("upcoming Data: ", data);
           setTvShows(data.results);
           setTotalPages(data?.total_pages);
         } else {
@@ -50,8 +38,6 @@ function Tvseries() {
   if (!tvShows) {
     return <div>Loading...</div>;
   }
-
-  console.log("tvShow", tvShows);
 
   return (
     <MainLayout movieList={tvShows ?? []}>
@@ -82,62 +68,7 @@ function Tvseries() {
           />
         </Box>
       </Box>
-
-      {/* <TvList
-        movieList={tvShows ?? []}
-        curentPage={page}
-        setpage={(page: number) => setFilter({ ...filter, page: page })}
-        total={totalPages}
-      />
-      <Box
-        sx={{
-          display: "flex",
-          paddingTop: "1.5rem",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-        }}
-      >
-        <RightSideBar
-          genres={filter.genres}
-          setGenres={(genres) => setFilter({ ...filter, genres: genres })}
-        />
-      </Box> */}
     </MainLayout>
-    // <Stack>
-    //   <Box>
-    //     <Search movieList={tvShows ?? []} />
-    //   </Box>
-    //   <Box
-    //     sx={{
-    //       display: "flex",
-    //       flexDirection: "row",
-    //       alignItems: "flex-start",
-    //       paddingTop: "1.5rem",
-    //       // justifyContent: "space-around",
-    //     }}
-    //   >
-    //     <Box
-    //       sx={{
-    //         display: "flex",
-    //         flexDirection: "column",
-    //         alignItems: "baseline",
-    //         paddingRight: "1rem",
-    //         rowGap: "2rem",
-    //       }}
-    //     >
-    //       <RightSideBar
-    //         genres={filter.genres}
-    //         setGenres={(genres) => setFilter({ ...filter, genres: genres })}
-    //       />
-    //     </Box>
-    //     <TvList
-    //       movieList={tvShows ?? []}
-    //       curentPage={page}
-    //       setpage={(page: number) => setFilter({ ...filter, page: page })}
-    //       total={totalPages}
-    //     />
-    //   </Box>
-    // </Stack>
   );
 }
 

@@ -8,7 +8,6 @@ import MoviesPage from "./pages/MoviesPage";
 import DetailMovies from "./pages/DetailMovies";
 import DetailSeries from "./pages/DetailSeries";
 import TvSeriesPage from "./pages/TvSeriesPage";
-import { MyContextProvider } from "./context/Context";
 import UpcomingPage from "./pages/UpcomingPage";
 import ThemeProvider from "./theme/themeProvider";
 

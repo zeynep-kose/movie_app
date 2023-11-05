@@ -23,6 +23,7 @@ type movieProps = {
 
 function Movie({ movieList, curentPage, setpage, total }: movieProps) {
   const theme = useTheme();
+
   return (
     <Stack
       sx={{
@@ -31,6 +32,7 @@ function Movie({ movieList, curentPage, setpage, total }: movieProps) {
         marginLeft: "18rem",
         [theme.breakpoints.up("xl")]: {
           width: "100%",
+          marginLeft: "19rem",
         },
       }}
     >

@@ -18,33 +18,12 @@ interface IFilter {
 
 function DetailSeries() {
   const { currentLang, allLangs, onChangeLang } = useLocales();
-
   const { id } = useParams();
   const [filter, setFilter] = useState<IFilter>({
     page: 1,
     genres: [],
   });
   const [tvShow, setTvShow] = useState<any>();
-  //   let x = useParams();
-  //   console.log("x=>", x);
-
-  // useEffect(() => {
-  //   tvSeriesData(currentLang.value, filter.page, filter.genres)
-  //     .then((data: any) => {
-  //       if (data) {
-  //         setTvShows((prevTvShows: any) => [...prevTvShows, ...data.results]);
-  //         console.log(tvShows);
-  //       } else {
-  //         console.error(
-  //           "tvSeriesData çağrısı başarısız: Veri boş veya tanımsız."
-  //         );
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("tvSeriesData çağrısı başarısız: ", error);
-  //     });
-
-  // }, [id]);
 
   useEffect(() => {
     getTvSeries(id)
@@ -53,7 +32,6 @@ function DetailSeries() {
       })
       .catch((error) => console.error(error));
   }, [id]);
-  console.log("show", tvShow);
   // //TOP RATED MOVIES
   const { isLoading: isLoadingTopRated, data: topRatedMovies } = useQuery(
     ["topRatedMovies"],

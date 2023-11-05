@@ -16,39 +16,8 @@ interface IRightSideBar {
 const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
   const [isLoading, setIsLoading] = useState(false);
   const [genresData, setGenresData] = useState<any>([]);
-  // const { isLoading: isLoadingTrends, data: genresData } = useQuery(
-  //   ["GenresMovies"],
-  //   async () => {
-  //     const res = await axios.get(
-  //       "https://api.themoviedb.org/3/genre/movie/list?language=en",
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMjg2NjcxNzcwNzUyOTFiNjA5MDBlMGEwY2IyODI0ZSIsInN1YiI6IjY1MjNiMDA3ZmQ2MzAwMDBlMjAxMDgzYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.en0JNvttI-F-mcNFrKCAQaxe4iMdgNfVWDTDTvGmCA4",
-  //         },
-  //       }
-  //     );
 
-  //     return res || [];
-  //   }
-  // );
   useEffect(() => {
-    // genresApi().then((data: any) => {
-    //   if (data) {
-    //     if (!isLoading) {
-    //       setIsLoading(true);
-
-    //       try {
-    //         const response = await genresApi();
-    //         if (response) {
-    //           setGenresData(response);
-    //         }
-    //       } catch (error) {
-    //         console.error("API isteği sırasında bir hata oluştu: ", error);
-    //       }
-    //     }
-    //   }
-    // });
     const fetchData = async () => {
       try {
         const response = await genresApi();
@@ -61,7 +30,6 @@ const RightSideBar = ({ genres, setGenres }: IRightSideBar) => {
       }
     };
 
-    // Call the async function when isLoading is false.
     if (!isLoading) {
       fetchData();
     }

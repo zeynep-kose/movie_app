@@ -1,5 +1,4 @@
 import React from "react";
-import { useTheme } from "@mui/material/styles";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Stack, Box, Container, Grid } from "@mui/material";
